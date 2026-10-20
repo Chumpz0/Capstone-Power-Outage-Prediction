@@ -80,6 +80,7 @@ See [`data/README.md`](data/README.md) for column details and known data issues.
 ```
 src/config.py              states, years, splits, source URLs, Hugging Face repo id
 src/data.py                load_outages(), load_storm_counties(), ... (local or Hugging Face)
+src/plotting.py            shared chart colors and helpers for the notebooks
 scripts/download_data.py   download + filter all data
 scripts/check_data.py      quick data summary
 scripts/upload_to_hf.py    push data/processed/ to the shared Hugging Face dataset

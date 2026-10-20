@@ -27,6 +27,14 @@ def path(rel: str) -> str:
     return f"hf://datasets/{C.HF_REPO_ID}/{rel}"
 
 
+def duckdb_path(rel: str) -> str:
+    """Like path(), but for DuckDB SQL: forward slashes, and `rel` may be a glob
+    such as "eaglei/outages_*.parquet"."""
+    if any(C.PROCESSED_DIR.glob(rel)):
+        return (C.PROCESSED_DIR / rel).as_posix()
+    return f"hf://datasets/{C.HF_REPO_ID}/{rel}"
+
+
 def _read(rel: str, **kw) -> pd.DataFrame:
     p = path(rel)
     return pd.read_csv(p, **kw) if rel.endswith(".csv") else pd.read_parquet(p, **kw)
@@ -68,9 +76,18 @@ def load_zone_county() -> pd.DataFrame:
 
 
 def load_customer_counts() -> pd.DataFrame:
-    """EAGLE-I modeled customer count per county (to get % of customers out)."""
-    return _read("eaglei/MCC.csv", dtype=str)
+    """EAGLE-I modeled customer count per county (to get % of customers out).
+    Adds a 5-digit `fips_code` and makes `Customers` numeric."""
+    df = _read("eaglei/MCC.csv", dtype=str)
+    df["fips_code"] = df["County_FIPS"].str.zfill(5)
+    df["Customers"] = pd.to_numeric(df["Customers"])
+    return df
 
 
 def load_coverage_history() -> pd.DataFrame:
     return _read("eaglei/coverage_history.csv")
+
+
+def load_dqi() -> pd.DataFrame:
+    """EAGLE-I data quality index per FEMA region and year."""
+    return _read("eaglei/DQI.csv")
