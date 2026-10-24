@@ -31,3 +31,18 @@ out = load_outages([2024], columns=["fips_code", "customers_out", "run_start_tim
 
 For DuckDB queries, `duckdb_path("eaglei/outages_*.parquet")` gives a path (or glob) DuckDB can read.
 Shared chart colors and helpers are in `src/plotting.py`.
+
+## Current EDA conventions
+
+The storm/outage join and grouped burden calculations live in `src/eda.py`;
+`scripts/audit_data_review.py` uses the same functions without executing notebook cells.
+Unknown event windows retain null outcomes. Rates exclude those unknown windows,
+but still include partially observed windows, so they describe observed severity.
+The preceding 24-hour mean uses available hours; its observation count is retained.
+Burden counts each county-hour once within a group; different groups can overlap.
+NOAA episodes stay separate even when their narrative labels name the same storm.
+The housing multiplier and event horizon remain provisional EDA assumptions.
+
+Focused calculation checks: `python -m unittest discover -s tests -v`.
+The data review in `docs/data_review.md` is the pre-cleanup baseline; refreshed
+notebook outputs and `docs/data_audit.json` reflect these corrected conventions.

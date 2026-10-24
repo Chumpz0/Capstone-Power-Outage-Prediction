@@ -1,0 +1,1518 @@
+{
+  "scope": "All local processed files; no upstream refresh",
+  "duckdb": "2.0.0",
+  "notebook_sha256": "8fced97dbaed607a3e686e8473f6ed34a3cf12438fda8241c5ba79035663ad62",
+  "inventory": [
+    {
+      "file": "eaglei/coverage_history.csv",
+      "bytes": 11965,
+      "sha256": "a5f102ee31d7c8ea5676679ec8a89a1e786bbe482d48f85c9a058a388a593267"
+    },
+    {
+      "file": "eaglei/DQI.csv",
+      "bytes": 4338,
+      "sha256": "b9a027fd5c5e299e682b459e5ea8d63d7a77b508c2be13a35fbf84fb3da89bc8"
+    },
+    {
+      "file": "eaglei/MCC.csv",
+      "bytes": 40584,
+      "sha256": "d7fbe0d60ea71273f68bd744408059491fbc7f85b6254882d17783d7762bf65e"
+    },
+    {
+      "file": "eaglei/outages_2014.parquet",
+      "bytes": 1060063,
+      "sha256": "cc3a72ef5d0847cc77e1b85a74d8c1b29f68869fbbc9012fead4c890c127d5cf"
+    },
+    {
+      "file": "eaglei/outages_2015.parquet",
+      "bytes": 7456592,
+      "sha256": "129973445da8f84e98a2de396afb78ea41274faff22960a3ca047da08fbaa41f"
+    },
+    {
+      "file": "eaglei/outages_2016.parquet",
+      "bytes": 8520555,
+      "sha256": "340b3d09a2cb74358a4b88d91ca5a9d7bceda70dc6ca47fd5662f229bd540e1e"
+    },
+    {
+      "file": "eaglei/outages_2017.parquet",
+      "bytes": 9672429,
+      "sha256": "4c8331739d18b2e27bdaf5549ba71e56195afbaaa3b1cc94f1035e06aec9c1f1"
+    },
+    {
+      "file": "eaglei/outages_2018.parquet",
+      "bytes": 12611996,
+      "sha256": "656e723c2d76efa8bb22e538226321a1e2c6f9ca3443bd12ead71485709ed885"
+    },
+    {
+      "file": "eaglei/outages_2019.parquet",
+      "bytes": 12800408,
+      "sha256": "2a30a29026b0f8f44773ea645524314a4a7e90e6b12b271ee9ce5f439c0182cf"
+    },
+    {
+      "file": "eaglei/outages_2020.parquet",
+      "bytes": 13582932,
+      "sha256": "490798786b8d49b5d16f9155ed99745dfc4eca73ddf2ccf15096d4b3d3315f34"
+    },
+    {
+      "file": "eaglei/outages_2021.parquet",
+      "bytes": 12894251,
+      "sha256": "1d72c5c7eb4b4310bfa685469b0ba9fe7024990e0575838974db10fcf2ad1c65"
+    },
+    {
+      "file": "eaglei/outages_2022.parquet",
+      "bytes": 13881572,
+      "sha256": "ff115eeaa7abf125a01930cdab6307b308565024aa5ac5e18cfbbc91f899e97a"
+    },
+    {
+      "file": "eaglei/outages_2023.parquet",
+      "bytes": 14506382,
+      "sha256": "4f3c9ca93663442d98081d0a183bc5b0936df5574c722e3e93aa7ab69b60c81a"
+    },
+    {
+      "file": "eaglei/outages_2024.parquet",
+      "bytes": 16933555,
+      "sha256": "46433bb5ab8abaf36caf91e4d71e14174ea1dff0766d7f2bf05722a4517413a5"
+    },
+    {
+      "file": "eaglei/outages_2025.parquet",
+      "bytes": 15244690,
+      "sha256": "041da4501235cdcce062b9bcf644a94c8938dd028177e2f3bcad0d178291bced"
+    },
+    {
+      "file": "reference/county_census.parquet",
+      "bytes": 220887,
+      "sha256": "e1ace5dffd248303ba536c0b741e4264c1d3768f85fe6025b65ae2b38e0c517e"
+    },
+    {
+      "file": "reference/zone_county.parquet",
+      "bytes": 33750,
+      "sha256": "3d3504b246e4a040542440a73b07f14fe785a7bc402367290445cbe8101ff54d"
+    },
+    {
+      "file": "storms/storm_event_counties.parquet",
+      "bytes": 18528864,
+      "sha256": "d431f7d3a03daddd088c3fb0c912f66d01954286145466174ebb14dd2e078301"
+    },
+    {
+      "file": "storms/storm_events_2014.parquet",
+      "bytes": 1139947,
+      "sha256": "6b90d5462dfc107f1c7eb61e2b0d694a79efdc7e65cc51fcea5a5a8445987ea2"
+    },
+    {
+      "file": "storms/storm_events_2015.parquet",
+      "bytes": 1230461,
+      "sha256": "0b6cdac4e508600d5225da29fd99df78c2188f4408e11c88cc36ffdedd38b232"
+    },
+    {
+      "file": "storms/storm_events_2016.parquet",
+      "bytes": 1337873,
+      "sha256": "00278f8d27519742318693641211256ac945ea15fa85d6c765ba552a748be590"
+    },
+    {
+      "file": "storms/storm_events_2017.parquet",
+      "bytes": 1408952,
+      "sha256": "0483bbeb6fc16a2eb70b231c83dd574707ff7599f9bd22ab847b1e25e4f736f8"
+    },
+    {
+      "file": "storms/storm_events_2018.parquet",
+      "bytes": 1282315,
+      "sha256": "2875fc5fa5a80f0a6639cd16695b48f152105172e4c3af67cad15a6ace936c0f"
+    },
+    {
+      "file": "storms/storm_events_2019.parquet",
+      "bytes": 1171815,
+      "sha256": "b12b8517485d9fd98c923341bf90fc97d65d88c2855075fec055723b825b5e66"
+    },
+    {
+      "file": "storms/storm_events_2020.parquet",
+      "bytes": 1446360,
+      "sha256": "b2355e1dd3c10571d5cd878e661157e4877d3ec5162e8b1102d712e6d8a6238a"
+    },
+    {
+      "file": "storms/storm_events_2021.parquet",
+      "bytes": 1080353,
+      "sha256": "4087708dd2f329b1e717adfb9397e5d58a52d18987b6c6bd115e76156a896150"
+    },
+    {
+      "file": "storms/storm_events_2022.parquet",
+      "bytes": 1325715,
+      "sha256": "18ba239a55c99a849cc121d988e5f16c584822e195fef6b0a3171f2a4fd35d00"
+    },
+    {
+      "file": "storms/storm_events_2023.parquet",
+      "bytes": 1720070,
+      "sha256": "a72dc5812d4ccfe75735814653517862cf362192ce048e0273e5ad661e99161e"
+    },
+    {
+      "file": "storms/storm_events_2024.parquet",
+      "bytes": 1605428,
+      "sha256": "07991714d196ec0c4377cacb54b6a9241d05c9f861e86477cb0520608a26f524"
+    },
+    {
+      "file": "storms/storm_events_2025.parquet",
+      "bytes": 1521693,
+      "sha256": "3c45bfd8ec81ef7da0eea0eaca8d4bcbaa8fc084de021e590a0f11f43bf50828"
+    }
+  ],
+  "outages_year": [
+    {
+      "year": 2014,
+      "rows": 358659,
+      "counties": 410,
+      "first": "2014-11-01 04:00:00",
+      "last": "2014-12-31 00:00:00",
+      "nulls": 0,
+      "zeros": 0,
+      "maximum": 23816.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 0
+    },
+    {
+      "year": 2015,
+      "rows": 2580145,
+      "counties": 449,
+      "first": "2015-01-01 00:00:00",
+      "last": "2015-12-31 00:00:00",
+      "nulls": 0,
+      "zeros": 0,
+      "maximum": 92954.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 0
+    },
+    {
+      "year": 2016,
+      "rows": 2960707,
+      "counties": 449,
+      "first": "2016-01-01 00:00:00",
+      "last": "2016-12-31 00:00:00",
+      "nulls": 0,
+      "zeros": 0,
+      "maximum": 467041.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 0
+    },
+    {
+      "year": 2017,
+      "rows": 3388524,
+      "counties": 508,
+      "first": "2017-01-01 00:00:00",
+      "last": "2017-12-31 00:00:00",
+      "nulls": 28781,
+      "zeros": 0,
+      "maximum": 1777800.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 0
+    },
+    {
+      "year": 2018,
+      "rows": 4553450,
+      "counties": 508,
+      "first": "2018-01-01 00:00:00",
+      "last": "2018-12-31 00:00:00",
+      "nulls": 315048,
+      "zeros": 0,
+      "maximum": 135215.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 0
+    },
+    {
+      "year": 2019,
+      "rows": 4808385,
+      "counties": 525,
+      "first": "2019-01-01 00:00:00",
+      "last": "2019-12-31 00:00:00",
+      "nulls": 275065,
+      "zeros": 0,
+      "maximum": 137536.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 23
+    },
+    {
+      "year": 2020,
+      "rows": 5194354,
+      "counties": 523,
+      "first": "2020-01-01 00:00:00",
+      "last": "2020-12-31 00:00:00",
+      "nulls": 429447,
+      "zeros": 0,
+      "maximum": 178832.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 754
+    },
+    {
+      "year": 2021,
+      "rows": 4832707,
+      "counties": 523,
+      "first": "2021-01-01 00:00:00",
+      "last": "2021-12-31 00:00:00",
+      "nulls": 218042,
+      "zeros": 0,
+      "maximum": 83500.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 61
+    },
+    {
+      "year": 2022,
+      "rows": 5289340,
+      "counties": 527,
+      "first": "2022-01-01 00:00:00",
+      "last": "2022-12-31 23:45:00",
+      "nulls": 0,
+      "zeros": 342871,
+      "maximum": 456573.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 0
+    },
+    {
+      "year": 2023,
+      "rows": 5412736,
+      "counties": 527,
+      "first": "2023-01-01 00:00:00",
+      "last": "2023-12-31 23:45:00",
+      "nulls": 0,
+      "zeros": 195956,
+      "maximum": 138851.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 165
+    },
+    {
+      "year": 2024,
+      "rows": 5837620,
+      "counties": 527,
+      "first": "2024-01-01 00:00:00",
+      "last": "2024-12-31 23:45:00",
+      "nulls": 0,
+      "zeros": 214507,
+      "maximum": 520308.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 0
+    },
+    {
+      "year": 2025,
+      "rows": 6036029,
+      "counties": 528,
+      "first": "2025-01-01 00:00:00",
+      "last": "2025-12-31 23:45:00",
+      "nulls": 489434,
+      "zeros": 86898,
+      "maximum": 139758.0,
+      "negative": 0,
+      "fractional": 0,
+      "odd_minutes": 0
+    }
+  ],
+  "outage_integrity": [
+    {
+      "rows": 51252656,
+      "counties": 529,
+      "duplicate_keys": 0,
+      "null_keys": 0
+    }
+  ],
+  "never_observed_counties": [
+    {
+      "fips_code": "47135",
+      "county_name": "Perry County, Tennessee"
+    },
+    {
+      "fips_code": "47085",
+      "county_name": "Humphreys County, Tennessee"
+    },
+    {
+      "fips_code": "47005",
+      "county_name": "Benton County, Tennessee"
+    },
+    {
+      "fips_code": "47071",
+      "county_name": "Hardin County, Tennessee"
+    },
+    {
+      "fips_code": "47039",
+      "county_name": "Decatur County, Tennessee"
+    }
+  ],
+  "storms_year": [
+    {
+      "year": 2014,
+      "events": 6721,
+      "episodes": 1216
+    },
+    {
+      "year": 2015,
+      "events": 7329,
+      "episodes": 1280
+    },
+    {
+      "year": 2016,
+      "events": 8066,
+      "episodes": 1268
+    },
+    {
+      "year": 2017,
+      "events": 7675,
+      "episodes": 1136
+    },
+    {
+      "year": 2018,
+      "events": 7463,
+      "episodes": 1284
+    },
+    {
+      "year": 2019,
+      "events": 6647,
+      "episodes": 1109
+    },
+    {
+      "year": 2020,
+      "events": 7855,
+      "episodes": 1138
+    },
+    {
+      "year": 2021,
+      "events": 5607,
+      "episodes": 964
+    },
+    {
+      "year": 2022,
+      "events": 7709,
+      "episodes": 1219
+    },
+    {
+      "year": 2023,
+      "events": 10662,
+      "episodes": 1264
+    },
+    {
+      "year": 2024,
+      "events": 8758,
+      "episodes": 1128
+    },
+    {
+      "year": 2025,
+      "events": 9858,
+      "episodes": 1267
+    }
+  ],
+  "storms_integrity": [
+    {
+      "events": 94350,
+      "unique_events": 94350,
+      "event_types": 35,
+      "null_times": 0,
+      "reversed_times": 0
+    }
+  ],
+  "storm_types": [
+    {
+      "event_type": "Thunderstorm Wind",
+      "events": 45237,
+      "magnitude_present": 45237
+    },
+    {
+      "event_type": "Hail",
+      "events": 8958,
+      "magnitude_present": 8958
+    },
+    {
+      "event_type": "Flash Flood",
+      "events": 7446,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Drought",
+      "events": 3696,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Winter Weather",
+      "events": 3680,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Tornado",
+      "events": 3405,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Flood",
+      "events": 2648,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Winter Storm",
+      "events": 2498,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Tropical Storm",
+      "events": 2248,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Heavy Rain",
+      "events": 1928,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Heat",
+      "events": 1797,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Strong Wind",
+      "events": 1353,
+      "magnitude_present": 1353
+    },
+    {
+      "event_type": "Lightning",
+      "events": 1287,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Heavy Snow",
+      "events": 1244,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Excessive Heat",
+      "events": 1218,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "High Wind",
+      "events": 947,
+      "magnitude_present": 947
+    },
+    {
+      "event_type": "Coastal Flood",
+      "events": 771,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Cold/Wind Chill",
+      "events": 756,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Frost/Freeze",
+      "events": 684,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Rip Current",
+      "events": 511,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Funnel Cloud",
+      "events": 443,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Ice Storm",
+      "events": 335,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Extreme Cold/Wind Chill",
+      "events": 240,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Storm Surge/Tide",
+      "events": 233,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Hurricane (Typhoon)",
+      "events": 224,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Tropical Depression",
+      "events": 191,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Wildfire",
+      "events": 184,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "High Surf",
+      "events": 44,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Sleet",
+      "events": 40,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Debris Flow",
+      "events": 34,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Freezing Fog",
+      "events": 30,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Astronomical Low Tide",
+      "events": 19,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Dense Fog",
+      "events": 9,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Dust Devil",
+      "events": 6,
+      "magnitude_present": 0
+    },
+    {
+      "event_type": "Blizzard",
+      "events": 6,
+      "magnitude_present": 0
+    }
+  ],
+  "mapping": [
+    {
+      "cz_type": "Z",
+      "n": 22837,
+      "unmapped": 1498
+    },
+    {
+      "cz_type": "C",
+      "n": 71513,
+      "unmapped": 0
+    }
+  ],
+  "unmapped_types": [
+    {
+      "event_type": "Coastal Flood",
+      "n": 358
+    },
+    {
+      "event_type": "Tropical Storm",
+      "n": 227
+    },
+    {
+      "event_type": "Rip Current",
+      "n": 149
+    },
+    {
+      "event_type": "Strong Wind",
+      "n": 142
+    },
+    {
+      "event_type": "Winter Weather",
+      "n": 100
+    },
+    {
+      "event_type": "Winter Storm",
+      "n": 88
+    },
+    {
+      "event_type": "High Wind",
+      "n": 79
+    },
+    {
+      "event_type": "Drought",
+      "n": 63
+    },
+    {
+      "event_type": "Storm Surge/Tide",
+      "n": 51
+    },
+    {
+      "event_type": "Heavy Snow",
+      "n": 39
+    },
+    {
+      "event_type": "Cold/Wind Chill",
+      "n": 37
+    },
+    {
+      "event_type": "Wildfire",
+      "n": 30
+    },
+    {
+      "event_type": "Ice Storm",
+      "n": 24
+    },
+    {
+      "event_type": "Hurricane (Typhoon)",
+      "n": 22
+    },
+    {
+      "event_type": "High Surf",
+      "n": 21
+    },
+    {
+      "event_type": "Tropical Depression",
+      "n": 19
+    },
+    {
+      "event_type": "Excessive Heat",
+      "n": 19
+    },
+    {
+      "event_type": "Sleet",
+      "n": 17
+    },
+    {
+      "event_type": "Heat",
+      "n": 6
+    },
+    {
+      "event_type": "Frost/Freeze",
+      "n": 3
+    },
+    {
+      "event_type": "Extreme Cold/Wind Chill",
+      "n": 2
+    },
+    {
+      "event_type": "Freezing Fog",
+      "n": 1
+    },
+    {
+      "event_type": "Astronomical Low Tide",
+      "n": 1
+    }
+  ],
+  "bad_counties": [
+    {
+      "state_abbr": "GA",
+      "event_type": "Winter Storm",
+      "n": 59
+    }
+  ],
+  "mapped_integrity": [
+    {
+      "rows": 92852,
+      "events": 92852,
+      "duplicate_keys": 0
+    }
+  ],
+  "census": [
+    {
+      "acs_year": 2014,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2015,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2016,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2017,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2018,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2019,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2020,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2021,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2022,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2023,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    },
+    {
+      "acs_year": 2024,
+      "rows": 534,
+      "counties": 534,
+      "nonpositive": 0,
+      "missing": 0
+    }
+  ],
+  "mcc": [
+    {
+      "state_fips": "01",
+      "counties": 67,
+      "mcc_present": 67,
+      "median_customers_per_housing_unit": 1.0920017746944701,
+      "below_half": 0
+    },
+    {
+      "state_fips": "12",
+      "counties": 67,
+      "mcc_present": 67,
+      "median_customers_per_housing_unit": 1.2123306279077666,
+      "below_half": 0
+    },
+    {
+      "state_fips": "13",
+      "counties": 159,
+      "mcc_present": 159,
+      "median_customers_per_housing_unit": 1.230132625994695,
+      "below_half": 0
+    },
+    {
+      "state_fips": "37",
+      "counties": 100,
+      "mcc_present": 94,
+      "median_customers_per_housing_unit": 0.49843911386086637,
+      "below_half": 48
+    },
+    {
+      "state_fips": "45",
+      "counties": 46,
+      "mcc_present": 46,
+      "median_customers_per_housing_unit": 1.2243666367035286,
+      "below_half": 0
+    },
+    {
+      "state_fips": "47",
+      "counties": 95,
+      "mcc_present": 95,
+      "median_customers_per_housing_unit": 1.1568508705526117,
+      "below_half": 0
+    }
+  ],
+  "mcc_missing": [
+    {
+      "fips_code": "37099",
+      "county_name": "Jackson County, North Carolina"
+    },
+    {
+      "fips_code": "37075",
+      "county_name": "Graham County, North Carolina"
+    },
+    {
+      "fips_code": "37087",
+      "county_name": "Haywood County, North Carolina"
+    },
+    {
+      "fips_code": "37175",
+      "county_name": "Transylvania County, North Carolina"
+    },
+    {
+      "fips_code": "37173",
+      "county_name": "Swain County, North Carolina"
+    },
+    {
+      "fips_code": "37113",
+      "county_name": "Macon County, North Carolina"
+    }
+  ],
+  "reference_integrity": {
+    "census_duplicate_keys": 0,
+    "mcc_duplicate_keys": 0,
+    "zone_duplicate_keys": 0,
+    "coverage_duplicate_keys": 0,
+    "dqi_duplicate_keys": 0
+  },
+  "study_coverage": [
+    {
+      "year": "1/1/18",
+      "state": "AL",
+      "total_customers": 2552741,
+      "min_covered": 556498,
+      "max_covered": 2029174,
+      "min_pct_covered": 0.22,
+      "max_pct_covered": 0.79
+    },
+    {
+      "year": "1/1/19",
+      "state": "AL",
+      "total_customers": 2568720,
+      "min_covered": 1986498,
+      "max_covered": 2069044,
+      "min_pct_covered": 0.77,
+      "max_pct_covered": 0.81
+    },
+    {
+      "year": "1/1/20",
+      "state": "AL",
+      "total_customers": 2568720,
+      "min_covered": 2019687,
+      "max_covered": 2081949,
+      "min_pct_covered": 0.79,
+      "max_pct_covered": 0.81
+    },
+    {
+      "year": "1/1/21",
+      "state": "AL",
+      "total_customers": 2583447,
+      "min_covered": 2071943,
+      "max_covered": 2098555,
+      "min_pct_covered": 0.8,
+      "max_pct_covered": 0.81
+    },
+    {
+      "year": "1/1/22",
+      "state": "AL",
+      "total_customers": 2615212,
+      "min_covered": 2096470,
+      "max_covered": 2123175,
+      "min_pct_covered": 0.8,
+      "max_pct_covered": 0.81
+    },
+    {
+      "year": "1/1/18",
+      "state": "FL",
+      "total_customers": 10166667,
+      "min_covered": 8784000,
+      "max_covered": 9867767,
+      "min_pct_covered": 0.86,
+      "max_pct_covered": 0.97
+    },
+    {
+      "year": "1/1/19",
+      "state": "FL",
+      "total_customers": 10505702,
+      "min_covered": 9557234,
+      "max_covered": 10171381,
+      "min_pct_covered": 0.91,
+      "max_pct_covered": 0.97
+    },
+    {
+      "year": "1/1/20",
+      "state": "FL",
+      "total_customers": 10648830,
+      "min_covered": 10069752,
+      "max_covered": 10365852,
+      "min_pct_covered": 0.95,
+      "max_pct_covered": 0.97
+    },
+    {
+      "year": "1/1/21",
+      "state": "FL",
+      "total_customers": 10845961,
+      "min_covered": 9602281,
+      "max_covered": 10593085,
+      "min_pct_covered": 0.89,
+      "max_pct_covered": 0.98
+    },
+    {
+      "year": "1/1/22",
+      "state": "FL",
+      "total_customers": 10989517,
+      "min_covered": 10562475,
+      "max_covered": 10768409,
+      "min_pct_covered": 0.96,
+      "max_pct_covered": 0.98
+    },
+    {
+      "year": "1/1/18",
+      "state": "GA",
+      "total_customers": 4772845,
+      "min_covered": 4044986,
+      "max_covered": 4290310,
+      "min_pct_covered": 0.85,
+      "max_pct_covered": 0.9
+    },
+    {
+      "year": "1/1/19",
+      "state": "GA",
+      "total_customers": 4851807,
+      "min_covered": 4036395,
+      "max_covered": 4170956,
+      "min_pct_covered": 0.83,
+      "max_pct_covered": 0.86
+    },
+    {
+      "year": "1/1/20",
+      "state": "GA",
+      "total_customers": 4851807,
+      "min_covered": 4166333,
+      "max_covered": 4266073,
+      "min_pct_covered": 0.86,
+      "max_pct_covered": 0.88
+    },
+    {
+      "year": "1/1/21",
+      "state": "GA",
+      "total_customers": 4789678,
+      "min_covered": 4266073,
+      "max_covered": 4326068,
+      "min_pct_covered": 0.89,
+      "max_pct_covered": 0.9
+    },
+    {
+      "year": "1/1/22",
+      "state": "GA",
+      "total_customers": 5059196,
+      "min_covered": 4304426,
+      "max_covered": 4590663,
+      "min_pct_covered": 0.85,
+      "max_pct_covered": 0.91
+    },
+    {
+      "year": "1/1/18",
+      "state": "NC",
+      "total_customers": 5179052,
+      "min_covered": 4232839,
+      "max_covered": 4232839,
+      "min_pct_covered": 0.82,
+      "max_pct_covered": 0.82
+    },
+    {
+      "year": "1/1/19",
+      "state": "NC",
+      "total_customers": 5179052,
+      "min_covered": 4096456,
+      "max_covered": 4652910,
+      "min_pct_covered": 0.79,
+      "max_pct_covered": 0.9
+    },
+    {
+      "year": "1/1/20",
+      "state": "NC",
+      "total_customers": 5190559,
+      "min_covered": 4652910,
+      "max_covered": 4732206,
+      "min_pct_covered": 0.9,
+      "max_pct_covered": 0.91
+    },
+    {
+      "year": "1/1/21",
+      "state": "NC",
+      "total_customers": 5273827,
+      "min_covered": 4732206,
+      "max_covered": 4848563,
+      "min_pct_covered": 0.9,
+      "max_pct_covered": 0.92
+    },
+    {
+      "year": "1/1/22",
+      "state": "NC",
+      "total_customers": 5297545,
+      "min_covered": 4848563,
+      "max_covered": 4866811,
+      "min_pct_covered": 0.92,
+      "max_pct_covered": 0.92
+    },
+    {
+      "year": "1/1/18",
+      "state": "SC",
+      "total_customers": 2651417,
+      "min_covered": 2553421,
+      "max_covered": 2633918,
+      "min_pct_covered": 0.96,
+      "max_pct_covered": 0.99
+    },
+    {
+      "year": "1/1/19",
+      "state": "SC",
+      "total_customers": 2620672,
+      "min_covered": 2361889,
+      "max_covered": 2606017,
+      "min_pct_covered": 0.9,
+      "max_pct_covered": 0.99
+    },
+    {
+      "year": "1/1/20",
+      "state": "SC",
+      "total_customers": 2892608,
+      "min_covered": 2606017,
+      "max_covered": 2859368,
+      "min_pct_covered": 0.9,
+      "max_pct_covered": 0.99
+    },
+    {
+      "year": "1/1/21",
+      "state": "SC",
+      "total_customers": 2968136,
+      "min_covered": 2736584,
+      "max_covered": 2935163,
+      "min_pct_covered": 0.92,
+      "max_pct_covered": 0.99
+    },
+    {
+      "year": "1/1/22",
+      "state": "SC",
+      "total_customers": 2800722,
+      "min_covered": 2736584,
+      "max_covered": 2784660,
+      "min_pct_covered": 0.98,
+      "max_pct_covered": 0.99
+    },
+    {
+      "year": "1/1/18",
+      "state": "TN",
+      "total_customers": 3260708,
+      "min_covered": 1751326,
+      "max_covered": 1780999,
+      "min_pct_covered": 0.54,
+      "max_pct_covered": 0.55
+    },
+    {
+      "year": "1/1/19",
+      "state": "TN",
+      "total_customers": 3333179,
+      "min_covered": 1780999,
+      "max_covered": 2421848,
+      "min_pct_covered": 0.53,
+      "max_pct_covered": 0.73
+    },
+    {
+      "year": "1/1/20",
+      "state": "TN",
+      "total_customers": 3375533,
+      "min_covered": 2421848,
+      "max_covered": 2473590,
+      "min_pct_covered": 0.72,
+      "max_pct_covered": 0.73
+    },
+    {
+      "year": "1/1/21",
+      "state": "TN",
+      "total_customers": 3413499,
+      "min_covered": 2445113,
+      "max_covered": 2501720,
+      "min_pct_covered": 0.72,
+      "max_pct_covered": 0.73
+    },
+    {
+      "year": "1/1/22",
+      "state": "TN",
+      "total_customers": 3433064,
+      "min_covered": 2454449,
+      "max_covered": 2578021,
+      "min_pct_covered": 0.71,
+      "max_pct_covered": 0.75
+    }
+  ],
+  "region4_dqi": [
+    {
+      "fema": 4,
+      "year": 2018,
+      "success_rate": 98.8617574,
+      "percent_enabled": 98.11830114,
+      "spatial_precision": 78.19125225,
+      "cust_coverage": 85.27438726,
+      "max_covered": 27610605,
+      "total_customers": 32378544,
+      "DQI": 74.6747091
+    },
+    {
+      "fema": 4,
+      "year": 2019,
+      "success_rate": 98.79425677,
+      "percent_enabled": 86.89751824,
+      "spatial_precision": 71.36522977,
+      "cust_coverage": 89.21586957,
+      "max_covered": 29304643,
+      "total_customers": 32846895,
+      "DQI": 65.04779225
+    },
+    {
+      "fema": 4,
+      "year": 2020,
+      "success_rate": 98.70030505,
+      "percent_enabled": 99.56218769,
+      "spatial_precision": 76.82317738,
+      "cust_coverage": 90.13536844,
+      "max_covered": 30044515,
+      "total_customers": 33332659,
+      "DQI": 77.48516049
+    },
+    {
+      "fema": 4,
+      "year": 2021,
+      "success_rate": 99.45630587,
+      "percent_enabled": 99.06303468,
+      "spatial_precision": 76.91933223,
+      "cust_coverage": 90.77199729,
+      "max_covered": 30614057,
+      "total_customers": 33726323,
+      "DQI": 85.15516165
+    },
+    {
+      "fema": 4,
+      "year": 2022,
+      "success_rate": 98.92867038,
+      "percent_enabled": 98.15354208,
+      "spatial_precision": 76.74217715,
+      "cust_coverage": 91.23627654,
+      "max_covered": 31073335,
+      "total_customers": 34058092,
+      "DQI": 79.1729992
+    }
+  ],
+  "notebook_join_note": "Uses src.eda.build_storm_outage_tables; unknown outcomes remain null; rates exclude unknown windows.",
+  "joined_year": [
+    {
+      "year": 2014,
+      "rows": 353,
+      "no_observed_peak": 120,
+      "major": 29
+    },
+    {
+      "year": 2015,
+      "rows": 7021,
+      "no_observed_peak": 2290,
+      "major": 484
+    },
+    {
+      "year": 2016,
+      "rows": 6594,
+      "no_observed_peak": 1732,
+      "major": 897
+    },
+    {
+      "year": 2017,
+      "rows": 7060,
+      "no_observed_peak": 1607,
+      "major": 1035
+    },
+    {
+      "year": 2018,
+      "rows": 6809,
+      "no_observed_peak": 1021,
+      "major": 1143
+    },
+    {
+      "year": 2019,
+      "rows": 5912,
+      "no_observed_peak": 608,
+      "major": 1079
+    },
+    {
+      "year": 2020,
+      "rows": 7604,
+      "no_observed_peak": 671,
+      "major": 1897
+    },
+    {
+      "year": 2021,
+      "rows": 5261,
+      "no_observed_peak": 573,
+      "major": 861
+    },
+    {
+      "year": 2022,
+      "rows": 6956,
+      "no_observed_peak": 525,
+      "major": 1361
+    },
+    {
+      "year": 2023,
+      "rows": 8981,
+      "no_observed_peak": 556,
+      "major": 2302
+    },
+    {
+      "year": 2024,
+      "rows": 7719,
+      "no_observed_peak": 464,
+      "major": 2093
+    },
+    {
+      "year": 2025,
+      "rows": 8239,
+      "no_observed_peak": 1023,
+      "major": 1677
+    }
+  ],
+  "joined_type": [
+    {
+      "event_type": "Hurricane (Typhoon)",
+      "rows": 202,
+      "median_share": 0.7504534721374512,
+      "major_rate": 0.9851485148514851,
+      "no_observed_peak": 0
+    },
+    {
+      "event_type": "Blizzard",
+      "rows": 6,
+      "median_share": 0.2984074354171753,
+      "major_rate": 0.6,
+      "no_observed_peak": 1
+    },
+    {
+      "event_type": "Tropical Storm",
+      "rows": 2007,
+      "median_share": 0.08989216387271881,
+      "major_rate": 0.5894576786619361,
+      "no_observed_peak": 34
+    },
+    {
+      "event_type": "Storm Surge/Tide",
+      "rows": 182,
+      "median_share": 0.05810108035802841,
+      "major_rate": 0.5414364640883977,
+      "no_observed_peak": 1
+    },
+    {
+      "event_type": "Ice Storm",
+      "rows": 210,
+      "median_share": 0.04020829498767853,
+      "major_rate": 0.47770700636942676,
+      "no_observed_peak": 53
+    },
+    {
+      "event_type": "Tornado",
+      "rows": 3237,
+      "median_share": 0.022888261824846268,
+      "major_rate": 0.3470546486870121,
+      "no_observed_peak": 419
+    },
+    {
+      "event_type": "High Wind",
+      "rows": 804,
+      "median_share": 0.023936539888381958,
+      "major_rate": 0.3411602209944751,
+      "no_observed_peak": 80
+    },
+    {
+      "event_type": "Extreme Cold/Wind Chill",
+      "rows": 214,
+      "median_share": 0.012896587140858173,
+      "major_rate": 0.2894736842105263,
+      "no_observed_peak": 62
+    },
+    {
+      "event_type": "Strong Wind",
+      "rows": 1173,
+      "median_share": 0.020376088097691536,
+      "major_rate": 0.28585365853658534,
+      "no_observed_peak": 148
+    },
+    {
+      "event_type": "Debris Flow",
+      "rows": 33,
+      "median_share": 0.010524092242121696,
+      "major_rate": 0.26666666666666666,
+      "no_observed_peak": 3
+    },
+    {
+      "event_type": "Thunderstorm Wind",
+      "rows": 42354,
+      "median_share": 0.015428656712174416,
+      "major_rate": 0.24539893978523855,
+      "no_observed_peak": 5569
+    },
+    {
+      "event_type": "Winter Storm",
+      "rows": 1915,
+      "median_share": 0.004764561075717211,
+      "major_rate": 0.2086021505376344,
+      "no_observed_peak": 520
+    },
+    {
+      "event_type": "Flash Flood",
+      "rows": 7080,
+      "median_share": 0.007079938426613808,
+      "major_rate": 0.1683152520740268,
+      "no_observed_peak": 812
+    },
+    {
+      "event_type": "Tropical Depression",
+      "rows": 172,
+      "median_share": 0.004782850854098797,
+      "major_rate": 0.16666666666666666,
+      "no_observed_peak": 4
+    },
+    {
+      "event_type": "Heavy Snow",
+      "rows": 1035,
+      "median_share": 0.003979568835347891,
+      "major_rate": 0.1430615164520744,
+      "no_observed_peak": 336
+    },
+    {
+      "event_type": "Cold/Wind Chill",
+      "rows": 620,
+      "median_share": 0.0014883610419929028,
+      "major_rate": 0.12159329140461216,
+      "no_observed_peak": 143
+    },
+    {
+      "event_type": "Flood",
+      "rows": 2495,
+      "median_share": 0.0030709223356097937,
+      "major_rate": 0.10692701069270107,
+      "no_observed_peak": 344
+    },
+    {
+      "event_type": "Hail",
+      "rows": 8150,
+      "median_share": 0.005147955380380154,
+      "major_rate": 0.09861212563915267,
+      "no_observed_peak": 1305
+    },
+    {
+      "event_type": "Heavy Rain",
+      "rows": 1766,
+      "median_share": 0.0031821797601878643,
+      "major_rate": 0.07255139056831923,
+      "no_observed_peak": 112
+    },
+    {
+      "event_type": "Coastal Flood",
+      "rows": 412,
+      "median_share": 0.0008886474533937871,
+      "major_rate": 0.06852791878172589,
+      "no_observed_peak": 18
+    },
+    {
+      "event_type": "Winter Weather",
+      "rows": 3159,
+      "median_share": 0.0005766577087342739,
+      "major_rate": 0.045164457535591555,
+      "no_observed_peak": 1122
+    },
+    {
+      "event_type": "Lightning",
+      "rows": 1149,
+      "median_share": 0.0031416569836437702,
+      "major_rate": 0.04201680672268908,
+      "no_observed_peak": 78
+    },
+    {
+      "event_type": "Wildfire",
+      "rows": 123,
+      "median_share": 0.0006240172078832984,
+      "major_rate": 0.019230769230769232,
+      "no_observed_peak": 19
+    },
+    {
+      "event_type": "Sleet",
+      "rows": 11,
+      "median_share": 0.004665498621761799,
+      "major_rate": 0.0,
+      "no_observed_peak": 7
+    }
+  ],
+  "window_observations": [
+    {
+      "windows": 78509,
+      "unobserved": 11190,
+      "fully_observed": 26887,
+      "median_observed_fraction": 0.8571428571428571
+    }
+  ],
+  "overlap": [
+    {
+      "distinct_county_hours": 767330,
+      "shared_county_hours": 235681,
+      "max_events_per_hour": 118
+    }
+  ],
+  "capping": [
+    {
+      "observed_hours": 14969039,
+      "capped_hours": 2865
+    }
+  ],
+  "raw_inventory": [
+    {
+      "file": "data/raw/reference/bp16ap26.dbx",
+      "bytes": 350723
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2014_c20260323.csv.gz",
+      "bytes": 11084754
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2015_c20260323.csv.gz",
+      "bytes": 10041550
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2016_c20260323.csv.gz",
+      "bytes": 9065715
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2017_c20260519.csv.gz",
+      "bytes": 9340854
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2018_c20260323.csv.gz",
+      "bytes": 9585982
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2019_c20260323.csv.gz",
+      "bytes": 11602648
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2020_c20260323.csv.gz",
+      "bytes": 10444606
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2021_c20260323.csv.gz",
+      "bytes": 10563953
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2022_c20260625.csv.gz",
+      "bytes": 11817849
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2023_c20260323.csv.gz",
+      "bytes": 12888092
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2024_c20260728.csv.gz",
+      "bytes": 12693243
+    },
+    {
+      "file": "data/raw/storms/StormEvents_details-ftp_v1.0_d2025_c20260819.csv.gz",
+      "bytes": 12585209
+    }
+  ]
+}
