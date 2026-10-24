@@ -1580,8 +1580,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6400,
-      "sha256": "913eddd009cfee67cec12d46ca648c286f2bccaf7a3bf15ef3e3a7caba70e580"
+      "bytes": 4753,
+      "sha256": "9fb2ca3b6d8cfbb9a0ae96257d97a0c91f4567c784b2c2b69efd54651ccae6a8"
     },
     {
       "path": "requirements.txt",
@@ -1712,7 +1712,7 @@
     "ipykernel": "7.4.0",
     "jupyter-client": "8.10.0"
   },
-  "base_commit": "b17a249c9ebe784744e379b687c596bd3b81a73d",
+  "base_commit": "487eb9abb9e8b5e40b80d6454aff585991ae8204",
   "commit_note": "Working-tree handoff; base commit does not include uncommitted checkpoint work",
   "semantics": "docs/eda_metadata.md",
   "validation": "docs/eda_validation.json",

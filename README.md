@@ -35,39 +35,6 @@ The raw data is about 12 GB, so it is **not** stored in GitHub. One person build
    ```
    The loaders read `data/processed/` if you have a local copy, and stream from Hugging Face otherwise. The local six-state annual outage files contain up to about 6 million rows, so start with one year and only the columns you need.
 
-**In Google Colab:** add your token as a Colab secret named `HF_TOKEN` (key icon in the left sidebar), then:
-```python
-!git clone https://github.com/<your-org>/Capstone-Power-Outage-Prediction.git
-%cd Capstone-Power-Outage-Prediction
-!pip install -q -r requirements.txt
-from google.colab import userdata; import os
-os.environ["HF_TOKEN"] = userdata.get("HF_TOKEN")
-from src.data import load_storm_counties
-```
-
-### Data owner: build and upload (one person, once)
-
-```bash
-pip install -r requirements.txt
-export CENSUS_API_KEY=...                              # free key: api.census.gov/data/key_signup.html (PowerShell: $env:CENSUS_API_KEY="...")
-python scripts/download_data.py --only storms census   # quick test, a few minutes
-python scripts/download_data.py                        # full run; EAGLE-I is ~1.2 GB/yr raw
-python scripts/check_data.py                           # sanity summary
-hf auth login                                          # paste a WRITE token
-python scripts/upload_to_hf.py                         # creates the private dataset if needed
-```
-Re-run the last command whenever the processed data changes; only changed files upload.
-
-Useful options:
-
-| Option | What it does |
-| --- | --- |
-| `--years 2024 2025` | Only these years |
-| `--only eaglei storms zones census eia` | Only these steps (EIA-861 runs only when asked) |
-| `--keep-raw` | Keep the big raw EAGLE-I CSVs after filtering (default: deleted) |
-
-Re-running is safe: finished files are skipped, so an interrupted download just picks up where it stopped. You need about 2 GB of free disk space while a year is processing.
-
 ## Data sources
 
 | Source | What it gives us | Output |
