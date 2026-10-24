@@ -1,0 +1,13 @@
+split,threshold,major,major_single_run_only,major_peak_above_customer_ceiling,major_in_implausible_peak_county,major_from_offgrid_only,major_partial_county_trigger
+validation,1000,1402,77,41,321,0,128
+validation,2500,808,59,39,200,0,104
+validation,5000,452,27,38,122,0,78
+validation,10000,228,11,24,71,0,50
+validation,25000,89,4,10,28,0,27
+validation,50000,42,1,8,15,0,14
+train,1000,10232,689,64,2317,0,632
+train,2500,5323,489,55,1279,0,431
+train,5000,2623,232,49,574,0,270
+train,10000,1068,99,32,237,0,159
+train,25000,325,10,17,70,0,73
+train,50000,130,6,13,40,0,46

@@ -1,0 +1,102 @@
+state_name,year,source_cz_type,match_status,in_missing_version_gap,events
+ALABAMA,2014,Z,effective_version_verified,false,221
+ALABAMA,2015,Z,effective_version_verified,false,162
+ALABAMA,2015,Z,other_version_verified,false,4
+ALABAMA,2016,Z,effective_version_verified,false,322
+ALABAMA,2016,Z,other_version_verified,false,10
+ALABAMA,2017,Z,effective_version_conflict,false,1
+ALABAMA,2017,Z,effective_version_verified,false,214
+ALABAMA,2017,Z,other_version_verified,false,13
+ALABAMA,2018,Z,effective_version_verified,false,281
+ALABAMA,2019,Z,effective_version_verified,false,218
+ALABAMA,2020,Z,effective_version_verified,false,135
+ALABAMA,2021,Z,effective_version_verified,false,169
+ALABAMA,2022,Z,effective_version_verified,false,199
+ALABAMA,2023,Z,effective_version_verified,false,477
+ALABAMA,2024,Z,effective_version_verified,false,445
+ALABAMA,2025,Z,effective_version_verified,false,365
+FLORIDA,2014,Z,effective_version_verified,false,71
+FLORIDA,2014,Z,zone_code_unmatched_name_verified,false,1
+FLORIDA,2015,Z,effective_version_verified,false,78
+FLORIDA,2015,Z,effective_version_verified,true,1
+FLORIDA,2015,Z,other_version_verified,false,5
+FLORIDA,2016,Z,effective_version_verified,false,251
+FLORIDA,2016,Z,other_version_verified,false,15
+FLORIDA,2016,Z,zone_code_unmatched_name_verified,false,2
+FLORIDA,2017,Z,effective_version_verified,false,249
+FLORIDA,2017,Z,other_version_verified,false,4
+FLORIDA,2017,Z,zone_code_unmatched_name_verified,false,2
+FLORIDA,2018,Z,effective_version_verified,false,222
+FLORIDA,2018,Z,effective_version_verified,true,6
+FLORIDA,2018,Z,other_version_verified,true,3
+FLORIDA,2018,Z,zone_code_unmatched_name_verified,false,5
+FLORIDA,2019,Z,effective_version_verified,false,150
+FLORIDA,2019,Z,other_version_verified,true,4
+FLORIDA,2019,Z,zone_code_unmatched_name_verified,false,3
+FLORIDA,2020,Z,effective_version_verified,false,206
+FLORIDA,2020,Z,zone_code_unmatched_name_verified,false,1
+FLORIDA,2021,Z,effective_version_verified,false,162
+FLORIDA,2021,Z,zone_code_unmatched_name_verified,false,1
+FLORIDA,2022,Z,effective_version_verified,false,308
+FLORIDA,2022,Z,zone_code_unmatched_name_verified,false,4
+FLORIDA,2023,Z,effective_version_verified,false,463
+FLORIDA,2023,Z,zone_code_unmatched_name_verified,false,12
+FLORIDA,2024,Z,effective_version_verified,false,346
+FLORIDA,2024,Z,zone_code_unmatched_name_verified,false,1
+FLORIDA,2025,Z,effective_version_verified,false,299
+FLORIDA,2025,Z,other_version_verified,false,8
+FLORIDA,2025,Z,zone_code_unmatched_name_verified,false,6
+GEORGIA,2014,Z,effective_version_verified,false,356
+GEORGIA,2015,Z,effective_version_verified,false,159
+GEORGIA,2016,Z,effective_version_verified,false,848
+GEORGIA,2017,Z,effective_version_verified,false,524
+GEORGIA,2018,Z,effective_version_verified,false,325
+GEORGIA,2018,Z,effective_version_verified,true,7
+GEORGIA,2019,Z,effective_version_verified,false,260
+GEORGIA,2020,Z,effective_version_verified,false,160
+GEORGIA,2021,Z,effective_version_verified,false,49
+GEORGIA,2022,Z,effective_version_verified,false,151
+GEORGIA,2023,Z,effective_version_verified,false,296
+GEORGIA,2024,Z,effective_version_verified,false,246
+GEORGIA,2025,C,effective_version_verified,false,119
+GEORGIA,2025,Z,effective_version_verified,false,257
+NORTH CAROLINA,2014,Z,effective_version_verified,false,569
+NORTH CAROLINA,2015,Z,effective_version_verified,false,518
+NORTH CAROLINA,2016,Z,effective_version_verified,false,436
+NORTH CAROLINA,2017,Z,effective_version_verified,false,330
+NORTH CAROLINA,2018,Z,effective_version_verified,false,635
+NORTH CAROLINA,2018,Z,effective_version_verified,true,25
+NORTH CAROLINA,2019,Z,effective_version_verified,false,273
+NORTH CAROLINA,2020,Z,effective_version_verified,false,400
+NORTH CAROLINA,2021,Z,effective_version_verified,false,268
+NORTH CAROLINA,2022,Z,effective_version_verified,false,455
+NORTH CAROLINA,2023,Z,effective_version_verified,false,132
+NORTH CAROLINA,2024,Z,effective_version_verified,false,254
+NORTH CAROLINA,2025,Z,effective_version_verified,false,552
+SOUTH CAROLINA,2014,Z,effective_version_verified,false,180
+SOUTH CAROLINA,2015,Z,effective_version_verified,false,195
+SOUTH CAROLINA,2016,Z,effective_version_verified,false,202
+SOUTH CAROLINA,2017,Z,effective_version_verified,false,123
+SOUTH CAROLINA,2017,Z,effective_version_verified,true,1
+SOUTH CAROLINA,2018,Z,effective_version_verified,false,181
+SOUTH CAROLINA,2018,Z,effective_version_verified,true,21
+SOUTH CAROLINA,2018,Z,other_version_verified,true,4
+SOUTH CAROLINA,2019,Z,effective_version_verified,false,65
+SOUTH CAROLINA,2020,Z,effective_version_verified,false,111
+SOUTH CAROLINA,2021,Z,effective_version_verified,false,85
+SOUTH CAROLINA,2022,Z,effective_version_verified,false,254
+SOUTH CAROLINA,2023,Z,effective_version_verified,false,142
+SOUTH CAROLINA,2024,Z,effective_version_verified,false,217
+SOUTH CAROLINA,2025,Z,effective_version_verified,false,140
+TENNESSEE,2014,Z,effective_version_verified,false,361
+TENNESSEE,2015,Z,effective_version_verified,false,517
+TENNESSEE,2016,Z,effective_version_verified,false,494
+TENNESSEE,2017,Z,effective_version_verified,false,240
+TENNESSEE,2018,Z,effective_version_verified,false,493
+TENNESSEE,2019,Z,effective_version_verified,false,270
+TENNESSEE,2020,Z,effective_version_verified,false,216
+TENNESSEE,2021,Z,effective_version_verified,false,401
+TENNESSEE,2022,Z,effective_version_verified,false,886
+TENNESSEE,2023,Z,effective_version_verified,false,665
+TENNESSEE,2024,Z,effective_version_verified,false,831
+TENNESSEE,2025,Z,effective_version_verified,false,932

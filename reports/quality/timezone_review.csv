@@ -1,0 +1,13 @@
+CZ_TIMEZONE,time_status,events
+CST-6,ok,355148
+EST-5,ok,266069
+MST-7,ok,96042
+PST-8,ok,40146
+HST-10,ok,6843
+AST-4,ok,3262
+AKST-9,ok,2867
+SST-11,ok,293
+PDT-7,explicit_daylight_offset_review,290
+GST10,ok,275
+EDT-4,explicit_daylight_offset_review,51
+CDT-5,explicit_daylight_offset_review,16

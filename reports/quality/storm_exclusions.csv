@@ -1,0 +1,394 @@
+SOURCE_YEAR,join_exclusion,EVENT_TYPE,events
+2014,long_running_event,Coastal Flood,1
+2014,long_running_event,Cold/Wind Chill,2
+2014,long_running_event,Debris Flow,1
+2014,long_running_event,Drought,3009
+2014,long_running_event,Excessive Heat,46
+2014,long_running_event,Extreme Cold/Wind Chill,64
+2014,long_running_event,Flood,219
+2014,long_running_event,Freezing Fog,3
+2014,long_running_event,Frost/Freeze,15
+2014,long_running_event,Heat,59
+2014,long_running_event,Heavy Rain,49
+2014,long_running_event,Heavy Snow,10
+2014,long_running_event,High Surf,122
+2014,long_running_event,High Wind,3
+2014,long_running_event,Lake-Effect Snow,14
+2014,long_running_event,Thunderstorm Wind,1
+2014,long_running_event,Wildfire,122
+2014,long_running_event,Winter Storm,23
+2014,long_running_event,Winter Weather,7
+2014,overlaps_dec31_gap,Avalanche,1
+2014,overlaps_dec31_gap,Blizzard,3
+2014,overlaps_dec31_gap,Cold/Wind Chill,73
+2014,overlaps_dec31_gap,Extreme Cold/Wind Chill,40
+2014,overlaps_dec31_gap,Frost/Freeze,1
+2014,overlaps_dec31_gap,Heavy Rain,2
+2014,overlaps_dec31_gap,Heavy Snow,16
+2014,overlaps_dec31_gap,High Wind,13
+2014,overlaps_dec31_gap,Ice Storm,24
+2014,overlaps_dec31_gap,Lake-Effect Snow,7
+2014,overlaps_dec31_gap,Strong Wind,24
+2014,overlaps_dec31_gap,Winter Storm,28
+2014,overlaps_dec31_gap,Winter Weather,81
+2015,long_running_event,Coastal Flood,26
+2015,long_running_event,Cold/Wind Chill,28
+2015,long_running_event,Dense Smoke,1
+2015,long_running_event,Drought,1397
+2015,long_running_event,Excessive Heat,6
+2015,long_running_event,Flash Flood,1
+2015,long_running_event,Flood,357
+2015,long_running_event,Hail,1
+2015,long_running_event,Heat,123
+2015,long_running_event,Heavy Snow,10
+2015,long_running_event,High Surf,166
+2015,long_running_event,High Wind,2
+2015,long_running_event,Hurricane (Typhoon),1
+2015,long_running_event,Ice Storm,3
+2015,long_running_event,Rip Current,2
+2015,long_running_event,Strong Wind,1
+2015,long_running_event,Thunderstorm Wind,1
+2015,long_running_event,Tropical Storm,3
+2015,long_running_event,Wildfire,160
+2015,long_running_event,Winter Storm,5
+2015,long_running_event,Winter Weather,32
+2015,overlaps_dec31_gap,Dense Fog,16
+2015,overlaps_dec31_gap,Flash Flood,6
+2015,overlaps_dec31_gap,Flood,45
+2015,overlaps_dec31_gap,Frost/Freeze,14
+2015,overlaps_dec31_gap,High Surf,10
+2015,overlaps_dec31_gap,High Wind,4
+2015,overlaps_dec31_gap,Strong Wind,1
+2015,overlaps_dec31_gap,Thunderstorm Wind,1
+2015,overlaps_dec31_gap,Winter Weather,1
+2016,long_running_event,Astronomical Low Tide,4
+2016,long_running_event,Avalanche,1
+2016,long_running_event,Coastal Flood,1
+2016,long_running_event,Cold/Wind Chill,1
+2016,long_running_event,Drought,2271
+2016,long_running_event,Excessive Heat,151
+2016,long_running_event,Flash Flood,54
+2016,long_running_event,Flood,271
+2016,long_running_event,Hail,1
+2016,long_running_event,Heat,186
+2016,long_running_event,Heavy Rain,3
+2016,long_running_event,High Surf,178
+2016,long_running_event,High Wind,2
+2016,long_running_event,Hurricane (Typhoon),4
+2016,long_running_event,Lake-Effect Snow,4
+2016,long_running_event,Thunderstorm Wind,1
+2016,long_running_event,Tropical Storm,7
+2016,long_running_event,Wildfire,182
+2016,long_running_event,Winter Storm,7
+2016,long_running_event,Winter Weather,7
+2016,overlaps_dec31_gap,Blizzard,2
+2016,overlaps_dec31_gap,Coastal Flood,5
+2016,overlaps_dec31_gap,Dense Fog,9
+2016,overlaps_dec31_gap,Flash Flood,1
+2016,overlaps_dec31_gap,Flood,1
+2016,overlaps_dec31_gap,Heavy Rain,1
+2016,overlaps_dec31_gap,Heavy Snow,3
+2016,overlaps_dec31_gap,High Surf,13
+2016,overlaps_dec31_gap,High Wind,3
+2016,overlaps_dec31_gap,Lake-Effect Snow,10
+2016,overlaps_dec31_gap,Wildfire,4
+2016,overlaps_dec31_gap,Winter Storm,3
+2016,overlaps_dec31_gap,Winter Weather,23
+2017,long_running_event,Coastal Flood,49
+2017,long_running_event,Cold/Wind Chill,23
+2017,long_running_event,Debris Flow,9
+2017,long_running_event,Dense Smoke,16
+2017,long_running_event,Drought,1220
+2017,long_running_event,Excessive Heat,113
+2017,long_running_event,Extreme Cold/Wind Chill,30
+2017,long_running_event,Flash Flood,15
+2017,long_running_event,Flood,333
+2017,long_running_event,Frost/Freeze,3
+2017,long_running_event,Hail,3
+2017,long_running_event,Heat,106
+2017,long_running_event,Heavy Rain,2
+2017,long_running_event,Heavy Snow,25
+2017,long_running_event,High Surf,141
+2017,long_running_event,High Wind,13
+2017,long_running_event,Lake-Effect Snow,4
+2017,long_running_event,Storm Surge/Tide,4
+2017,long_running_event,Strong Wind,2
+2017,long_running_event,Thunderstorm Wind,3
+2017,long_running_event,Tropical Storm,14
+2017,long_running_event,Wildfire,173
+2017,long_running_event,Winter Storm,57
+2017,long_running_event,Winter Weather,7
+2017,overlaps_dec31_gap,Astronomical Low Tide,1
+2017,overlaps_dec31_gap,Blizzard,3
+2017,overlaps_dec31_gap,Cold/Wind Chill,61
+2017,overlaps_dec31_gap,Extreme Cold/Wind Chill,214
+2017,overlaps_dec31_gap,Flood,2
+2017,overlaps_dec31_gap,Heavy Snow,4
+2017,overlaps_dec31_gap,High Wind,3
+2017,overlaps_dec31_gap,Lake-Effect Snow,14
+2017,overlaps_dec31_gap,Wildfire,1
+2017,overlaps_dec31_gap,Winter Storm,11
+2017,overlaps_dec31_gap,Winter Weather,75
+2018,long_running_event,Astronomical Low Tide,11
+2018,long_running_event,Blizzard,4
+2018,long_running_event,Coastal Flood,7
+2018,long_running_event,Cold/Wind Chill,84
+2018,long_running_event,Debris Flow,1
+2018,long_running_event,Dense Smoke,23
+2018,long_running_event,Drought,2417
+2018,long_running_event,Excessive Heat,107
+2018,long_running_event,Extreme Cold/Wind Chill,1
+2018,long_running_event,Flash Flood,4
+2018,long_running_event,Flood,765
+2018,long_running_event,Frost/Freeze,21
+2018,long_running_event,Hail,2
+2018,long_running_event,Heat,251
+2018,long_running_event,Heavy Rain,14
+2018,long_running_event,Heavy Snow,3
+2018,long_running_event,High Surf,157
+2018,long_running_event,High Wind,2
+2018,long_running_event,Hurricane (Typhoon),3
+2018,long_running_event,Lake-Effect Snow,1
+2018,long_running_event,Rip Current,1
+2018,long_running_event,Strong Wind,1
+2018,long_running_event,Tropical Storm,6
+2018,long_running_event,Wildfire,215
+2018,long_running_event,Winter Storm,5
+2018,overlaps_dec31_gap,Blizzard,32
+2018,overlaps_dec31_gap,Cold/Wind Chill,1
+2018,overlaps_dec31_gap,Dense Fog,3
+2018,overlaps_dec31_gap,Extreme Cold/Wind Chill,42
+2018,overlaps_dec31_gap,Flash Flood,1
+2018,overlaps_dec31_gap,Flood,19
+2018,overlaps_dec31_gap,Funnel Cloud,2
+2018,overlaps_dec31_gap,Heavy Snow,60
+2018,overlaps_dec31_gap,High Wind,21
+2018,overlaps_dec31_gap,Strong Wind,11
+2018,overlaps_dec31_gap,Thunderstorm Wind,51
+2018,overlaps_dec31_gap,Tornado,3
+2018,overlaps_dec31_gap,Winter Storm,47
+2018,overlaps_dec31_gap,Winter Weather,54
+2019,long_running_event,Blizzard,2
+2019,long_running_event,Cold/Wind Chill,11
+2019,long_running_event,Debris Flow,2
+2019,long_running_event,Drought,1007
+2019,long_running_event,Excessive Heat,96
+2019,long_running_event,Extreme Cold/Wind Chill,1
+2019,long_running_event,Flash Flood,2
+2019,long_running_event,Flood,1659
+2019,long_running_event,Heat,224
+2019,long_running_event,Heavy Rain,2
+2019,long_running_event,Heavy Snow,34
+2019,long_running_event,High Surf,163
+2019,long_running_event,Lakeshore Flood,10
+2019,long_running_event,Storm Surge/Tide,1
+2019,long_running_event,Thunderstorm Wind,1
+2019,long_running_event,Tropical Storm,1
+2019,long_running_event,Wildfire,81
+2019,long_running_event,Winter Storm,60
+2019,long_running_event,Winter Weather,6
+2019,overlaps_dec31_gap,Blizzard,2
+2019,overlaps_dec31_gap,Dense Fog,3
+2019,overlaps_dec31_gap,Flood,3
+2019,overlaps_dec31_gap,Freezing Fog,1
+2019,overlaps_dec31_gap,Heavy Snow,56
+2019,overlaps_dec31_gap,High Surf,13
+2019,overlaps_dec31_gap,High Wind,14
+2019,overlaps_dec31_gap,Ice Storm,9
+2019,overlaps_dec31_gap,Lake-Effect Snow,2
+2019,overlaps_dec31_gap,Strong Wind,3
+2019,overlaps_dec31_gap,Winter Storm,57
+2019,overlaps_dec31_gap,Winter Weather,51
+2020,long_running_event,Astronomical Low Tide,3
+2020,long_running_event,Avalanche,1
+2020,long_running_event,Coastal Flood,2
+2020,long_running_event,Cold/Wind Chill,1
+2020,long_running_event,Debris Flow,2
+2020,long_running_event,Dense Smoke,11
+2020,long_running_event,Drought,2244
+2020,long_running_event,Excessive Heat,341
+2020,long_running_event,Flash Flood,3
+2020,long_running_event,Flood,430
+2020,long_running_event,Funnel Cloud,1
+2020,long_running_event,Hail,1
+2020,long_running_event,Heat,212
+2020,long_running_event,Heavy Rain,4
+2020,long_running_event,Heavy Snow,27
+2020,long_running_event,High Surf,71
+2020,long_running_event,High Wind,7
+2020,long_running_event,Ice Storm,4
+2020,long_running_event,Lakeshore Flood,3
+2020,long_running_event,Storm Surge/Tide,10
+2020,long_running_event,Strong Wind,3
+2020,long_running_event,Thunderstorm Wind,1
+2020,long_running_event,Wildfire,279
+2020,long_running_event,Winter Storm,38
+2020,long_running_event,Winter Weather,5
+2020,overlaps_dec31_gap,Flash Flood,1
+2020,overlaps_dec31_gap,Flood,2
+2020,overlaps_dec31_gap,Heavy Snow,63
+2020,overlaps_dec31_gap,High Surf,11
+2020,overlaps_dec31_gap,High Wind,4
+2020,overlaps_dec31_gap,Ice Storm,1
+2020,overlaps_dec31_gap,Marine High Wind,1
+2020,overlaps_dec31_gap,Marine Thunderstorm Wind,1
+2020,overlaps_dec31_gap,Winter Storm,21
+2020,overlaps_dec31_gap,Winter Weather,29
+2021,long_running_event,Astronomical Low Tide,1
+2021,long_running_event,Coastal Flood,17
+2021,long_running_event,Cold/Wind Chill,51
+2021,long_running_event,Dense Fog,1
+2021,long_running_event,Drought,4083
+2021,long_running_event,Excessive Heat,310
+2021,long_running_event,Extreme Cold/Wind Chill,230
+2021,long_running_event,Flash Flood,1
+2021,long_running_event,Flood,126
+2021,long_running_event,Frost/Freeze,2
+2021,long_running_event,Hail,1
+2021,long_running_event,Heat,391
+2021,long_running_event,Heavy Rain,4
+2021,long_running_event,Heavy Snow,47
+2021,long_running_event,High Surf,180
+2021,long_running_event,High Wind,7
+2021,long_running_event,Strong Wind,1
+2021,long_running_event,Thunderstorm Wind,2
+2021,long_running_event,Wildfire,213
+2021,long_running_event,Winter Storm,75
+2021,long_running_event,Winter Weather,5
+2021,overlaps_dec31_gap,Cold/Wind Chill,7
+2021,overlaps_dec31_gap,Dense Fog,6
+2021,overlaps_dec31_gap,Extreme Cold/Wind Chill,3
+2021,overlaps_dec31_gap,Flash Flood,2
+2021,overlaps_dec31_gap,Flood,1
+2021,overlaps_dec31_gap,Heavy Rain,9
+2021,overlaps_dec31_gap,Heavy Snow,44
+2021,overlaps_dec31_gap,High Wind,10
+2021,overlaps_dec31_gap,Tornado,3
+2021,overlaps_dec31_gap,Wildfire,2
+2021,overlaps_dec31_gap,Winter Storm,36
+2021,overlaps_dec31_gap,Winter Weather,35
+2022,long_running_event,Astronomical Low Tide,3
+2022,long_running_event,Avalanche,1
+2022,long_running_event,Blizzard,33
+2022,long_running_event,Coastal Flood,11
+2022,long_running_event,Cold/Wind Chill,6
+2022,long_running_event,Dense Fog,1
+2022,long_running_event,Dense Smoke,3
+2022,long_running_event,Drought,6873
+2022,long_running_event,Excessive Heat,396
+2022,long_running_event,Extreme Cold/Wind Chill,52
+2022,long_running_event,Flood,197
+2022,long_running_event,Frost/Freeze,2
+2022,long_running_event,Hail,1
+2022,long_running_event,Heat,337
+2022,long_running_event,Heavy Snow,57
+2022,long_running_event,High Surf,48
+2022,long_running_event,High Wind,5
+2022,long_running_event,Ice Storm,2
+2022,long_running_event,Rip Current,1
+2022,long_running_event,Thunderstorm Wind,2
+2022,long_running_event,Wildfire,186
+2022,long_running_event,Winter Storm,27
+2022,long_running_event,Winter Weather,20
+2022,overlaps_dec31_gap,Avalanche,2
+2022,overlaps_dec31_gap,Cold/Wind Chill,1
+2022,overlaps_dec31_gap,Debris Flow,12
+2022,overlaps_dec31_gap,Dense Fog,40
+2022,overlaps_dec31_gap,Flood,46
+2022,overlaps_dec31_gap,Heavy Rain,8
+2022,overlaps_dec31_gap,Heavy Snow,53
+2022,overlaps_dec31_gap,High Wind,23
+2022,overlaps_dec31_gap,Strong Wind,2
+2022,overlaps_dec31_gap,Winter Storm,9
+2022,overlaps_dec31_gap,Winter Weather,4
+2023,long_running_event,Avalanche,1
+2023,long_running_event,Blizzard,1
+2023,long_running_event,Coastal Flood,3
+2023,long_running_event,Cold/Wind Chill,1
+2023,long_running_event,Debris Flow,4
+2023,long_running_event,Dense Fog,12
+2023,long_running_event,Drought,5815
+2023,long_running_event,Excessive Heat,1187
+2023,long_running_event,Extreme Cold/Wind Chill,1
+2023,long_running_event,Flash Flood,6
+2023,long_running_event,Flood,442
+2023,long_running_event,Frost/Freeze,28
+2023,long_running_event,Hail,1
+2023,long_running_event,Heat,482
+2023,long_running_event,Heavy Snow,65
+2023,long_running_event,High Surf,5
+2023,long_running_event,High Wind,3
+2023,long_running_event,Lightning,1
+2023,long_running_event,Rip Current,1
+2023,long_running_event,Strong Wind,1
+2023,long_running_event,Tropical Storm,1
+2023,long_running_event,Volcanic Ashfall,5
+2023,long_running_event,Wildfire,155
+2023,long_running_event,Winter Storm,35
+2023,long_running_event,Winter Weather,7
+2023,overlaps_dec31_gap,Coastal Flood,1
+2023,overlaps_dec31_gap,Dense Fog,1
+2023,overlaps_dec31_gap,Heat,2
+2023,overlaps_dec31_gap,High Surf,1
+2023,overlaps_dec31_gap,Winter Weather,21
+2024,long_running_event,Astronomical Low Tide,3
+2024,long_running_event,Avalanche,1
+2024,long_running_event,Blizzard,2
+2024,long_running_event,Coastal Flood,12
+2024,long_running_event,Cold/Wind Chill,88
+2024,long_running_event,Dense Fog,2
+2024,long_running_event,Drought,3473
+2024,long_running_event,Excessive Heat,353
+2024,long_running_event,Extreme Cold/Wind Chill,185
+2024,long_running_event,Flood,381
+2024,long_running_event,Freezing Fog,1
+2024,long_running_event,Hail,1
+2024,long_running_event,Heat,253
+2024,long_running_event,Heavy Rain,4
+2024,long_running_event,Heavy Snow,29
+2024,long_running_event,High Surf,2
+2024,long_running_event,High Wind,3
+2024,long_running_event,Rip Current,2
+2024,long_running_event,Storm Surge/Tide,15
+2024,long_running_event,Wildfire,213
+2024,long_running_event,Winter Storm,61
+2024,long_running_event,Winter Weather,5
+2024,overlaps_dec31_gap,Avalanche,1
+2024,overlaps_dec31_gap,Cold/Wind Chill,1
+2024,overlaps_dec31_gap,Dense Fog,3
+2024,overlaps_dec31_gap,Flood,4
+2024,overlaps_dec31_gap,Hail,7
+2024,overlaps_dec31_gap,Heavy Snow,3
+2024,overlaps_dec31_gap,High Wind,8
+2024,overlaps_dec31_gap,Marine Thunderstorm Wind,13
+2024,overlaps_dec31_gap,Strong Wind,12
+2024,overlaps_dec31_gap,Thunderstorm Wind,21
+2024,overlaps_dec31_gap,Winter Storm,1
+2024,overlaps_dec31_gap,Winter Weather,11
+2025,long_running_event,Coastal Flood,7
+2025,long_running_event,Cold/Wind Chill,60
+2025,long_running_event,Drought,3283
+2025,long_running_event,Excessive Heat,139
+2025,long_running_event,Extreme Cold/Wind Chill,21
+2025,long_running_event,Flash Flood,5
+2025,long_running_event,Flood,151
+2025,long_running_event,Frost/Freeze,38
+2025,long_running_event,Hail,1
+2025,long_running_event,Heat,301
+2025,long_running_event,Heavy Rain,37
+2025,long_running_event,Heavy Snow,2
+2025,long_running_event,High Surf,1
+2025,long_running_event,High Wind,7
+2025,long_running_event,Lake-Effect Snow,11
+2025,long_running_event,Storm Surge/Tide,1
+2025,long_running_event,Tropical Depression,1
+2025,long_running_event,Wildfire,217
+2025,long_running_event,Winter Storm,3
+2025,long_running_event,Winter Weather,5
+2025,overlaps_dec31_gap,Astronomical Low Tide,4
+2025,overlaps_dec31_gap,Blizzard,2
+2025,overlaps_dec31_gap,High Wind,1
+2025,overlaps_dec31_gap,Lake-Effect Snow,5
+2025,overlaps_dec31_gap,Strong Wind,2
+2025,overlaps_dec31_gap,Winter Storm,26
+2025,overlaps_dec31_gap,Winter Weather,36

@@ -1,0 +1,2 @@
+record,status,state_name,code,cz_name,wfo,first_begin,last_begin,events,event_types
+zone_event,effective_version_conflict,ALABAMA,AL066,BALDWIN COASTAL,MOB,2017-08-12 00:30:00+00,2017-08-12 00:30:00+00,1,Rip Current

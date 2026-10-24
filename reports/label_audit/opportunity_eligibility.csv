@@ -1,0 +1,9 @@
+split,eligibility,opportunities
+test,county_never_in_eaglei,48
+test,eligible,3654
+test,split_boundary_window,3
+train,county_never_in_eaglei,265
+train,eligible,33519
+validation,county_never_in_eaglei,23
+validation,eligible,3444
+validation,split_boundary_window,3

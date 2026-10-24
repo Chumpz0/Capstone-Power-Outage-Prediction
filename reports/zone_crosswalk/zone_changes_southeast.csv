@@ -1,0 +1,183 @@
+from_tag,to_tag,effective_date,state_zone,change_type,name_before,name_after,counties_before,counties_after
+bp03de14,bp04fe15,2015-02-04,FL024,renamed,Nassau,Inland Nassau,12089,12089
+bp03de14,bp04fe15,2015-02-04,FL025,renamed,Duval,Inland Duval,12031,12031
+bp03de14,bp04fe15,2015-02-04,FL124,added,,Coastal Nassau,,12089
+bp03de14,bp04fe15,2015-02-04,FL125,added,,Coastal Duval,,12031
+bp04fe15,bp08se15,2015-09-08,FL024,renamed,Inland Nassau,Nassau,12089,12089
+bp04fe15,bp08se15,2015-09-08,FL025,renamed,Inland Duval,Duval,12031,12031
+bp04fe15,bp08se15,2015-09-08,FL124,removed,Coastal Nassau,,12089,
+bp04fe15,bp08se15,2015-09-08,FL125,removed,Coastal Duval,,12031,
+bp08se15,bp01oc15,2015-10-01,AL061,removed,Upper Mobile,,01097,
+bp08se15,bp01oc15,2015-10-01,AL062,removed,Upper Baldwin,,01003,
+bp08se15,bp01oc15,2015-10-01,AL063,removed,Lower Mobile,,01097,
+bp08se15,bp01oc15,2015-10-01,AL064,removed,Lower Baldwin,,01003,
+bp08se15,bp01oc15,2015-10-01,AL261,added,,Mobile Inland,,01097
+bp08se15,bp01oc15,2015-10-01,AL262,added,,Baldwin Inland,,01003
+bp08se15,bp01oc15,2015-10-01,AL263,added,,Mobile Central,,01097
+bp08se15,bp01oc15,2015-10-01,AL264,added,,Baldwin Central,,01003
+bp08se15,bp01oc15,2015-10-01,AL265,added,,Mobile Coastal,,01097
+bp08se15,bp01oc15,2015-10-01,AL266,added,,Baldwin Coastal,,01003
+bp08se15,bp01oc15,2015-10-01,FL001,removed,Inland Escambia,,12033,
+bp08se15,bp01oc15,2015-10-01,FL002,removed,Coastal Escambia,,12033,
+bp08se15,bp01oc15,2015-10-01,FL003,removed,Inland Santa Rosa,,12113,
+bp08se15,bp01oc15,2015-10-01,FL004,removed,Santa Rosa,,12113,
+bp08se15,bp01oc15,2015-10-01,FL005,removed,Inland Okaloosa,,12091,
+bp08se15,bp01oc15,2015-10-01,FL006,removed,Coastal Okaloosa,,12091,
+bp08se15,bp01oc15,2015-10-01,FL024,renamed,Nassau,Inland Nassau,12089,12089
+bp08se15,bp01oc15,2015-10-01,FL025,renamed,Duval,Inland Duval,12031,12031
+bp08se15,bp01oc15,2015-10-01,FL124,added,,Coastal Nassau,,12089
+bp08se15,bp01oc15,2015-10-01,FL125,added,,Coastal Duval,,12031
+bp08se15,bp01oc15,2015-10-01,FL201,added,,Escambia Inland,,12033
+bp08se15,bp01oc15,2015-10-01,FL202,added,,Escambia Coastal,,12033
+bp08se15,bp01oc15,2015-10-01,FL203,added,,Santa Rosa Inland,,12113
+bp08se15,bp01oc15,2015-10-01,FL204,added,,Santa Rosa Coastal,,12113
+bp08se15,bp01oc15,2015-10-01,FL205,added,,Okaloosa Inland,,12091
+bp08se15,bp01oc15,2015-10-01,FL206,added,,Okaloosa Coastal,,12091
+bp01oc15,bp10nv15,2015-11-10,FL151,added,,Coastal Hillsborough,,12057
+bp01oc15,bp10nv15,2015-11-10,GA047,counties_changed,Walton,Walton,12131,12131;13297
+bp10nv15,bp16jn16,2016-06-16,GA047,counties_changed,Walton,Walton,12131;13297,13297
+bp01nv16,bp04ap17,2017-04-04,FL062,removed,Coastal Charlotte,,12015,
+bp01nv16,bp04ap17,2017-04-04,FL162,renamed,Charlotte,Coastal Charlotte,12015,12015
+bp01nv16,bp04ap17,2017-04-04,FL251,added,,Inland Hillsborough,,12057
+bp01nv16,bp04ap17,2017-04-04,FL262,renamed,Charlotte,Inland Charlotte,12015,12015
+bp01nv16,bp04ap17,2017-04-04,SC047,counties_changed,Inland Jasper,Inland Jasper,13051;45053,45053
+bp04ap17,bp02ap19,2019-04-02,AL010,renamed,De Kalb,DefireKalb,01049,01049
+bp04ap17,bp02ap19,2019-04-02,FL022,removed,Columbia,,12023,
+bp04ap17,bp02ap19,2019-04-02,FL033,renamed,St. Johns,Inland St. Johns,12109,12109
+bp04ap17,bp02ap19,2019-04-02,FL036,removed,Alachua,,12001,
+bp04ap17,bp02ap19,2019-04-02,FL038,renamed,Flagler,Inland Flagler,12035,12035
+bp04ap17,bp02ap19,2019-04-02,FL040,removed,Marion,,12083,
+bp04ap17,bp02ap19,2019-04-02,FL122,added,,Northern Columbia,,12023
+bp04ap17,bp02ap19,2019-04-02,FL133,added,,Coastal St. Johns,,12109
+bp04ap17,bp02ap19,2019-04-02,FL136,added,,Eastern Alachua,,12001
+bp04ap17,bp02ap19,2019-04-02,FL138,added,,Coastal Flagler,,12035
+bp04ap17,bp02ap19,2019-04-02,FL140,added,,Eastern Marion,,12083
+bp04ap17,bp02ap19,2019-04-02,FL222,added,,Southern Columbia,,12023
+bp04ap17,bp02ap19,2019-04-02,FL236,added,,Western Alachua,,12001
+bp04ap17,bp02ap19,2019-04-02,FL240,added,,Central Marion,,12083
+bp04ap17,bp02ap19,2019-04-02,FL340,added,,Western Marion,,12083
+bp04ap17,bp02ap19,2019-04-02,GA150,removed,Ware,,13299,
+bp04ap17,bp02ap19,2019-04-02,GA164,removed,Charlton,,13049,
+bp04ap17,bp02ap19,2019-04-02,GA250,added,,Northern Ware,,13299
+bp04ap17,bp02ap19,2019-04-02,GA264,added,,Northeastern Charlton,,13049
+bp04ap17,bp02ap19,2019-04-02,GA350,added,,Southern Ware,,13299
+bp04ap17,bp02ap19,2019-04-02,GA364,added,,Western Charlton,,13049
+bp04ap17,bp02ap19,2019-04-02,NC093,removed,Craven,,37049,
+bp04ap17,bp02ap19,2019-04-02,NC095,removed,Carteret,,37031,
+bp04ap17,bp02ap19,2019-04-02,NC098,removed,Onslow,,37133,
+bp04ap17,bp02ap19,2019-04-02,NC103,removed,Outer Banks Dare,,37055,
+bp04ap17,bp02ap19,2019-04-02,NC104,removed,Outer Banks Hyde,,37095,
+bp04ap17,bp02ap19,2019-04-02,NC193,added,,Northern Craven,,37049
+bp04ap17,bp02ap19,2019-04-02,NC194,added,,Southern Craven,,37049
+bp04ap17,bp02ap19,2019-04-02,NC195,added,,West Carteret,,37031
+bp04ap17,bp02ap19,2019-04-02,NC196,added,,East Carteret,,37031
+bp04ap17,bp02ap19,2019-04-02,NC198,added,,Inland Onslow,,37133
+bp04ap17,bp02ap19,2019-04-02,NC199,added,,Coastal Onslow,,37133
+bp04ap17,bp02ap19,2019-04-02,NC203,added,,Northern Outer Banks,,37055
+bp04ap17,bp02ap19,2019-04-02,NC204,added,,Ocracoke Island,,37095
+bp04ap17,bp02ap19,2019-04-02,NC205,added,,Hatteras Island,,37055
+bp04ap17,bp02ap19,2019-04-02,SC015,removed,Lancaster,,45057,
+bp04ap17,bp02ap19,2019-04-02,SC053,removed,Inland Horry,,45051,
+bp04ap17,bp02ap19,2019-04-02,SC058,added,,Central Horry,,45051
+bp04ap17,bp02ap19,2019-04-02,SC059,added,,Northern Horry,,45051
+bp04ap17,bp02ap19,2019-04-02,SC115,added,,Northern Lancaster,,45057
+bp04ap17,bp02ap19,2019-04-02,SC116,added,,Southern Lancaster,,45057
+bp10nv20,bp30mr21,2021-03-30,FL025,removed,Inland Duval,,12031,
+bp10nv20,bp30mr21,2021-03-30,FL032,removed,Clay,,12019,
+bp10nv20,bp30mr21,2021-03-30,FL037,removed,Putnam,,12107,
+bp10nv20,bp30mr21,2021-03-30,FL132,added,,Eastern Clay,,12019
+bp10nv20,bp30mr21,2021-03-30,FL137,added,,Eastern Putnam,,12107
+bp10nv20,bp30mr21,2021-03-30,FL225,added,,Trout River,,12031
+bp10nv20,bp30mr21,2021-03-30,FL232,added,,Western Clay,,12019
+bp10nv20,bp30mr21,2021-03-30,FL237,added,,Western Putnam,,12107
+bp10nv20,bp30mr21,2021-03-30,FL325,added,,South Central Duval,,12031
+bp10nv20,bp30mr21,2021-03-30,FL425,added,,Western Duval,,12031
+bp10nv20,bp30mr21,2021-03-30,SC036,removed,Orangeburg,,45075,
+bp10nv20,bp30mr21,2021-03-30,SC135,added,,Northwestern Orangeburg,,45075
+bp10nv20,bp30mr21,2021-03-30,SC136,added,,Central Orangeburg,,45075
+bp10nv20,bp30mr21,2021-03-30,SC137,added,,Southeastern Orangeburg,,45075
+bp08se21,bp22mr22,2022-03-22,FL047,removed,Southern Brevard County,,12009,
+bp08se21,bp22mr22,2022-03-22,FL054,removed,Indian River,,12061,
+bp08se21,bp22mr22,2022-03-22,FL059,removed,St. Lucie,,12111,
+bp08se21,bp22mr22,2022-03-22,FL064,removed,Martin,,12085,
+bp08se21,bp22mr22,2022-03-22,FL147,removed,Northern Brevard County,,12009,
+bp08se21,bp22mr22,2022-03-22,FL154,added,,Coastal Indian River,,12061
+bp08se21,bp22mr22,2022-03-22,FL159,added,,Coastal St. Lucie,,12111
+bp08se21,bp22mr22,2022-03-22,FL164,added,,Coastal Martin,,12085
+bp08se21,bp22mr22,2022-03-22,FL247,added,,Inland Northern Brevard,,12009
+bp08se21,bp22mr22,2022-03-22,FL254,added,,Inland Indian River,,12061
+bp08se21,bp22mr22,2022-03-22,FL259,added,,Inland St. Lucie,,12111
+bp08se21,bp22mr22,2022-03-22,FL264,added,,Inland Martin,,12085
+bp08se21,bp22mr22,2022-03-22,FL347,added,,Mainland Northern Brevard,,12009
+bp08se21,bp22mr22,2022-03-22,FL447,added,,Northern Brevard Barrier Islands,,12009
+bp08se21,bp22mr22,2022-03-22,FL547,added,,Inland Southern Brevard,,12009
+bp08se21,bp22mr22,2022-03-22,FL647,added,,Mainland Southern Brevard,,12009
+bp08se21,bp22mr22,2022-03-22,FL747,added,,Southern Brevard Barrier Islands,,12009
+bp08se21,bp22mr22,2022-03-22,SC001,removed,Oconee Mountains,,45073,
+bp08se21,bp22mr22,2022-03-22,SC002,removed,Pickens Mountains,,45077,
+bp08se21,bp22mr22,2022-03-22,SC003,removed,Greenville Mountains,,45045,
+bp08se21,bp22mr22,2022-03-22,SC004,removed,Greater Oconee,,45073,
+bp08se21,bp22mr22,2022-03-22,SC005,removed,Greater Pickens,,45077,
+bp08se21,bp22mr22,2022-03-22,SC006,removed,Greater Greenville,,45045,
+bp08se21,bp22mr22,2022-03-22,SC007,removed,Spartanburg,,45083,
+bp08se21,bp22mr22,2022-03-22,SC101,added,,Oconee Mountains,,45073
+bp08se21,bp22mr22,2022-03-22,SC102,added,,Pickens Mountains,,45077
+bp08se21,bp22mr22,2022-03-22,SC103,added,,Greenville Mountains,,45045
+bp08se21,bp22mr22,2022-03-22,SC104,added,,Greater Oconee,,45073
+bp08se21,bp22mr22,2022-03-22,SC105,added,,Greater Pickens,,45077
+bp08se21,bp22mr22,2022-03-22,SC106,added,,Central Greenville,,45045
+bp08se21,bp22mr22,2022-03-22,SC107,added,,Southern Greenville,,45045
+bp08se21,bp22mr22,2022-03-22,SC108,added,,Northern Spartanburg,,45083
+bp08se21,bp22mr22,2022-03-22,SC109,added,,Southern Spartanburg,,45083
+bp19se23,bp05mr24,2024-03-05,FL020,removed,Hamilton,,12047,
+bp19se23,bp05mr24,2024-03-05,FL120,added,,Eastern Hamilton,,12047
+bp19se23,bp05mr24,2024-03-05,FL122,removed,Northern Columbia,,12023,
+bp19se23,bp05mr24,2024-03-05,FL220,added,,Western Hamilton,,12047
+bp19se23,bp05mr24,2024-03-05,FL222,removed,Southern Columbia,,12023,
+bp19se23,bp05mr24,2024-03-05,FL322,added,,Northern Columbia,,12023
+bp19se23,bp05mr24,2024-03-05,FL422,added,,Southeastern Columbia,,12023
+bp19se23,bp05mr24,2024-03-05,FL522,added,,Southwestern Columbia,,12023
+bp05mr24,bp18mr25,2025-03-18,FL025,added,,Northern Liberty,,12077
+bp05mr24,bp18mr25,2025-03-18,FL026,removed,Liberty,,12077,
+bp05mr24,bp18mr25,2025-03-18,FL033,removed,Inland St. Johns,,12109,
+bp05mr24,bp18mr25,2025-03-18,FL125,counties_changed,Coastal Duval,Coastal Duval,12031,12031;12077
+bp05mr24,bp18mr25,2025-03-18,FL133,removed,Coastal St. Johns,,12109,
+bp05mr24,bp18mr25,2025-03-18,FL223,added,,Northeast Coastal St. Johns,,12109
+bp05mr24,bp18mr25,2025-03-18,FL333,added,,Southeast Coastal St. Johns,,12109
+bp05mr24,bp18mr25,2025-03-18,FL433,added,,Northern Inland St. Johns,,12109
+bp05mr24,bp18mr25,2025-03-18,FL533,added,,Southern Inland St. Johns,,12109
+bp05mr24,bp18mr25,2025-03-18,FL633,added,,Western St. Johns,,12109
+bp18mr25,bp16ap26,2026-04-16,FL025,removed,Northern Liberty,,12077,
+bp18mr25,bp16ap26,2026-04-16,FL125,counties_changed,Coastal Duval,Coastal Duval,12031;12077,12031
+bp18mr25,bp16ap26,2026-04-16,FL223,removed,Northeast Coastal St. Johns,,12109,
+bp18mr25,bp16ap26,2026-04-16,FL233,added,,Northeast Coastal St. Johns,,12109
+bp18mr25,bp16ap26,2026-04-16,FL326,added,,Northern Liberty,,12077
+bp18mr25,bp16ap26,2026-04-16,FL426,added,,Southern Liberty,,12077
+bp18mr25,bp16ap26,2026-04-16,GA116,removed,Inland Bryan,,13029,
+bp18mr25,bp16ap26,2026-04-16,GA117,removed,Coastal Bryan,,13029,
+bp18mr25,bp16ap26,2026-04-16,GA118,removed,Inland Chatham,,13051,
+bp18mr25,bp16ap26,2026-04-16,GA119,removed,Coastal Chatham,,13051,
+bp18mr25,bp16ap26,2026-04-16,GA138,removed,Inland Liberty,,13179,
+bp18mr25,bp16ap26,2026-04-16,GA139,removed,Coastal Liberty,,13179,
+bp18mr25,bp16ap26,2026-04-16,GA140,removed,Inland McIntosh,,13191,
+bp18mr25,bp16ap26,2026-04-16,GA141,removed,Coastal McIntosh,,13191,
+bp18mr25,bp16ap26,2026-04-16,GA216,added,,Inland Bryan,,13029
+bp18mr25,bp16ap26,2026-04-16,GA217,added,,Coastal Bryan,,13029
+bp18mr25,bp16ap26,2026-04-16,GA218,added,,Inland Chatham,,13051
+bp18mr25,bp16ap26,2026-04-16,GA219,added,,Coastal Chatham,,13051
+bp18mr25,bp16ap26,2026-04-16,GA238,added,,Inland Liberty,,13179
+bp18mr25,bp16ap26,2026-04-16,GA239,added,,Coastal Liberty,,13179
+bp18mr25,bp16ap26,2026-04-16,GA240,added,,Inland McIntosh,,13191
+bp18mr25,bp16ap26,2026-04-16,GA241,added,,Coastal McIntosh,,13191
+bp18mr25,bp16ap26,2026-04-16,SC047,removed,Inland Jasper,,45053,
+bp18mr25,bp16ap26,2026-04-16,SC048,removed,Beaufort,,45013,
+bp18mr25,bp16ap26,2026-04-16,SC049,removed,Coastal Colleton,,45029,
+bp18mr25,bp16ap26,2026-04-16,SC050,removed,Charleston,,45019,
+bp18mr25,bp16ap26,2026-04-16,SC051,removed,Coastal Jasper,,45053,
+bp18mr25,bp16ap26,2026-04-16,SC052,removed,Tidal Berkeley,,45015,
+bp18mr25,bp16ap26,2026-04-16,SC147,added,,Inland Jasper,,45053
+bp18mr25,bp16ap26,2026-04-16,SC148,added,,Beaufort,,45013
+bp18mr25,bp16ap26,2026-04-16,SC149,added,,Coastal Colleton,,45029
+bp18mr25,bp16ap26,2026-04-16,SC150,added,,Charleston,,45019
+bp18mr25,bp16ap26,2026-04-16,SC151,added,,Coastal Jasper,,45053
+bp18mr25,bp16ap26,2026-04-16,SC152,added,,Tidal Berkeley,,45015

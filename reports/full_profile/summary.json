@@ -1,0 +1,103 @@
+{
+  "storm_details": {
+    "file": "storm_events_details_all_years.csv",
+    "file_bytes": 704536818,
+    "rows": 771302,
+    "columns": 52,
+    "candidate_key": [
+      "EVENT_ID"
+    ],
+    "rows_missing_key_fields": 0,
+    "duplicates": {
+      "exact_rows": {
+        "groups": 0,
+        "extra_rows": 0,
+        "all_involved_rows": 0
+      },
+      "candidate_keys": {
+        "groups": 0,
+        "extra_rows": 0,
+        "all_involved_rows": 0
+      }
+    },
+    "checks": {},
+    "seconds": 10.2
+  },
+  "storm_fatalities": {
+    "file": "storm_events_fatalities_all_years.csv",
+    "file_bytes": 813430,
+    "rows": 11399,
+    "columns": 11,
+    "candidate_key": [
+      "EVENT_ID",
+      "FATALITY_ID"
+    ],
+    "rows_missing_key_fields": 0,
+    "duplicates": {
+      "exact_rows": {
+        "groups": 0,
+        "extra_rows": 0,
+        "all_involved_rows": 0
+      },
+      "candidate_keys": {
+        "groups": 0,
+        "extra_rows": 0,
+        "all_involved_rows": 0
+      }
+    },
+    "checks": {},
+    "seconds": 0.3
+  },
+  "storm_locations": {
+    "file": "storm_events_locations_all_years.csv",
+    "file_bytes": 53773749,
+    "rows": 690006,
+    "columns": 12,
+    "candidate_key": [
+      "EVENT_ID",
+      "LOCATION_INDEX"
+    ],
+    "rows_missing_key_fields": 0,
+    "duplicates": {
+      "exact_rows": {
+        "groups": 0,
+        "extra_rows": 0,
+        "all_involved_rows": 0
+      },
+      "candidate_keys": {
+        "groups": 0,
+        "extra_rows": 0,
+        "all_involved_rows": 0
+      }
+    },
+    "checks": {},
+    "seconds": 1.5
+  },
+  "eaglei": {
+    "file": "eaglei_outages_2014_2025.csv",
+    "file_bytes": 13112083612,
+    "rows": 249316543,
+    "columns": 7,
+    "candidate_key": [
+      "fips_code",
+      "run_start_time"
+    ],
+    "rows_missing_key_fields": 0,
+    "duplicates": {
+      "exact_rows": {
+        "groups": 0,
+        "extra_rows": 0,
+        "all_involved_rows": 0
+      },
+      "candidate_keys": {
+        "groups": 0,
+        "extra_rows": 0,
+        "all_involved_rows": 0
+      }
+    },
+    "checks": {
+      "invalid_fips_format": 0
+    },
+    "seconds": 347.4
+  }
+}

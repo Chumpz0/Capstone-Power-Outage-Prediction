@@ -1,0 +1,246 @@
+{
+  "outputs": {
+    "coverage_county_year.csv": 6004,
+    "coverage_state_year.csv": 72,
+    "coverage_dec31.csv": 12,
+    "opportunity_eligibility.csv": 8,
+    "label_states.csv": 40,
+    "label_robustness.csv": 12,
+    "selection_effects.csv": 468,
+    "threshold_candidates.csv": 10,
+    "threshold_by_size.csv": 36,
+    "t0_state.csv": 35,
+    "severity_completeness.csv": 12,
+    "collection_gaps.csv": 8,
+    "observed_runs_distribution.csv": 20
+  },
+  "eligibility": {
+    "test/county_never_in_eaglei": 48,
+    "test/eligible": 3654,
+    "test/split_boundary_window": 3,
+    "train/county_never_in_eaglei": 265,
+    "train/eligible": 33519,
+    "validation/county_never_in_eaglei": 23,
+    "validation/eligible": 3444,
+    "validation/split_boundary_window": 3
+  },
+  "windows_summarized": {
+    "train": 33519,
+    "validation": 3444
+  },
+  "label_counts": [
+    {
+      "split": "validation",
+      "threshold": "1000",
+      "rule": "cov90",
+      "major": 1402,
+      "non_major": 304,
+      "unknown": 1738
+    },
+    {
+      "split": "validation",
+      "threshold": "1000",
+      "rule": "strict",
+      "major": 1402,
+      "non_major": 193,
+      "unknown": 1849
+    },
+    {
+      "split": "validation",
+      "threshold": "2500",
+      "rule": "cov90",
+      "major": 808,
+      "non_major": 587,
+      "unknown": 2049
+    },
+    {
+      "split": "validation",
+      "threshold": "2500",
+      "rule": "strict",
+      "major": 808,
+      "non_major": 405,
+      "unknown": 2231
+    },
+    {
+      "split": "validation",
+      "threshold": "5000",
+      "rule": "cov90",
+      "major": 452,
+      "non_major": 852,
+      "unknown": 2140
+    },
+    {
+      "split": "validation",
+      "threshold": "5000",
+      "rule": "strict",
+      "major": 452,
+      "non_major": 622,
+      "unknown": 2370
+    },
+    {
+      "split": "validation",
+      "threshold": "10000",
+      "rule": "cov90",
+      "major": 228,
+      "non_major": 1047,
+      "unknown": 2169
+    },
+    {
+      "split": "validation",
+      "threshold": "10000",
+      "rule": "strict",
+      "major": 228,
+      "non_major": 799,
+      "unknown": 2417
+    },
+    {
+      "split": "validation",
+      "threshold": "25000",
+      "rule": "cov90",
+      "major": 89,
+      "non_major": 1174,
+      "unknown": 2181
+    },
+    {
+      "split": "validation",
+      "threshold": "25000",
+      "rule": "strict",
+      "major": 89,
+      "non_major": 912,
+      "unknown": 2443
+    },
+    {
+      "split": "validation",
+      "threshold": "50000",
+      "rule": "cov90",
+      "major": 42,
+      "non_major": 1215,
+      "unknown": 2187
+    },
+    {
+      "split": "validation",
+      "threshold": "50000",
+      "rule": "strict",
+      "major": 42,
+      "non_major": 950,
+      "unknown": 2452
+    },
+    {
+      "split": "train",
+      "threshold": "1000",
+      "rule": "cov90",
+      "major": 10232,
+      "non_major": 1937,
+      "unknown": 21350
+    },
+    {
+      "split": "train",
+      "threshold": "1000",
+      "rule": "strict",
+      "major": 10232,
+      "non_major": 1003,
+      "unknown": 22284
+    },
+    {
+      "split": "train",
+      "threshold": "2500",
+      "rule": "cov90",
+      "major": 5323,
+      "non_major": 3818,
+      "unknown": 24378
+    },
+    {
+      "split": "train",
+      "threshold": "2500",
+      "rule": "strict",
+      "major": 5323,
+      "non_major": 2158,
+      "unknown": 26038
+    },
+    {
+      "split": "train",
+      "threshold": "5000",
+      "rule": "cov90",
+      "major": 2623,
+      "non_major": 5457,
+      "unknown": 25439
+    },
+    {
+      "split": "train",
+      "threshold": "5000",
+      "rule": "strict",
+      "major": 2623,
+      "non_major": 3278,
+      "unknown": 27618
+    },
+    {
+      "split": "train",
+      "threshold": "10000",
+      "rule": "cov90",
+      "major": 1068,
+      "non_major": 6604,
+      "unknown": 25847
+    },
+    {
+      "split": "train",
+      "threshold": "10000",
+      "rule": "strict",
+      "major": 1068,
+      "non_major": 4160,
+      "unknown": 28291
+    },
+    {
+      "split": "train",
+      "threshold": "25000",
+      "rule": "cov90",
+      "major": 325,
+      "non_major": 7197,
+      "unknown": 25997
+    },
+    {
+      "split": "train",
+      "threshold": "25000",
+      "rule": "strict",
+      "major": 325,
+      "non_major": 4626,
+      "unknown": 28568
+    },
+    {
+      "split": "train",
+      "threshold": "50000",
+      "rule": "cov90",
+      "major": 130,
+      "non_major": 7352,
+      "unknown": 26037
+    },
+    {
+      "split": "train",
+      "threshold": "50000",
+      "rule": "strict",
+      "major": 130,
+      "non_major": 4749,
+      "unknown": 28640
+    }
+  ],
+  "thresholds": {
+    "count": [
+      1000,
+      2500,
+      5000,
+      10000,
+      25000,
+      50000
+    ],
+    "pct_of_valid_mcc": [
+      0.01,
+      0.05,
+      0.1,
+      0.25
+    ]
+  },
+  "rules": {
+    "strict": "all 96 runs observed",
+    "cov90": ">=87 runs observed and no gap > 4 runs"
+  },
+  "test_split": "opportunity counts only; no outcome windows read"
+}

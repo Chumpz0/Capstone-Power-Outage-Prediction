@@ -1,0 +1,130 @@
+source_cz_type,match_status,state_zone,mapped_zone,cz_name,nws_zone_name,mapped_tag,name_similarity,events
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp19se23,1.0,12
+Z,other_version_verified,AL064,AL064,LOWER BALDWIN,Lower Baldwin,bp08se15,1.0,12
+Z,other_version_verified,AL063,AL063,LOWER MOBILE,Lower Mobile,bp08se15,1.0,9
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp18mr25,1.0,5
+Z,other_version_verified,FL006,FL006,COASTAL OKALOOSA,Coastal Okaloosa,bp08se15,1.0,5
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp04ap17,1.0,5
+Z,other_version_verified,SC058,SC058,CENTRAL HORRY,Central Horry,bp02ap19,1.0,4
+Z,other_version_verified,FL004,FL004,COASTAL SANTA ROSA,Santa Rosa,bp08se15,0.9,4
+Z,other_version_verified,FL133,FL133,COASTAL ST. JOHNS,Coastal St. Johns,bp02ap19,1.0,4
+Z,other_version_verified,FL005,FL005,INLAND OKALOOSA,Inland Okaloosa,bp08se15,1.0,3
+Z,other_version_verified,FL003,FL003,INLAND SANTA ROSA,Inland Santa Rosa,bp08se15,1.0,3
+Z,other_version_verified,FL138,FL138,COASTAL FLAGLER,Coastal Flagler,bp02ap19,1.0,3
+Z,other_version_verified,FL002,FL002,COASTAL ESCAMBIA,Coastal Escambia,bp08se15,1.0,3
+Z,other_version_verified,FL326,FL326,NORTHERN LIBERTY COUNTY,Northern Liberty,bp16ap26,1.0,3
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp10oc19,1.0,3
+Z,other_version_verified,FL426,FL426,SOUTHERN LIBERTY COUNTY,Southern Liberty,bp16ap26,1.0,3
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp13se22,1.0,3
+Z,other_version_verified,AL061,AL061,UPPER MOBILE,Upper Mobile,bp08se15,1.0,3
+C,effective_version_verified,GA034,GA034,GWINNETT,Gwinnett,bp05mr24,1.0,2
+C,effective_version_verified,GA057,GA057,HENRY,Henry,bp05mr24,1.0,2
+Z,other_version_verified,FL233,FL233,NORTHEAST COASTAL ST. JOHNS COUNTY,Northeast Coastal St. Johns,bp16ap26,1.0,2
+C,effective_version_verified,GA035,GA035,BARROW,Barrow,bp05mr24,1.0,2
+C,effective_version_verified,GA051,GA051,TALIAFERRO,Taliaferro,bp05mr24,1.0,2
+C,effective_version_verified,GA059,GA059,JASPER,Jasper,bp05mr24,1.0,2
+C,effective_version_verified,GA033,GA033,NORTH FULTON,North Fulton,bp05mr24,1.0,2
+C,effective_version_verified,GA048,GA048,NEWTON,Newton,bp05mr24,1.0,2
+Z,other_version_verified,AL062,AL062,UPPER BALDWIN,Upper Baldwin,bp08se15,1.0,2
+C,effective_version_verified,GA053,GA053,COWETA,Coweta,bp05mr24,1.0,2
+C,effective_version_verified,GA052,GA052,HEARD,Heard,bp05mr24,1.0,2
+C,effective_version_verified,GA049,GA049,MORGAN,Morgan,bp05mr24,1.0,2
+C,effective_version_verified,GA037,GA037,OCONEE,Oconee,bp05mr24,1.0,2
+C,effective_version_verified,GA058,GA058,BUTTS,Butts,bp05mr24,1.0,2
+C,effective_version_verified,GA056,GA056,SPALDING,Spalding,bp05mr24,1.0,2
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp16ap26,1.0,2
+C,effective_version_verified,GA044,GA044,SOUTH FULTON,South Fulton,bp05mr24,1.0,2
+C,effective_version_verified,GA073,GA073,BALDWIN,Baldwin,bp05mr24,1.0,2
+C,effective_version_verified,GA050,GA050,GREENE,Greene,bp05mr24,1.0,2
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp01nv16,1.0,2
+C,effective_version_verified,GA055,GA055,CLAYTON,Clayton,bp05mr24,1.0,2
+C,effective_version_verified,GA060,GA060,PUTNAM,Putnam,bp05mr24,1.0,2
+Z,other_version_verified,FL251,FL251,INLAND HILLSBOROUGH,Inland Hillsborough,bp04ap17,1.0,2
+Z,other_version_verified,FL001,FL001,INLAND ESCAMBIA,Inland Escambia,bp08se15,1.0,2
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp02ap19,1.0,2
+C,effective_version_verified,GA036,GA036,CLARKE,Clarke,bp05mr24,1.0,2
+C,effective_version_verified,GA054,GA054,FAYETTE,Fayette,bp05mr24,1.0,2
+C,effective_version_verified,GA025,GA025,JACKSON,Jackson,bp05mr24,1.0,2
+C,effective_version_verified,GA047,GA047,WALTON,Walton,bp05mr24,1.0,2
+C,effective_version_verified,GA024,GA024,BANKS,Banks,bp05mr24,1.0,1
+C,effective_version_verified,GA086,GA086,EMANUEL,Emanuel,bp05mr24,1.0,1
+C,effective_version_verified,GA109,GA109,DODGE,Dodge,bp05mr24,1.0,1
+C,effective_version_verified,GA103,GA103,WEBSTER,Webster,bp05mr24,1.0,1
+C,effective_version_verified,GA104,GA104,SUMTER,Sumter,bp05mr24,1.0,1
+C,effective_version_verified,GA015,GA015,LUMPKIN,Lumpkin,bp05mr24,1.0,1
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp07oc14,1.0,1
+C,effective_version_verified,GA003,GA003,CATOOSA,Catoosa,bp05mr24,1.0,1
+C,effective_version_verified,GA110,GA110,TELFAIR,Telfair,bp05mr24,1.0,1
+C,effective_version_verified,GA080,GA080,TAYLOR,Taylor,bp05mr24,1.0,1
+C,effective_version_verified,GA074,GA074,WASHINGTON,Washington,bp05mr24,1.0,1
+C,effective_version_verified,GA039,GA039,WILKES,Wilkes,bp05mr24,1.0,1
+C,effective_version_verified,GA007,GA007,GILMER,Gilmer,bp05mr24,1.0,1
+C,effective_version_verified,GA112,GA112,MONTGOMERY,Montgomery,bp05mr24,1.0,1
+C,effective_version_verified,GA066,GA066,TROUP,Troup,bp05mr24,1.0,1
+C,effective_version_verified,GA094,GA094,PEACH,Peach,bp05mr24,1.0,1
+C,effective_version_verified,GA002,GA002,WALKER,Walker,bp05mr24,1.0,1
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp08mr23,1.0,1
+C,effective_version_verified,GA045,GA045,DE KALB,De Kalb,bp05mr24,1.0,1
+C,effective_version_verified,GA105,GA105,DOOLY,Dooly,bp05mr24,1.0,1
+C,effective_version_verified,GA016,GA016,WHITE,White,bp05mr24,1.0,1
+C,effective_version_verified,GA012,GA012,GORDON,Gordon,bp05mr24,1.0,1
+C,effective_version_verified,GA011,GA011,CHATTOOGA,Chattooga,bp05mr24,1.0,1
+C,effective_version_verified,GA075,GA075,GLASCOCK,Glascock,bp05mr24,1.0,1
+C,effective_version_verified,GA022,GA022,FORSYTH,Forsyth,bp05mr24,1.0,1
+C,effective_version_verified,GA046,GA046,ROCKDALE,Rockdale,bp05mr24,1.0,1
+C,effective_version_verified,GA005,GA005,MURRAY,Murray,bp05mr24,1.0,1
+C,effective_version_verified,GA081,GA081,CRAWFORD,Crawford,bp05mr24,1.0,1
+C,effective_version_verified,GA078,GA078,HARRIS,Harris,bp05mr24,1.0,1
+C,effective_version_verified,GA096,GA096,BLECKLEY,Bleckley,bp05mr24,1.0,1
+C,effective_version_verified,GA111,GA111,WHEELER,Wheeler,bp05mr24,1.0,1
+C,effective_version_verified,GA102,GA102,STEWART,Stewart,bp05mr24,1.0,1
+C,effective_version_verified,GA098,GA098,TREUTLEN,Treutlen,bp05mr24,1.0,1
+C,effective_version_verified,GA091,GA091,MARION,Marion,bp05mr24,1.0,1
+C,effective_version_verified,GA027,GA027,MADISON,Madison,bp05mr24,1.0,1
+C,effective_version_verified,GA082,GA082,BIBB,Bibb,bp05mr24,1.0,1
+C,effective_version_verified,GA019,GA019,FLOYD,Floyd,bp05mr24,1.0,1
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp10nv20,1.0,1
+C,effective_version_verified,GA061,GA061,HANCOCK,Hancock,bp05mr24,1.0,1
+C,effective_version_verified,GA042,GA042,CARROLL,Carroll,bp05mr24,1.0,1
+Z,other_version_verified,AL062,AL062,BALDWIN INLAND,Upper Baldwin,bp08se15,0.519,1
+C,effective_version_verified,GA043,GA043,DOUGLAS,Douglas,bp05mr24,1.0,1
+Z,zone_code_unmatched_name_verified,FL107,FL007,NORTH WALTON,North Walton,bp08se21,1.0,1
+C,effective_version_verified,GA083,GA083,TWIGGS,Twiggs,bp05mr24,1.0,1
+C,effective_version_verified,GA031,GA031,PAULDING,Paulding,bp05mr24,1.0,1
+C,effective_version_verified,GA085,GA085,JOHNSON,Johnson,bp05mr24,1.0,1
+C,effective_version_verified,GA089,GA089,MUSCOGEE,Muscogee,bp05mr24,1.0,1
+C,effective_version_verified,GA106,GA106,CRISP,Crisp,bp05mr24,1.0,1
+C,effective_version_verified,GA021,GA021,CHEROKEE,Cherokee,bp05mr24,1.0,1
+C,effective_version_verified,GA032,GA032,COBB,Cobb,bp05mr24,1.0,1
+C,effective_version_verified,GA008,GA008,UNION,Union,bp05mr24,1.0,1
+C,effective_version_verified,GA004,GA004,WHITFIELD,Whitfield,bp05mr24,1.0,1
+C,effective_version_verified,GA030,GA030,POLK,Polk,bp05mr24,1.0,1
+C,effective_version_verified,GA092,GA092,SCHLEY,Schley,bp05mr24,1.0,1
+C,effective_version_verified,GA069,GA069,UPSON,Upson,bp05mr24,1.0,1
+C,effective_version_verified,GA093,GA093,MACON,Macon,bp05mr24,1.0,1
+C,effective_version_verified,GA009,GA009,TOWNS,Towns,bp05mr24,1.0,1
+C,effective_version_verified,GA041,GA041,HARALSON,Haralson,bp05mr24,1.0,1
+C,effective_version_verified,GA013,GA013,PICKENS,Pickens,bp05mr24,1.0,1
+C,effective_version_verified,GA076,GA076,JEFFERSON,Jefferson,bp05mr24,1.0,1
+C,effective_version_verified,GA001,GA001,DADE,Dade,bp05mr24,1.0,1
+C,effective_version_verified,GA097,GA097,LAURENS,Laurens,bp05mr24,1.0,1
+C,effective_version_verified,GA014,GA014,DAWSON,Dawson,bp05mr24,1.0,1
+C,effective_version_verified,GA067,GA067,MERIWETHER,Meriwether,bp05mr24,1.0,1
+C,effective_version_verified,GA107,GA107,PULASKI,Pulaski,bp05mr24,1.0,1
+C,effective_version_verified,GA070,GA070,LAMAR,Lamar,bp05mr24,1.0,1
+Z,other_version_verified,FL125,FL125,Coastal Duval,Coastal Duval,bp01oc15,1.0,1
+C,effective_version_verified,GA062,GA062,WARREN,Warren,bp05mr24,1.0,1
+C,effective_version_verified,GA079,GA079,TALBOT,Talbot,bp05mr24,1.0,1
+C,effective_version_verified,GA020,GA020,BARTOW,Bartow,bp05mr24,1.0,1
+C,effective_version_verified,GA023,GA023,HALL,Hall,bp05mr24,1.0,1
+Z,other_version_verified,FL124,FL124,Coastal Nassau,Coastal Nassau,bp01oc15,1.0,1
+C,effective_version_verified,GA068,GA068,PIKE,Pike,bp05mr24,1.0,1
+C,effective_version_verified,GA006,GA006,FANNIN,Fannin,bp05mr24,1.0,1
+C,effective_version_verified,GA084,GA084,WILKINSON,Wilkinson,bp05mr24,1.0,1
+C,effective_version_verified,GA113,GA113,TOOMBS,Toombs,bp05mr24,1.0,1
+C,effective_version_verified,GA038,GA038,OGLETHORPE,Oglethorpe,bp05mr24,1.0,1
+C,effective_version_verified,GA090,GA090,CHATTAHOOCHEE,Chattahoochee,bp05mr24,1.0,1
+C,effective_version_verified,GA072,GA072,JONES,Jones,bp05mr24,1.0,1
+C,effective_version_verified,GA108,GA108,WILCOX,Wilcox,bp05mr24,1.0,1
+C,effective_version_verified,GA095,GA095,HOUSTON,Houston,bp05mr24,1.0,1
+C,effective_version_verified,GA071,GA071,MONROE,Monroe,bp05mr24,1.0,1

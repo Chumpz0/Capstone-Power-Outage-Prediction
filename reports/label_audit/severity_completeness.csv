@@ -1,0 +1,13 @@
+split,threshold,major_windows,major_peak_fully_observed,major_peak_lower_bound_only,major_with_bracketed_gaps,windows_with_positive_observation,positive_windows_complete,complete_all_zero_windows
+validation,1000,1402,794,608,6,3200,985,2
+validation,2500,808,582,226,6,3200,985,2
+validation,5000,452,365,87,3,3200,985,2
+validation,10000,228,188,40,2,3200,985,2
+validation,25000,89,75,14,2,3200,985,2
+validation,50000,42,37,5,1,3200,985,2
+train,1000,10232,3837,6395,400,28256,4837,3
+train,2500,5323,2682,2641,321,28256,4837,3
+train,5000,2623,1562,1061,231,28256,4837,3
+train,10000,1068,680,388,129,28256,4837,3
+train,25000,325,214,111,55,28256,4837,3
+train,50000,130,91,39,24,28256,4837,3
