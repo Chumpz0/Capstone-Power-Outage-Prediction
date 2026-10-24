@@ -150,8 +150,7 @@ def get_eaglei(years: list[int], keep_raw: bool) -> None:
                        files[name]["size"])
         n = filter_eaglei_csv(raw, dest)
         print(f"  {year}: {n:,} study-area rows -> {dest.relative_to(C.ROOT)}")
-        if not keep_raw:
-            raw.unlink()
+        # Preserve raw source files for reproducible checksums (EDA handoff policy).
 
 
 # --------------------------------------------------------------------------- Storm Events

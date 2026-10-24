@@ -1,11 +1,10 @@
 """Project-wide settings: which states and years we work with, and where data lives."""
 import os
-from pathlib import Path
+from pipeline.paths import ROOT, DATA as DATA_DIR, MODEL_INPUT
+from pipeline.settings import SOUTHEAST_STATES, SPLIT_YEARS
 
 # Repo root = the folder that contains src/
-ROOT = Path(__file__).resolve().parents[1]
 
-DATA_DIR = ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"              # big original downloads (git-ignored)
 PROCESSED_DIR = DATA_DIR / "processed"  # filtered Parquet files (git-ignored)
 
@@ -14,20 +13,17 @@ PROCESSED_DIR = DATA_DIR / "processed"  # filtered Parquet files (git-ignored)
 HF_REPO_ID = os.getenv("HF_REPO_ID", "DSCI-Capstone/storm-outage-data")
 
 # Study area: Southeast US. Keys are 2-digit state FIPS codes.
-STATES = {
-    "01": "AL",
-    "12": "FL",
-    "13": "GA",
-    "37": "NC",
-    "45": "SC",
-    "47": "TN",
-}
+STATES = dict(SOUTHEAST_STATES.values())
 
 # Train 2014-2023, validate 2024, test 2025
-YEARS = list(range(2014, 2026))
-TRAIN_YEARS = list(range(2014, 2024))
-VALID_YEARS = [2024]
-TEST_YEARS = [2025]
+TRAIN_YEARS = list(range(2014, SPLIT_YEARS['train'][1] + 1))
+VALID_YEARS = [SPLIT_YEARS['validation'][0]]
+TEST_YEARS = [SPLIT_YEARS['test'][0]]
+YEARS = TRAIN_YEARS + VALID_YEARS + TEST_YEARS
+
+# Immutable release path; separate from legacy data/processed and its HF files.
+MAJOR_INPUT_DIR = MODEL_INPUT / 'southeast_v1'
+HF_EDA_RELEASE = 'southeast_v1/releases/2026-10-23-eda-v2'
 
 # Data sources
 FIGSHARE_ARTICLE_ID = 24237376  # EAGLE-I outages 2014-2025 (ORNL)
