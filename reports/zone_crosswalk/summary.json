@@ -1,0 +1,29 @@
+{
+  "versions": 23,
+  "southeast_zone_events": 22837,
+  "zone_match_status": {
+    "effective_version_verified": 22728,
+    "other_version_verified": 70,
+    "zone_code_unmatched_name_verified": 38,
+    "effective_version_conflict": 1
+  },
+  "county_coded_events": 71513,
+  "county_code_checks": {
+    "county_code_verified": 71394,
+    "county_code_reinterpreted_as_zone": 119
+  },
+  "events_in_missing_version_gaps": 72,
+  "mapped_event_county_rows": 22969,
+  "mapped_rows_partial_county": 5057,
+  "rules": {
+    "verified_similarity": 0.85,
+    "weak_similarity": 0.6,
+    "accepted": [
+      "effective_version_verified",
+      "effective_version_weak",
+      "other_version_verified",
+      "zone_code_unmatched_name_verified"
+    ],
+    "county_reinterpretation": "verified zone names only"
+  }
+}

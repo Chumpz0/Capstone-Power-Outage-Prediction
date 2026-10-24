@@ -1,0 +1,8 @@
+column,rows,non_null,null_count,null_pct,distinct_non_null,whitespace_only,surrounding_whitespace,numeric_parseable,numeric_parse_failures,numeric_min,numeric_max,negative_numeric,storage_dtype
+SOURCE_YEAR,249316543,249316543,0,0.0,12,0,0,249316543,0,2014.0,2025.0,0,VARCHAR
+fips_code,249316543,249316543,0,0.0,3113,0,0,249316543,0,1001.0,78030.0,0,VARCHAR
+county,249316543,249316543,0,0.0,1827,0,0,0,249316543,,,0,VARCHAR
+state,249316543,249316543,0,0.0,54,0,0,0,249316543,,,0,VARCHAR
+customers_out,249316543,240580388,8736155,3.504,101126,0,0,240580388,0,0.0,1777800.0,0,VARCHAR
+run_start_time,249316543,249316543,0,0.0,389621,0,0,0,249316543,,,0,VARCHAR
+total_customers,249316543,27701261,221615282,88.8891,2971,0,0,27701261,0,5.0,3799750.0,0,VARCHAR

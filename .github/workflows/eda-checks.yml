@@ -1,0 +1,16 @@
+name: EDA checks
+on: [push, pull_request]
+jobs:
+  rules-and-loaders:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: pip
+          cache-dependency-path: requirements-eda.txt
+      - run: python -m pip install -r requirements-eda.txt
+      # No credentials or test labels in CI. Built-output checks explicitly skip
+      # without local data; full-data validation is recorded in the PR.
+      - run: python -m pytest -q -rs

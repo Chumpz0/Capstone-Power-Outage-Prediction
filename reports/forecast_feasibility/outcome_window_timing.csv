@@ -1,0 +1,15 @@
+design,trigger_family,windows_crossing_within_96h,share_within_24h,share_within_48h,share_within_72h,median_hours_to_first_crossing
+alert,convective,2676,0.705,0.833,0.917,5.4
+alert,flood,1165,0.383,0.718,0.918,34.6
+alert,tropical,610,0.193,0.556,0.969,45.3
+alert,winter,241,0.228,0.622,0.967,41.5
+alert,wind,105,0.457,0.81,0.981,26.0
+alert,coastal,42,0.238,0.548,0.714,41.5
+onset,convective_wind,1577,0.827,0.903,0.955,0.8
+onset,tropical,538,0.929,0.98,0.996,5.3
+onset,rain_flood,328,0.649,0.814,0.933,10.0
+onset,winter,233,0.811,0.936,0.987,10.3
+onset,hail,215,0.712,0.828,0.916,3.4
+onset,synoptic_wind,189,0.884,0.947,0.974,2.5
+onset,coastal_surge,93,0.677,0.806,0.914,10.3
+onset,lightning,65,0.492,0.646,0.8,26.1

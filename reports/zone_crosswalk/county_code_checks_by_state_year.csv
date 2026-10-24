@@ -1,0 +1,74 @@
+state_name,year,county_check,events
+ALABAMA,2014,county_code_verified,669
+ALABAMA,2015,county_code_verified,726
+ALABAMA,2016,county_code_verified,644
+ALABAMA,2017,county_code_verified,1073
+ALABAMA,2018,county_code_verified,746
+ALABAMA,2019,county_code_verified,900
+ALABAMA,2020,county_code_verified,1218
+ALABAMA,2021,county_code_verified,1017
+ALABAMA,2022,county_code_verified,831
+ALABAMA,2023,county_code_verified,1648
+ALABAMA,2024,county_code_verified,828
+ALABAMA,2025,county_code_verified,1937
+FLORIDA,2014,county_code_verified,1049
+FLORIDA,2015,county_code_verified,1116
+FLORIDA,2016,county_code_verified,797
+FLORIDA,2017,county_code_verified,900
+FLORIDA,2018,county_code_verified,749
+FLORIDA,2019,county_code_verified,782
+FLORIDA,2020,county_code_verified,1067
+FLORIDA,2021,county_code_verified,757
+FLORIDA,2022,county_code_verified,930
+FLORIDA,2023,county_code_verified,1194
+FLORIDA,2024,county_code_verified,1094
+FLORIDA,2025,county_code_verified,635
+GEORGIA,2014,county_code_verified,872
+GEORGIA,2015,county_code_verified,1196
+GEORGIA,2016,county_code_verified,816
+GEORGIA,2017,county_code_verified,1155
+GEORGIA,2018,county_code_verified,925
+GEORGIA,2019,county_code_verified,898
+GEORGIA,2020,county_code_verified,1375
+GEORGIA,2021,county_code_verified,798
+GEORGIA,2022,county_code_verified,955
+GEORGIA,2023,county_code_verified,2412
+GEORGIA,2024,county_code_verified,1424
+GEORGIA,2025,county_code_reinterpreted_as_zone,119
+GEORGIA,2025,county_code_verified,1321
+NORTH CAROLINA,2014,county_code_verified,988
+NORTH CAROLINA,2015,county_code_verified,866
+NORTH CAROLINA,2016,county_code_verified,1220
+NORTH CAROLINA,2017,county_code_verified,894
+NORTH CAROLINA,2018,county_code_verified,1186
+NORTH CAROLINA,2019,county_code_verified,1173
+NORTH CAROLINA,2020,county_code_verified,1292
+NORTH CAROLINA,2021,county_code_verified,636
+NORTH CAROLINA,2022,county_code_verified,1131
+NORTH CAROLINA,2023,county_code_verified,1248
+NORTH CAROLINA,2024,county_code_verified,1314
+NORTH CAROLINA,2025,county_code_verified,1129
+SOUTH CAROLINA,2014,county_code_verified,602
+SOUTH CAROLINA,2015,county_code_verified,1122
+SOUTH CAROLINA,2016,county_code_verified,911
+SOUTH CAROLINA,2017,county_code_verified,788
+SOUTH CAROLINA,2018,county_code_verified,723
+SOUTH CAROLINA,2019,county_code_verified,762
+SOUTH CAROLINA,2020,county_code_verified,758
+SOUTH CAROLINA,2021,county_code_verified,380
+SOUTH CAROLINA,2022,county_code_verified,892
+SOUTH CAROLINA,2023,county_code_verified,784
+SOUTH CAROLINA,2024,county_code_verified,910
+SOUTH CAROLINA,2025,county_code_verified,749
+TENNESSEE,2014,county_code_verified,782
+TENNESSEE,2015,county_code_verified,664
+TENNESSEE,2016,county_code_verified,1098
+TENNESSEE,2017,county_code_verified,1164
+TENNESSEE,2018,county_code_verified,926
+TENNESSEE,2019,county_code_verified,888
+TENNESSEE,2020,county_code_verified,917
+TENNESSEE,2021,county_code_verified,884
+TENNESSEE,2022,county_code_verified,713
+TENNESSEE,2023,county_code_verified,1189
+TENNESSEE,2024,county_code_verified,846
+TENNESSEE,2025,county_code_verified,1411

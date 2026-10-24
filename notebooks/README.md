@@ -1,5 +1,9 @@
 # Notebooks
 
+**Current entry point:** `06_major_outage_eda.ipynb`, training data only, with the standalone [HTML report](../reports/eda/major_outage_eda.html). `02_full_data_profile.ipynb` and `03_eda_cleaning.ipynb` are supporting full-file structural and cleaning audits, not the baseline target EDA. For setup/data, follow the current root README and [handoff](../docs/teammate_handoff.md).
+
+The three original notebooks below now live under `legacy/`. Their outputs are cleared and execution is disabled because their workflow includes held-out outcomes and superseded labels. Do not use Restart + Run All on them. The legacy loading examples below do not load the approved baseline windows; use `src.major_outage` for those.
+
 | Notebook | What it covers |
 | --- | --- |
 | `01_quality_outages.ipynb` | EAGLE-I outage data quality: nulls, missing rows, coverage, customer counts |

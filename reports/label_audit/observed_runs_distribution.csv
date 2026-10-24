@@ -1,0 +1,21 @@
+split,era,observed_runs,opportunities,with_positive_observation
+validation,2022+,0,201,0
+validation,2022+,1-47,855,814
+validation,2022+,48-86,1011,1011
+validation,2022+,87-95,390,390
+validation,2022+,96 (complete),987,985
+train,2014-2017,0,3179,0
+train,2014-2017,1-47,3740,3740
+train,2014-2017,48-86,2805,2805
+train,2014-2017,87-95,1008,1008
+train,2014-2017,96 (complete),1147,1147
+train,2018-2021,0,1557,0
+train,2018-2021,1-47,4400,4400
+train,2018-2021,48-86,4248,4248
+train,2018-2021,87-95,1588,1587
+train,2018-2021,96 (complete),2159,2159
+train,2022+,0,453,0
+train,2022+,1-47,2151,2081
+train,2022+,48-86,2543,2543
+train,2022+,87-95,1007,1007
+train,2022+,96 (complete),1534,1531

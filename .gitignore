@@ -1,6 +1,12 @@
 # Data is too large for GitHub - everyone rebuilds it with scripts/download_data.py
 data/raw/
 data/processed/
+data/01_raw/
+data/02_combined/
+data/03_cleaned/
+data/04_model_input/
+data/reference/
+data/.cache/
 *.parquet
 *.part
 *.csv.gz
@@ -24,3 +30,12 @@ Thumbs.db
 .vscode/
 .idea/
 .env
+.env.*
+.pytest_cache/
+tmp/
+*.pending
+*.duckdb
+*.joblib
+models/artifacts/
+models/mlflow.db
+models/mlflow_artifacts/

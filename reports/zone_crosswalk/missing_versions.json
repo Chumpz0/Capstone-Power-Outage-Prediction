@@ -1,0 +1,26 @@
+{
+  "missing_versions": {
+    "bp28my15": {
+      "effective_date": "2015-05-28",
+      "wfos": [
+        "MOB"
+      ],
+      "change": "SCN 15-14 reconfigured Mobile public zones"
+    },
+    "bp05de17": {
+      "effective_date": "2017-12-05",
+      "wfos": [
+        "ILM"
+      ],
+      "change": "SCN 17-102 reconfigured Wilmington NC zones"
+    },
+    "bp01my18": {
+      "effective_date": "2018-05-01",
+      "wfos": [
+        "JAX"
+      ],
+      "change": "SCN 17-122 reconfigured Jacksonville zones (moved to the 1 May 2018 release)"
+    }
+  },
+  "note": "Releases that changed Southeast zones but were never archived. Events in these periods rely on name-verified fallback."
+}

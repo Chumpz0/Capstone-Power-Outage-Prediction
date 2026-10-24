@@ -17,6 +17,9 @@ def eaglei_summary() -> None:
     print("\n== EAGLE-I outages (15-min, study-area counties) ==")
     rows = []
     for f in sorted((P / "eaglei").glob("outages_*.parquet")):
+        if int(f.stem.split('_')[1]) >= 2025:
+            print(f'  {f.name}: held-out file; outcome summaries skipped')
+            continue
         df = pd.read_parquet(f, columns=["fips_code", "customers_out", "run_start_time"])
         rows.append({
             "year": f.stem.split("_")[1],

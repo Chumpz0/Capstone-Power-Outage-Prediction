@@ -1,0 +1,9 @@
+split,primary_hazard,opportunities,windows_reaching_1000,reaching_1000_with_bracketed_gap,mean_bracketed_gap_runs_when_reaching_1000,windows_with_null_values,windows_with_offgrid_rows
+train,convective_wind,18239,5873,183,0.07,1055,5
+train,winter,4802,702,60,0.19,380,189
+train,rain_flood,3750,993,39,0.38,339,29
+train,hail,2990,742,24,0.13,138,0
+train,tropical,1454,967,49,0.56,88,16
+train,synoptic_wind,1215,523,33,0.7,84,7
+train,lightning,630,243,5,0.04,34,0
+train,coastal_surge,439,189,7,0.12,18,3

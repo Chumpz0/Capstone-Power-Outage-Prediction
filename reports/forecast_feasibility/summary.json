@@ -1,0 +1,31 @@
+{
+  "files": {
+    "vtec_southeast_2014.csv": 11230519,
+    "vtec_southeast_2015.csv": 10943633,
+    "vtec_southeast_2016.csv": 9523947,
+    "vtec_southeast_2017.csv": 10550161,
+    "vtec_southeast_2018.csv": 11608056,
+    "vtec_southeast_2019.csv": 9621914,
+    "vtec_southeast_2020.csv": 11780826,
+    "vtec_southeast_2021.csv": 10506122,
+    "vtec_southeast_2022.csv": 12068365,
+    "vtec_southeast_2023.csv": 14219433,
+    "vtec_southeast_2024.csv": 13198442,
+    "vtec_southeast_2025.csv": 13056617
+  },
+  "rows": 738829,
+  "unparsed_prodissue_or_issue": [
+    0,
+    0
+  ],
+  "county_alert_rows": 624832,
+  "county_alert_events": 583785,
+  "audit_24h_alert_windows_by_split": {
+    "test": 10703,
+    "train": 105780,
+    "validation": 11112
+  },
+  "train_alert_windows_summarized": 95432,
+  "leakage_guard": "utc_expire, status and utc_updated are not read (final event state, unknown at issuance).",
+  "runtime_seconds": 41.5
+}
