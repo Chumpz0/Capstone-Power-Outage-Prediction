@@ -22,7 +22,7 @@ data/
 | `customers_out` | Customers without power at that snapshot |
 | `run_start_time` | Snapshot timestamp |
 
-`MCC.csv` holds the modeled total customers per county. Use it to turn `customers_out` into a **% of customers out**, since EAGLE-I coverage grows over the years.
+`MCC.csv` holds a modeled customer denominator for plausibility checks. It is not verified customer capacity. The approved forecast target uses absolute uncapped counts, not percentages.
 
 **Storm event counties** (`storms/storm_event_counties.parquet`), one row per storm event per affected county. It has all NOAA columns (lower-case) plus:
 
@@ -39,10 +39,19 @@ data/
 
 **County census** (`reference/county_census.parquet`): `fips_code`, `acs_year`, `population`, `housing_units`, `land_sqmi`, `pop_density`, `housing_density`.
 
-## Known issues to check during EDA
+## Current EDA conventions
 
-1. **Time zones:** confirm whether EAGLE-I `run_start_time` is UTC or local before joining it to storm times. Storms come with both versions.
-2. **Zone mapping:** hurricanes, high wind and winter storms are mostly reported by forecast zone, not county. We map zones with the current NWS lookup, but zones were redrawn over the years, so some older events may not match. `download_data.py` prints the unmatched share.
-3. **Coverage drift:** EAGLE-I coverage is thinner in early years (see `coverage_history.csv`). Consider starting training in 2017 or 2018 if 2014–2016 look sparse.
-4. **Overlapping events:** one hurricane creates many NOAA events across counties. Group by `episode_id` when building one-row-per-storm features.
-5. **Gaps and zeros:** EAGLE-I rows are snapshots from utility outage maps. Missing snapshots are not the same as zero outages.
+Timestamps represent UTC. Missing rows and null counts stay distinct from explicit
+zero. Exact-grid checks include seconds. Future targets use `(t, t+h]` for 6/12
+hours, with strict >5,000 classification and a complete/unflagged primary cohort.
+
+The original storm mapping contains 119 supported Georgia code/name conflicts.
+Use the locally generated `processed/eda/geography_criteria/storm_event_counties.parquet`
+for corrected retrospective attribution. Original IDs and methods are retained;
+1,498 unmatched zone reports remain unresolved. Unmatched storms never remove
+county-hours from the forecasting frame.
+
+See [the report](../docs/eda_report.md), [field dictionary](../docs/data_dictionary.md),
+[derived metadata](../docs/eda_metadata.md) and [handoff commands](../docs/teammate_handoff.md).
+The `processed/eda/` directory contains reproducible local outputs and is not
+assumed to be published to the shared dataset. No model feature matrix has been built.

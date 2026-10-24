@@ -1,7 +1,7 @@
 {
   "scope": "All local processed files; no upstream refresh",
   "duckdb": "2.0.0",
-  "notebook_sha256": "8fced97dbaed607a3e686e8473f6ed34a3cf12438fda8241c5ba79035663ad62",
+  "notebook_sha256": "f3c762bbe341d1d2800779a237801a2cb1b3078bf829c46d75481d6c06c55232",
   "inventory": [
     {
       "file": "eaglei/coverage_history.csv",
@@ -166,7 +166,8 @@
       "maximum": 23816.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 0
+      "odd_minutes": 0,
+      "off_grid": 0
     },
     {
       "year": 2015,
@@ -179,7 +180,8 @@
       "maximum": 92954.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 0
+      "odd_minutes": 0,
+      "off_grid": 0
     },
     {
       "year": 2016,
@@ -192,7 +194,8 @@
       "maximum": 467041.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 0
+      "odd_minutes": 0,
+      "off_grid": 0
     },
     {
       "year": 2017,
@@ -205,7 +208,8 @@
       "maximum": 1777800.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 0
+      "odd_minutes": 0,
+      "off_grid": 300
     },
     {
       "year": 2018,
@@ -218,7 +222,8 @@
       "maximum": 135215.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 0
+      "odd_minutes": 0,
+      "off_grid": 3611
     },
     {
       "year": 2019,
@@ -231,7 +236,8 @@
       "maximum": 137536.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 23
+      "odd_minutes": 23,
+      "off_grid": 23
     },
     {
       "year": 2020,
@@ -244,7 +250,8 @@
       "maximum": 178832.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 754
+      "odd_minutes": 754,
+      "off_grid": 754
     },
     {
       "year": 2021,
@@ -257,7 +264,8 @@
       "maximum": 83500.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 61
+      "odd_minutes": 61,
+      "off_grid": 61
     },
     {
       "year": 2022,
@@ -270,7 +278,8 @@
       "maximum": 456573.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 0
+      "odd_minutes": 0,
+      "off_grid": 0
     },
     {
       "year": 2023,
@@ -283,7 +292,8 @@
       "maximum": 138851.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 165
+      "odd_minutes": 165,
+      "off_grid": 165
     },
     {
       "year": 2024,
@@ -296,7 +306,8 @@
       "maximum": 520308.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 0
+      "odd_minutes": 0,
+      "off_grid": 0
     },
     {
       "year": 2025,
@@ -309,7 +320,8 @@
       "maximum": 139758.0,
       "negative": 0,
       "fractional": 0,
-      "odd_minutes": 0
+      "odd_minutes": 0,
+      "off_grid": 0
     }
   ],
   "outage_integrity": [
@@ -322,10 +334,6 @@
   ],
   "never_observed_counties": [
     {
-      "fips_code": "47135",
-      "county_name": "Perry County, Tennessee"
-    },
-    {
       "fips_code": "47085",
       "county_name": "Humphreys County, Tennessee"
     },
@@ -336,6 +344,10 @@
     {
       "fips_code": "47071",
       "county_name": "Hardin County, Tennessee"
+    },
+    {
+      "fips_code": "47135",
+      "county_name": "Perry County, Tennessee"
     },
     {
       "fips_code": "47039",
@@ -580,26 +592,26 @@
       "magnitude_present": 0
     },
     {
-      "event_type": "Dust Devil",
+      "event_type": "Blizzard",
       "events": 6,
       "magnitude_present": 0
     },
     {
-      "event_type": "Blizzard",
+      "event_type": "Dust Devil",
       "events": 6,
       "magnitude_present": 0
     }
   ],
   "mapping": [
     {
-      "cz_type": "Z",
-      "n": 22837,
-      "unmapped": 1498
-    },
-    {
       "cz_type": "C",
       "n": 71513,
       "unmapped": 0
+    },
+    {
+      "cz_type": "Z",
+      "n": 22837,
+      "unmapped": 1498
     }
   ],
   "unmapped_types": [
@@ -688,11 +700,11 @@
       "n": 2
     },
     {
-      "event_type": "Freezing Fog",
+      "event_type": "Astronomical Low Tide",
       "n": 1
     },
     {
-      "event_type": "Astronomical Low Tide",
+      "event_type": "Freezing Fog",
       "n": 1
     }
   ],
@@ -1195,7 +1207,7 @@
       "DQI": 79.1729992
     }
   ],
-  "notebook_join_note": "Uses src.eda.build_storm_outage_tables; unknown outcomes remain null; rates exclude unknown windows.",
+  "notebook_join_note": "Uses audited geography and src.eda.build_storm_outage_tables; original mapping diagnostics above remain source-level. Unknown outcomes remain null; rates exclude unknown windows. Descriptive 5% targets are not forecast labels.",
   "joined_year": [
     {
       "year": 2014,
@@ -1265,9 +1277,9 @@
     },
     {
       "year": 2025,
-      "rows": 8239,
-      "no_observed_peak": 1023,
-      "major": 1677
+      "rows": 8298,
+      "no_observed_peak": 1022,
+      "major": 1696
     }
   ],
   "joined_type": [
@@ -1350,10 +1362,10 @@
     },
     {
       "event_type": "Winter Storm",
-      "rows": 1915,
-      "median_share": 0.004764561075717211,
-      "major_rate": 0.2086021505376344,
-      "no_observed_peak": 520
+      "rows": 1974,
+      "median_share": 0.004845530726015568,
+      "major_rate": 0.21305841924398625,
+      "no_observed_peak": 519
     },
     {
       "event_type": "Flash Flood",
@@ -1442,16 +1454,16 @@
   ],
   "window_observations": [
     {
-      "windows": 78509,
-      "unobserved": 11190,
-      "fully_observed": 26887,
+      "windows": 78568,
+      "unobserved": 11189,
+      "fully_observed": 26895,
       "median_observed_fraction": 0.8571428571428571
     }
   ],
   "overlap": [
     {
-      "distinct_county_hours": 767330,
-      "shared_county_hours": 235681,
+      "distinct_county_hours": 768823,
+      "shared_county_hours": 235556,
       "max_events_per_hour": 118
     }
   ],

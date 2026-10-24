@@ -57,7 +57,7 @@ def build_storm_outage_tables(con, outages, storms, census, *, major=0.05,
            date_trunc('hour', begin_utc) - interval {PRE_H} hour as w0,
            date_trunc('hour', least(end_utc, begin_utc + interval {MAX_H} hour)) + interval {POST_H} hour as w1
     from '{STORMS}' s
-    -- the inner join also drops the 59 GA rows with bad FIPS codes (notebook 02)
+    -- Require a Census match; final EDA uses the audited geography overlay.
     join cust c on c.fips_code = s.fips_code and c.acs_year = least(s.year, 2024)
     where event_type not in ({skip_sql})
       and date_trunc('hour', begin_utc) between '{first_hr}' and '{last_hr}'

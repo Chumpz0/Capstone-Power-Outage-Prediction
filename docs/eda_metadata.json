@@ -1,0 +1,1720 @@
+{
+  "schema_version": 1,
+  "source_inventory": [
+    {
+      "file": "eaglei/coverage_history.csv",
+      "bytes": 11965,
+      "sha256": "a5f102ee31d7c8ea5676679ec8a89a1e786bbe482d48f85c9a058a388a593267"
+    },
+    {
+      "file": "eaglei/DQI.csv",
+      "bytes": 4338,
+      "sha256": "b9a027fd5c5e299e682b459e5ea8d63d7a77b508c2be13a35fbf84fb3da89bc8"
+    },
+    {
+      "file": "eaglei/MCC.csv",
+      "bytes": 40584,
+      "sha256": "d7fbe0d60ea71273f68bd744408059491fbc7f85b6254882d17783d7762bf65e"
+    },
+    {
+      "file": "eaglei/outages_2014.parquet",
+      "bytes": 1060063,
+      "sha256": "cc3a72ef5d0847cc77e1b85a74d8c1b29f68869fbbc9012fead4c890c127d5cf"
+    },
+    {
+      "file": "eaglei/outages_2015.parquet",
+      "bytes": 7456592,
+      "sha256": "129973445da8f84e98a2de396afb78ea41274faff22960a3ca047da08fbaa41f"
+    },
+    {
+      "file": "eaglei/outages_2016.parquet",
+      "bytes": 8520555,
+      "sha256": "340b3d09a2cb74358a4b88d91ca5a9d7bceda70dc6ca47fd5662f229bd540e1e"
+    },
+    {
+      "file": "eaglei/outages_2017.parquet",
+      "bytes": 9672429,
+      "sha256": "4c8331739d18b2e27bdaf5549ba71e56195afbaaa3b1cc94f1035e06aec9c1f1"
+    },
+    {
+      "file": "eaglei/outages_2018.parquet",
+      "bytes": 12611996,
+      "sha256": "656e723c2d76efa8bb22e538226321a1e2c6f9ca3443bd12ead71485709ed885"
+    },
+    {
+      "file": "eaglei/outages_2019.parquet",
+      "bytes": 12800408,
+      "sha256": "2a30a29026b0f8f44773ea645524314a4a7e90e6b12b271ee9ce5f439c0182cf"
+    },
+    {
+      "file": "eaglei/outages_2020.parquet",
+      "bytes": 13582932,
+      "sha256": "490798786b8d49b5d16f9155ed99745dfc4eca73ddf2ccf15096d4b3d3315f34"
+    },
+    {
+      "file": "eaglei/outages_2021.parquet",
+      "bytes": 12894251,
+      "sha256": "1d72c5c7eb4b4310bfa685469b0ba9fe7024990e0575838974db10fcf2ad1c65"
+    },
+    {
+      "file": "eaglei/outages_2022.parquet",
+      "bytes": 13881572,
+      "sha256": "ff115eeaa7abf125a01930cdab6307b308565024aa5ac5e18cfbbc91f899e97a"
+    },
+    {
+      "file": "eaglei/outages_2023.parquet",
+      "bytes": 14506382,
+      "sha256": "4f3c9ca93663442d98081d0a183bc5b0936df5574c722e3e93aa7ab69b60c81a"
+    },
+    {
+      "file": "eaglei/outages_2024.parquet",
+      "bytes": 16933555,
+      "sha256": "46433bb5ab8abaf36caf91e4d71e14174ea1dff0766d7f2bf05722a4517413a5"
+    },
+    {
+      "file": "eaglei/outages_2025.parquet",
+      "bytes": 15244690,
+      "sha256": "041da4501235cdcce062b9bcf644a94c8938dd028177e2f3bcad0d178291bced"
+    },
+    {
+      "file": "reference/county_census.parquet",
+      "bytes": 220887,
+      "sha256": "e1ace5dffd248303ba536c0b741e4264c1d3768f85fe6025b65ae2b38e0c517e"
+    },
+    {
+      "file": "reference/zone_county.parquet",
+      "bytes": 33750,
+      "sha256": "3d3504b246e4a040542440a73b07f14fe785a7bc402367290445cbe8101ff54d"
+    },
+    {
+      "file": "storms/storm_event_counties.parquet",
+      "bytes": 18528864,
+      "sha256": "d431f7d3a03daddd088c3fb0c912f66d01954286145466174ebb14dd2e078301"
+    },
+    {
+      "file": "storms/storm_events_2014.parquet",
+      "bytes": 1139947,
+      "sha256": "6b90d5462dfc107f1c7eb61e2b0d694a79efdc7e65cc51fcea5a5a8445987ea2"
+    },
+    {
+      "file": "storms/storm_events_2015.parquet",
+      "bytes": 1230461,
+      "sha256": "0b6cdac4e508600d5225da29fd99df78c2188f4408e11c88cc36ffdedd38b232"
+    },
+    {
+      "file": "storms/storm_events_2016.parquet",
+      "bytes": 1337873,
+      "sha256": "00278f8d27519742318693641211256ac945ea15fa85d6c765ba552a748be590"
+    },
+    {
+      "file": "storms/storm_events_2017.parquet",
+      "bytes": 1408952,
+      "sha256": "0483bbeb6fc16a2eb70b231c83dd574707ff7599f9bd22ab847b1e25e4f736f8"
+    },
+    {
+      "file": "storms/storm_events_2018.parquet",
+      "bytes": 1282315,
+      "sha256": "2875fc5fa5a80f0a6639cd16695b48f152105172e4c3af67cad15a6ace936c0f"
+    },
+    {
+      "file": "storms/storm_events_2019.parquet",
+      "bytes": 1171815,
+      "sha256": "b12b8517485d9fd98c923341bf90fc97d65d88c2855075fec055723b825b5e66"
+    },
+    {
+      "file": "storms/storm_events_2020.parquet",
+      "bytes": 1446360,
+      "sha256": "b2355e1dd3c10571d5cd878e661157e4877d3ec5162e8b1102d712e6d8a6238a"
+    },
+    {
+      "file": "storms/storm_events_2021.parquet",
+      "bytes": 1080353,
+      "sha256": "4087708dd2f329b1e717adfb9397e5d58a52d18987b6c6bd115e76156a896150"
+    },
+    {
+      "file": "storms/storm_events_2022.parquet",
+      "bytes": 1325715,
+      "sha256": "18ba239a55c99a849cc121d988e5f16c584822e195fef6b0a3171f2a4fd35d00"
+    },
+    {
+      "file": "storms/storm_events_2023.parquet",
+      "bytes": 1720070,
+      "sha256": "a72dc5812d4ccfe75735814653517862cf362192ce048e0273e5ad661e99161e"
+    },
+    {
+      "file": "storms/storm_events_2024.parquet",
+      "bytes": 1605428,
+      "sha256": "07991714d196ec0c4377cacb54b6a9241d05c9f861e86477cb0520608a26f524"
+    },
+    {
+      "file": "storms/storm_events_2025.parquet",
+      "bytes": 1521693,
+      "sha256": "3c45bfd8ec81ef7da0eea0eaca8d4bcbaa8fc084de021e590a0f11f43bf50828"
+    }
+  ],
+  "derived_tables": [
+    {
+      "path": "data/processed/eda/customer_targets/county_year.parquet",
+      "bytes": 562843,
+      "sha256": "d246f79adffd32d83e82e72c1afb5caf2a01c3986a8c15f062297af6235d38b8",
+      "rows": 42720,
+      "fields": [
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "horizon",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "fips_code",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "county_name",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "housing_quartile",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "threshold",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "in_bounds",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "unknown",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete_positive",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "strict",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "strict_positive",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "strict_negative",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial_positive_unflagged",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial_positive_flagged",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial_uncertain",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "median_positive_strict",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "median_lost_positive_strict",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_excluded_positive_complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_lost_positive_complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_uncertain_complete",
+          "type": "int64",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/customer_targets/state_season.parquet",
+      "bytes": 81496,
+      "sha256": "8a90b57371e528a5b548f2f57d453c8c0d7eef24e2bac0a4ad2956a83dbf34fc",
+      "rows": 1920,
+      "fields": [
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "horizon",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "threshold",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "season",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "in_bounds",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "unknown",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete_positive",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "strict",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "strict_positive",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "strict_negative",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial_positive_unflagged",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial_positive_flagged",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial_uncertain",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "median_positive_strict",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "median_lost_positive_strict",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_excluded_positive_complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_lost_positive_complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_uncertain_complete",
+          "type": "int64",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/geography_criteria/audited_event_counties.parquet",
+      "bytes": 811812,
+      "sha256": "cd315ee0c598f171fbf80fd915b985f99f76f1bc38a0e9ef49bb4bccf1bf9b13",
+      "rows": 92852,
+      "fields": [
+        {
+          "name": "event_id",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "fips_code",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "mapped_from",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "original_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "corrected_fips",
+          "type": "large_string",
+          "nulls": 92733
+        },
+        {
+          "name": "disposition",
+          "type": "large_string",
+          "nulls": 92733
+        },
+        {
+          "name": "original_mapped_from",
+          "type": "large_string",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/geography_criteria/mapping_overlay.parquet",
+      "bytes": 10761,
+      "sha256": "9f340a6ac89eb7228046fd8e9360c69f5e3ffec3bb94e7972fb2751fb56be680",
+      "rows": 119,
+      "fields": [
+        {
+          "name": "event_id",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "event_type",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "original_cz_type",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "original_cz_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "original_cz_name",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "original_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "original_fips_valid",
+          "type": "bool",
+          "nulls": 0
+        },
+        {
+          "name": "corrected_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "disposition",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "evidence",
+          "type": "large_string",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/geography_criteria/storm_event_counties.parquet",
+      "bytes": 18627190,
+      "sha256": "bcaa2169799d83a1796ddc303c779cd4fe5f3186eb137eca2f26e9037c577012",
+      "rows": 92852,
+      "fields": [
+        {
+          "name": "begin_yearmonth",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "begin_day",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "begin_time",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "end_yearmonth",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "end_day",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "end_time",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "episode_id",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "event_id",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "state_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "month_name",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "event_type",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "cz_type",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "cz_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "cz_name",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "wfo",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "begin_date_time",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "cz_timezone",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "end_date_time",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "injuries_direct",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "injuries_indirect",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "deaths_direct",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "deaths_indirect",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "damage_property",
+          "type": "large_string",
+          "nulls": 19886
+        },
+        {
+          "name": "damage_crops",
+          "type": "large_string",
+          "nulls": 22407
+        },
+        {
+          "name": "source",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "magnitude",
+          "type": "double",
+          "nulls": 36578
+        },
+        {
+          "name": "magnitude_type",
+          "type": "large_string",
+          "nulls": 45536
+        },
+        {
+          "name": "flood_cause",
+          "type": "large_string",
+          "nulls": 82724
+        },
+        {
+          "name": "category",
+          "type": "double",
+          "nulls": 92650
+        },
+        {
+          "name": "tor_f_scale",
+          "type": "large_string",
+          "nulls": 89447
+        },
+        {
+          "name": "tor_length",
+          "type": "double",
+          "nulls": 89447
+        },
+        {
+          "name": "tor_width",
+          "type": "double",
+          "nulls": 89447
+        },
+        {
+          "name": "tor_other_wfo",
+          "type": "large_string",
+          "nulls": 92293
+        },
+        {
+          "name": "tor_other_cz_state",
+          "type": "large_string",
+          "nulls": 92293
+        },
+        {
+          "name": "tor_other_cz_fips",
+          "type": "double",
+          "nulls": 92293
+        },
+        {
+          "name": "tor_other_cz_name",
+          "type": "large_string",
+          "nulls": 92293
+        },
+        {
+          "name": "begin_range",
+          "type": "double",
+          "nulls": 21460
+        },
+        {
+          "name": "begin_azimuth",
+          "type": "large_string",
+          "nulls": 21460
+        },
+        {
+          "name": "begin_location",
+          "type": "large_string",
+          "nulls": 21460
+        },
+        {
+          "name": "end_range",
+          "type": "double",
+          "nulls": 21460
+        },
+        {
+          "name": "end_azimuth",
+          "type": "large_string",
+          "nulls": 21460
+        },
+        {
+          "name": "end_location",
+          "type": "large_string",
+          "nulls": 21460
+        },
+        {
+          "name": "begin_lat",
+          "type": "double",
+          "nulls": 21460
+        },
+        {
+          "name": "begin_lon",
+          "type": "double",
+          "nulls": 21460
+        },
+        {
+          "name": "end_lat",
+          "type": "double",
+          "nulls": 21460
+        },
+        {
+          "name": "end_lon",
+          "type": "double",
+          "nulls": 21460
+        },
+        {
+          "name": "episode_narrative",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "event_narrative",
+          "type": "large_string",
+          "nulls": 7224
+        },
+        {
+          "name": "data_source",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "begin_local",
+          "type": "timestamp[us]",
+          "nulls": 0
+        },
+        {
+          "name": "end_local",
+          "type": "timestamp[us]",
+          "nulls": 0
+        },
+        {
+          "name": "begin_utc",
+          "type": "timestamp[us]",
+          "nulls": 0
+        },
+        {
+          "name": "end_utc",
+          "type": "timestamp[us]",
+          "nulls": 0
+        },
+        {
+          "name": "damage_property_usd",
+          "type": "double",
+          "nulls": 19886
+        },
+        {
+          "name": "damage_crops_usd",
+          "type": "double",
+          "nulls": 22407
+        },
+        {
+          "name": "state_abbr",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "original_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "original_mapped_from",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "fips_code",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "mapped_from",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "disposition",
+          "type": "large_string",
+          "nulls": 92733
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/geography_criteria/unmatched_events.parquet",
+      "bytes": 20023,
+      "sha256": "49e8cd38bc2dbd1f056a3b7832e0af80fa02eb33144fa448c77c47a5c304f2c1",
+      "rows": 1498,
+      "fields": [
+        {
+          "name": "event_id",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "state_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "cz_type",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "cz_fips",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "cz_name",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "event_type",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "state_abbr",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "disposition",
+          "type": "large_string",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/observation_reliability/county_year.parquet",
+      "bytes": 562140,
+      "sha256": "874387c969b64c8871aec9120c23f1a40b85c00d90d4b5056135c43643e168ae",
+      "rows": 10680,
+      "fields": [
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "horizon",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "fips_code",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "county_name",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "housing_units",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "housing_quartile",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "origins",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "boundary_excluded",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "in_bounds",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "unknown",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete_unflagged",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "at_least_half",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "at_least_90pct",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "any_observed",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "flagged_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "expected_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "usable_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "usable_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "present_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "present_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "null_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "null_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "invalid_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "invalid_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "duplicate_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "duplicate_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "zero_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "zero_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_flag_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_flag_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "off_grid_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "off_grid_windows",
+          "type": "int64",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/observation_reliability/raw_county_year.parquet",
+      "bytes": 90870,
+      "sha256": "7682c48122b70b9ddcc19e4bc74c35e9f18ac687ca2e25c3d97c21a6b8914fd8",
+      "rows": 5340,
+      "fields": [
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "fips_code",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "rows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "null",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "zero",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "invalid",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "off_grid",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "duplicate_rows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_flags",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "first",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "last",
+          "type": "large_string",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/observation_reliability/slot_distribution.parquet",
+      "bytes": 27559,
+      "sha256": "e79edb46acfe1675bc2e7011b0db1b09a8581720b92acbc42fb83c43fdb3c561",
+      "rows": 4440,
+      "fields": [
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "horizon",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "usable_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "windows",
+          "type": "int64",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/observation_reliability/state_hour.parquet",
+      "bytes": 217025,
+      "sha256": "816a4c16979b7f54ffe814ccdd9d6ab3f66fe68b0330aac6200a8a1902713666",
+      "rows": 2880,
+      "fields": [
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "horizon",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "hour",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "origins",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "boundary_excluded",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "in_bounds",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "unknown",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete_unflagged",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "at_least_half",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "at_least_90pct",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "any_observed",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "flagged_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "expected_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "usable_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "usable_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "present_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "present_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "null_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "null_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "invalid_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "invalid_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "duplicate_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "duplicate_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "zero_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "zero_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_flag_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_flag_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "off_grid_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "off_grid_windows",
+          "type": "int64",
+          "nulls": 0
+        }
+      ]
+    },
+    {
+      "path": "data/processed/eda/observation_reliability/state_month.parquet",
+      "bytes": 117876,
+      "sha256": "b9e736bd2240e3d1ce9c038da8744e98fb045aca953c54207b5a5f6aa5bfb12b",
+      "rows": 1440,
+      "fields": [
+        {
+          "name": "year",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "state",
+          "type": "large_string",
+          "nulls": 0
+        },
+        {
+          "name": "horizon",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "month",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "origins",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "boundary_excluded",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "in_bounds",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "unknown",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "partial",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "complete_unflagged",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "at_least_half",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "at_least_90pct",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "any_observed",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "flagged_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "expected_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "usable_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "usable_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "present_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "present_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "null_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "null_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "invalid_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "invalid_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "duplicate_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "duplicate_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "zero_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "zero_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_flag_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "proxy_flag_windows",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "off_grid_window_slots",
+          "type": "int64",
+          "nulls": 0
+        },
+        {
+          "name": "off_grid_windows",
+          "type": "int64",
+          "nulls": 0
+        }
+      ]
+    }
+  ],
+  "artifact_files": [
+    {
+      "path": "data/README.md",
+      "bytes": 3271,
+      "sha256": "19d4dd586735e3ecbd4fad3a3f7a0b9c15dd879524ed8cde68a1da0c29348932"
+    },
+    {
+      "path": "docs/checkpoint_1_observation_reliability.json",
+      "bytes": 45190,
+      "sha256": "8117f880616190261ef0cce00719bf507b996500db932ea9f9d68b14ebfd17c6"
+    },
+    {
+      "path": "docs/checkpoint_2_customer_targets.json",
+      "bytes": 129836,
+      "sha256": "86205802569b5e36f30b92cb5fbc88d4dbb82cc13bb653670049cb5e03729cf8"
+    },
+    {
+      "path": "docs/checkpoint_3_geography_audit.json",
+      "bytes": 272557,
+      "sha256": "b66ad1585c6ed31c99051551eca4375fff345742c7132f577351a04c73e60e5a"
+    },
+    {
+      "path": "docs/data_audit.json",
+      "bytes": 36515,
+      "sha256": "14ce680cbe13bf9ab9e92d8d53f9118f8d42137afd48b50e067eb43659f9c0a3"
+    },
+    {
+      "path": "docs/data_dictionary.md",
+      "bytes": 8256,
+      "sha256": "32b2aab97639f9d91bc024c0e5a6b70461c53eecdc651cf67ab450108340f331"
+    },
+    {
+      "path": "docs/data_review.md",
+      "bytes": 29663,
+      "sha256": "db5e22ce144a334a37aa949673f72223eecb7dd4f97a3b3fa9efcf1db7266140"
+    },
+    {
+      "path": "docs/eda_metadata.md",
+      "bytes": 9591,
+      "sha256": "d021daaeacc2eca7c854ce553cdcb29a774f0a928c9baa3dc92a66c7daacbfbd"
+    },
+    {
+      "path": "docs/eda_report.md",
+      "bytes": 8802,
+      "sha256": "470c9bef1fc4f46e8288dc350dcd048f9d289a9491b9528725af3a41f33312b4"
+    },
+    {
+      "path": "docs/eda_validation.json",
+      "bytes": 723,
+      "sha256": "2195e6484377bc80c6fb995b8a2be5ed0784f325852b02ac16ea926ff00eb654"
+    },
+    {
+      "path": "docs/feature_availability.md",
+      "bytes": 6075,
+      "sha256": "8c9a8c0ef0bb6dc45569a1d7c244263f49327136f274967f8196495ab88ca7e5"
+    },
+    {
+      "path": "docs/modeling_criteria.md",
+      "bytes": 9162,
+      "sha256": "aa73c7d5f63b729dd8fd74b2ee152b00091f61dc1d527fff8a3898b9b1d786a5"
+    },
+    {
+      "path": "docs/teammate_handoff.md",
+      "bytes": 4366,
+      "sha256": "cd07a4a866b29d846994fad0a6682d811d4d021a9be3c7492a5d300c61244492"
+    },
+    {
+      "path": "notebooks/01_quality_outages.ipynb",
+      "bytes": 203622,
+      "sha256": "98801b324da0b3da220994c7a96586170d625f09ac3cc5182b67097d444c2645"
+    },
+    {
+      "path": "notebooks/02_quality_storms.ipynb",
+      "bytes": 175038,
+      "sha256": "92e6c55794e2cb94c0c710a184a36549f273b3a5c195075809771e6dba0ce5da"
+    },
+    {
+      "path": "notebooks/03_eda_storm_outage.ipynb",
+      "bytes": 1798310,
+      "sha256": "f3c762bbe341d1d2800779a237801a2cb1b3078bf829c46d75481d6c06c55232"
+    },
+    {
+      "path": "notebooks/04_eda_model_readiness.ipynb",
+      "bytes": 738683,
+      "sha256": "f172446ba2415bd32024a523b0bf1d49f21f2625b4f110f28afb90a03d9e442d"
+    },
+    {
+      "path": "notebooks/README.md",
+      "bytes": 4312,
+      "sha256": "18b27e4e3a70d8bc349246720760064730bfbaba2bc9ecd1d62b2432787b851e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6400,
+      "sha256": "913eddd009cfee67cec12d46ca648c286f2bccaf7a3bf15ef3e3a7caba70e580"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 270,
+      "sha256": "8e0c3c4c61838ba8dac6e615bdc10b27de9db787e44d8f37f302ffc3728ab22c"
+    },
+    {
+      "path": "scripts/audit_data_review.py",
+      "bytes": 10169,
+      "sha256": "4cbf05397eeabf0a86fd58714c8d4db0f2385aaab2188a9daebd66d9d68dc346"
+    },
+    {
+      "path": "scripts/build_eda_metadata.py",
+      "bytes": 2408,
+      "sha256": "ada065db8c567eaff9f348354c121942a78d5be10311ada1f812d5bbe1b5a319"
+    },
+    {
+      "path": "scripts/check_customer_targets.py",
+      "bytes": 6905,
+      "sha256": "afe0385e12057bb7d952f174fe918e9d0f7ab52d8a3337f70a2eb1d0c90004c7"
+    },
+    {
+      "path": "scripts/check_data.py",
+      "bytes": 2236,
+      "sha256": "f541f57d0dfbf0519a738bc2361a26dd69cb826679ac3e1b9e6349967806bee7"
+    },
+    {
+      "path": "scripts/check_geography_criteria.py",
+      "bytes": 7325,
+      "sha256": "91a8697eb463802f42991eca24a1e129cfabf5d7749c60766b653e453ee8e31e"
+    },
+    {
+      "path": "scripts/check_observation_reliability.py",
+      "bytes": 10343,
+      "sha256": "b15dd4f4517b19245cf3ba4a09b2f484de5315c150c46dcbf03c0a22d6c7e43c"
+    },
+    {
+      "path": "scripts/download_data.py",
+      "bytes": 17293,
+      "sha256": "d1d23fe4991d8380529d92f41f6129480ec0aa507a1813d56244f97544cf7fcf"
+    },
+    {
+      "path": "scripts/finalize_eda.py",
+      "bytes": 2343,
+      "sha256": "fcef11077946566f405cde8ce8229f310a5f63b60170d3bb545f214385356255"
+    },
+    {
+      "path": "scripts/upload_to_hf.py",
+      "bytes": 2782,
+      "sha256": "3738879c753e2ad242fe6b03c20eb7fe61791f5f6bf3f074b07e164a783a9d11"
+    },
+    {
+      "path": "src/__init__.py",
+      "bytes": 27,
+      "sha256": "8f2e370777c40a69b913e7e208fa84bd6ca07517810789558462b684b3b0ad62"
+    },
+    {
+      "path": "src/config.py",
+      "bytes": 1633,
+      "sha256": "30860b47a652a595f14fad11ffa0785323cdd57116e1a3fc66ac187627380e37"
+    },
+    {
+      "path": "src/data.py",
+      "bytes": 3344,
+      "sha256": "f6290c61a8493b6930758415a68efe47a91e8c053f28eb25035730593f085240"
+    },
+    {
+      "path": "src/eda.py",
+      "bytes": 6540,
+      "sha256": "3bd48689fac280aa1f9ed9fc62dbcc2bb7831302f0028e2fce88ea42fdbbfc87"
+    },
+    {
+      "path": "src/forecast_criteria.py",
+      "bytes": 1036,
+      "sha256": "8f2b6a88ef25d4c6069fbd9e1c9a1546628ed71969024e5283ae7f4712865172"
+    },
+    {
+      "path": "src/observation_quality.py",
+      "bytes": 7045,
+      "sha256": "1dae80f1fb7dec288712574a7d7afc1437e305c89644ae99efc53579d83df90d"
+    },
+    {
+      "path": "src/outage_targets.py",
+      "bytes": 4526,
+      "sha256": "fc7ad1bf66960e764ea7042eb3b2cabc2161d35ccb25bbedaa6a4874c0702462"
+    },
+    {
+      "path": "src/plotting.py",
+      "bytes": 1792,
+      "sha256": "1cca1c8071d5e8926e695a285f5b253ef9ea281e5cade2a84c5a96e7251c6e17"
+    },
+    {
+      "path": "tests/test_eda.py",
+      "bytes": 3708,
+      "sha256": "ab0928a598981ba9ff0bec0c57f529786cc8309a2c74c52304ff2664da8baede"
+    },
+    {
+      "path": "tests/test_forecast_criteria.py",
+      "bytes": 1759,
+      "sha256": "c1a7bd526e3000e2546e41bcfe5bfabe531e4dd9bc73dc9612a8022e6e8f6baa"
+    },
+    {
+      "path": "tests/test_observation_quality.py",
+      "bytes": 5161,
+      "sha256": "934979cc09d90424f688a0625238220d1a18a93674f4e9b2ec7e33771709ff73"
+    },
+    {
+      "path": "tests/test_outage_targets.py",
+      "bytes": 6492,
+      "sha256": "4df4c8078e952049cfd3d3968feb9ceaf878b69ef5bdcacb1b2ce89f57f45e78"
+    },
+    {
+      "path": "tests/test_summary_provenance.py",
+      "bytes": 1402,
+      "sha256": "bb7b2b44c7f51f6c3e12c0ac5507f2882f995dc3fde416e5150fc32c156877da"
+    }
+  ],
+  "python": "3.11.9",
+  "packages": {
+    "pandas": "3.1.0",
+    "numpy": "2.4.6",
+    "pyarrow": "25.0.1",
+    "duckdb": "2.0.0",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "ipykernel": "7.4.0",
+    "jupyter-client": "8.10.0"
+  },
+  "base_commit": "b17a249c9ebe784744e379b687c596bd3b81a73d",
+  "commit_note": "Working-tree handoff; base commit does not include uncommitted checkpoint work",
+  "semantics": "docs/eda_metadata.md",
+  "validation": "docs/eda_validation.json",
+  "reproducibility": "Source data hashes identify existing inputs; no data refresh is performed"
+}

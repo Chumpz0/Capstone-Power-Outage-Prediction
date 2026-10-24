@@ -2,6 +2,8 @@
 
 **Repository review · October 24, 2026**
 
+**Superseded for current findings:** See [the final EDA report](eda_report.md), [modeling criteria](modeling_criteria.md) and [metadata](eda_metadata.md). This document preserves the original review, including older counts and definitions.
+
 **Baseline snapshot:** This guide records the review before the notebook cleanup. The subsequent cleanup preserves unknown outcomes, uses observed-hour pre-event means, deduplicates grouped burden, and keeps NOAA episodes separate instead of merging narrative names. The notebooks now execute cleanly. Sections 8–11 describe the earlier behavior and rates; `data_audit.json` is refreshed from the revised shared code. See [notebook execution notes](../notebooks/README.md) for the current conventions.
 
 This project combines records of severe weather, county power outages, and county characteristics to study how outage severity varies around storms in Alabama, Florida, Georgia, North Carolina, South Carolina, and Tennessee.

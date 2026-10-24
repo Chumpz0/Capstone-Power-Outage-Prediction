@@ -2,7 +2,14 @@
 
 DSCI 4350 Data Science Operations & Engineering capstone, Georgia State University, Fall 2026.
 
-We predict how badly each county loses power when a severe storm hits: peak share of customers out, and whether the outage is "major". The study area is six Southeast states (AL, FL, GA, NC, SC, TN). We train on 2014–2023, validate on 2024 and test on 2025.
+The current baseline task is to predict each county's uncapped peak recorded customers out over the next **6 and 12 hours**, and whether that peak is **strictly greater than 5,000 customers**, for county preparation. The study area is 534 counties in AL, FL, GA, NC, SC and TN. Development uses 2014-2023, validation 2024 and historical test evaluation 2025; prior descriptive EDA exposure is documented.
+
+The EDA is ready for final review. Start with the [EDA report](docs/eda_report.md),
+[teammate handoff](docs/teammate_handoff.md), [modeling criteria](docs/modeling_criteria.md)
+and [metadata](docs/eda_metadata.md). Complete/unflagged labels cover only 7.70% / 4.74%
+of training-period 6/12-hour decisions, so initial model scores will describe only
+that small subset.
+No models have been trained in this EDA.
 
 ## Getting the data
 
@@ -26,7 +33,7 @@ The raw data is about 12 GB, so it is **not** stored in GitHub. One person build
    out = load_outages([2024], columns=["fips_code", "customers_out", "run_start_time"], states=["GA"])
    storms = load_storm_counties()
    ```
-   The loaders read `data/processed/` if you have a local copy, and stream from Hugging Face otherwise. One year of outages is 10M+ rows, so start with one year and only the columns you need.
+   The loaders read `data/processed/` if you have a local copy, and stream from Hugging Face otherwise. The local six-state annual outage files contain up to about 6 million rows, so start with one year and only the columns you need.
 
 **In Google Colab:** add your token as a Colab secret named `HF_TOKEN` (key icon in the left sidebar), then:
 ```python
@@ -88,9 +95,10 @@ data/                      git-ignored except data/README.md
 notebooks/                 EDA and modeling notebooks (add yours here)
 ```
 
-## Project plan (CRISP-DM sprints)
+## Current handoff status
 
-1. **Business + data understanding:** problem statement, data download, tools set up
-2. **Data preparation:** storm-to-outage join, data quality report, EDA → Checkpoint 1
-3. **Modeling + evaluation:** baselines, LightGBM/XGBoost, year-based validation, SHAP → Checkpoint 2
-4. **Tuning + deployment:** final 2025 test, Streamlit county risk map, final report
+Observation reliability, target sensitivity, geography dispositions and forecasting
+criteria are complete for EDA review. All four notebooks are executed; the report,
+source/derived metadata and reproducible commands are linked above. Model development
+belongs to the teammate; no algorithm is prescribed. Input latency, broad-population
+validation and acceptable false-alert rates remain unresolved.
