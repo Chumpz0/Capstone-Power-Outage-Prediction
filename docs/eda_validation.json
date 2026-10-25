@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "tests_command": "python -m unittest discover -s tests -v",
+  "tests": 23,
+  "notebooks": [
+    {
+      "notebook": "notebooks/01_quality_outages.ipynb",
+      "executed_code_cells": 22
+    },
+    {
+      "notebook": "notebooks/02_quality_storms.ipynb",
+      "executed_code_cells": 20
+    },
+    {
+      "notebook": "notebooks/03_eda_storm_outage.ipynb",
+      "executed_code_cells": 27
+    },
+    {
+      "notebook": "notebooks/04_eda_model_readiness.ipynb",
+      "executed_code_cells": 13
+    }
+  ],
+  "elapsed_seconds": 56.9,
+  "scope": "All notebooks re-executed, including previously exposed 2024/2025 descriptive EDA; forecast target rules remain training-only"
+}
