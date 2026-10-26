@@ -28,3 +28,6 @@ wandb/
 Thumbs.db
 .vscode/
 .idea/
+
+# Built report (machine-specific paths); the PDF is committed
+reports/EDA_report.html

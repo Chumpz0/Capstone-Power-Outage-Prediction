@@ -1,0 +1,8 @@
+check,passed
+one row per county x episode (all splits),True
+"no missing target (train, validation)",True
+target matches retro_peak_24h >= 5%,True
+no retro_ column among features,True
+test file holds no target,True
+split years don't overlap,True
+feature dictionary covers every column,True

@@ -21,6 +21,7 @@ Data: [EAGLE-I](https://figshare.com/articles/dataset/24237376) county outage sn
 | 03 EDA (training years only) | [03_eda](notebooks/03_eda.ipynb) | [summary](reports/03_eda_summary.md) | Done |
 | 04 Modeling table | [04_modeling_table](notebooks/04_modeling_table.ipynb) | [summary](reports/04_modeling_table_summary.md) | Done |
 | 05 Baseline models | [05_baseline_models](notebooks/05_baseline_models.ipynb) | | In progress (naive rules logged to W&B) |
+| 06 EDA of the ML-ready dataset | [06_ml_dataset_eda](notebooks/06_ml_dataset_eda.ipynb) | [summary](reports/06_ml_dataset_eda_summary.md) | Done: [EDA report (PDF)](reports/EDA_report.pdf), [dataset card](reports/dataset_card.md) |
 
 **Success criteria** were fixed before any model was trained: [reports/success_criteria.md](reports/success_criteria.md). The bar to beat is a no-ML rule (storm family rate × county history) with a 2024 PR-AUC of 0.469. Every model is logged to the Weights & Biases team project **CAPSTONE MODEL** (`leslie-ortega-us-georgia-state-university`), with the shared checks in [src/evaluation.py](src/evaluation.py).
 
@@ -29,8 +30,9 @@ Each step has a notebook with commented code, and a summary in `reports/` laid o
 ## Repo layout
 
 ```
-notebooks/                 one notebook per step, run in order (01 -> 05)
+notebooks/                 one notebook per step (01 -> 04 build the data, 05 models, 06 profiles the ML-ready table)
 src/evaluation.py          shared success-criteria checks + W&B logging (used from step 05)
+scripts/build_eda_report.py  renders reports/eda_report.md + dataset_card.md to reports/EDA_report.pdf
 reports/                   step summaries, success criteria
 reports/figures/           EDA charts
 reports/*_tables/          small CSV result and check tables written by the notebooks
