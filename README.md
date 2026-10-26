@@ -50,11 +50,28 @@ Select the `.venv` interpreter as the Jupyter kernel.
 
 ## Data
 
-The data is about 20 GB, so it isn't stored in GitHub. **A Hugging Face dataset is coming next**, so teammates won't need to rebuild anything. Until then, notebooks 01–02 expect these files under `data/`:
+The data isn't stored in GitHub. It lives in the private Hugging Face dataset **[DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data)** (5.3 GB), laid out like this repo (`data/`, `processed/`, `holdout/`).
+
+**You don't have to download anything.** Each notebook reads a file from the repo if it's there, and otherwise streams it from Hugging Face. You only need access to the `DSCI-Capstone` org and a one-time login:
+
+```bash
+hf auth login     # paste a Read token from huggingface.co/settings/tokens
+```
+
+To work offline or faster, download what you need into the repo root. The notebooks then read the local copy:
+
+```bash
+hf download DSCI-Capstone/county-outage-data --repo-type dataset --local-dir . --include "processed/*"   # EDA + modeling (4.2 GB)
+hf download DSCI-Capstone/county-outage-data --repo-type dataset --local-dir . --include "data/*"        # raw inputs for 01-02 (0.7 GB)
+```
+
+`holdout/test_labels.parquet` holds the 2025 test labels. **Don't download or open it until the final evaluation.**
+
+The two big CSVs are stored as Parquet on Hugging Face, with every column still text (a lossless copy). Notebooks 01–02 read the CSV when it's there, and otherwise the Parquet:
 
 ```
-data/02_combined/eaglei_outages_2014_2025.csv          EAGLE-I yearly files combined (13 GB)
-data/02_combined/storm_events_details_all_years.csv    NOAA Storm Events details, 2014-2025
+data/02_combined/eaglei_outages_2014_2025.csv          EAGLE-I yearly files combined (13 GB)  -> HF: data/02_combined/eaglei_outages/SOURCE_YEAR=*/
+data/02_combined/storm_events_details_all_years.csv    NOAA Storm Events details, 2014-2025   -> HF: data/02_combined/storm_events_details_all_years.parquet
 data/01_raw/census_counties/co-est2023-alldata.csv     Census county population, Vintage 2023
 data/reference/eaglei_archive/MCC.csv                  EAGLE-I modeled customers per county
 data/reference/eaglei_archive/DQI.csv                  EAGLE-I data quality index
@@ -63,11 +80,11 @@ data/reference/nws_zone_county_versions.parquet        dated NWS forecast-zone -
 data/reference/ct_region_to_county_weights.csv         Connecticut planning region -> county weights
 ```
 
-Running the notebooks in order rebuilds `work/` (~2 min) and `processed/` (~20 min), then the EDA and the modeling table (under a minute each).
+Running the notebooks in order rebuilds `work/` (~2 min) and `processed/` (~20 min), then the EDA and the modeling table (under a minute each). Outputs are always written locally.
 
 Modeling table outputs (`processed/model_table/`):
 - `train.parquet`, `validation.parquet`
-- `test_features.parquet`, and test labels kept separately in `test_labels.parquet`
+- `test_features.parquet`. Notebook 04 writes the test labels to a separate `test_labels.parquet` (on Hugging Face it sits in `holdout/`)
 
 ## Things to know about the data
 
@@ -79,7 +96,7 @@ Modeling table outputs (`processed/model_table/`):
 ## Roadmap
 
 1. ~~Repo refactor to this structure~~ (this branch)
-2. Host the data on Hugging Face
+2. ~~Host the data on Hugging Face~~ ([DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data))
 3. Weights & Biases experiment tracking
 4. Align with the course checkpoint expectations
 5. Baseline models: logistic regression, then gradient boosting, judged against [success criteria](reports/success_criteria.md)

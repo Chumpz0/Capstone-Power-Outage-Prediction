@@ -1,7 +1,8 @@
-# Data is too large for GitHub (~20 GB). It will be shared through Hugging Face.
+# Data is too large for GitHub. It is shared through the Hugging Face dataset DSCI-Capstone/county-outage-data.
 data/
 processed/
 work/
+holdout/
 *.parquet
 *.duckdb
 *.duckdb.wal
