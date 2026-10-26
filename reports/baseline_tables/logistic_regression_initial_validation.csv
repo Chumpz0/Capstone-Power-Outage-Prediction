@@ -1,0 +1,2 @@
+rule,pr_auc,roc_auc,brier,brier_skill,recall_top10,precision_top10,features,train_years,validation_year
+logistic_regression,0.3635761003485808,0.6599559274603474,0.12542230962856923,0.08886516234906328,0.2423828125,0.3994206630189894,"month, local_hour, pre_peak_24h, pct_out_at_start",2017–2023,2024
