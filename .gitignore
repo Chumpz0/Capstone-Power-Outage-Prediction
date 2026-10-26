@@ -1,9 +1,12 @@
-# Data is too large for GitHub - everyone rebuilds it with scripts/download_data.py
-data/raw/
-data/processed/
+# Data is too large for GitHub (~20 GB). It will be shared through Hugging Face.
+data/
+processed/
+work/
 *.parquet
-*.part
+*.duckdb
+*.duckdb.wal
 *.csv.gz
+*.zip
 
 # Python
 __pycache__/
@@ -14,13 +17,13 @@ env/
 .ipynb_checkpoints/
 
 # Experiment tracking
-mlruns/
-mlartifacts/
 wandb/
+
+# Secrets
+.env
 
 # OS / editor
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
-.env

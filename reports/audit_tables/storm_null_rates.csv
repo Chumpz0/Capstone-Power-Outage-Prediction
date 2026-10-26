@@ -1,0 +1,53 @@
+,pct_null_all_rows,applies_to,pct_null_where_applies,drop_candidate
+SOURCE_YEAR,0.0,,0.0,False
+BEGIN_YEARMONTH,0.0,,0.0,False
+BEGIN_DAY,0.0,,0.0,False
+BEGIN_TIME,0.0,,0.0,False
+END_YEARMONTH,0.0,,0.0,False
+END_DAY,0.0,,0.0,False
+END_TIME,0.0,,0.0,False
+EPISODE_ID,0.0,,0.0,False
+EVENT_ID,0.0,,0.0,False
+STATE,0.0,,0.0,False
+STATE_FIPS,0.0,,0.0,False
+YEAR,0.0,,0.0,False
+MONTH_NAME,0.0,,0.0,False
+EVENT_TYPE,0.0,,0.0,False
+CZ_TYPE,0.0,,0.0,False
+CZ_FIPS,0.0,,0.0,False
+CZ_NAME,0.0,,0.0,False
+WFO,0.0,,0.0,False
+BEGIN_DATE_TIME,0.0,,0.0,False
+CZ_TIMEZONE,0.0,,0.0,False
+END_DATE_TIME,0.0,,0.0,False
+INJURIES_DIRECT,0.0,,0.0,False
+INJURIES_INDIRECT,0.0,,0.0,False
+DEATHS_DIRECT,0.0,,0.0,False
+DEATHS_INDIRECT,0.0,,0.0,False
+DAMAGE_PROPERTY,20.62,,20.62,False
+DAMAGE_CROPS,20.48,,20.48,False
+SOURCE,0.0,,0.0,False
+MAGNITUDE,47.9,"EVENT_TYPE IN ('Thunderstorm Wind','Hail','High Wind','Strong Wind','Marine Thunderstorm Wind','Marine High Wind','Marine Hail','Marine Strong Wind')",0.0,False
+MAGNITUDE_TYPE,61.82,"EVENT_TYPE IN ('Thunderstorm Wind','High Wind','Strong Wind','Marine Thunderstorm Wind','Marine High Wind','Marine Strong Wind')",0.0,False
+FLOOD_CAUSE,89.17,"EVENT_TYPE IN ('Flood','Flash Flood','Debris Flow')",0.0,False
+CATEGORY,99.95,EVENT_TYPE = 'Hurricane (Typhoon)',0.0,False
+TOR_F_SCALE,97.72,EVENT_TYPE = 'Tornado',0.0,False
+TOR_LENGTH,97.72,EVENT_TYPE = 'Tornado',0.0,False
+TOR_WIDTH,97.72,EVENT_TYPE = 'Tornado',0.0,False
+TOR_OTHER_WFO,99.69,EVENT_TYPE = 'Tornado',86.42,True
+TOR_OTHER_CZ_STATE,99.69,EVENT_TYPE = 'Tornado',86.42,True
+TOR_OTHER_CZ_FIPS,99.69,EVENT_TYPE = 'Tornado',86.43,True
+TOR_OTHER_CZ_NAME,99.69,EVENT_TYPE = 'Tornado',86.43,True
+BEGIN_RANGE,38.89,CZ_TYPE = 'C',0.04,False
+BEGIN_AZIMUTH,38.89,CZ_TYPE = 'C',0.04,False
+BEGIN_LOCATION,38.89,CZ_TYPE = 'C',0.04,False
+END_RANGE,38.89,CZ_TYPE = 'C',0.04,False
+END_AZIMUTH,38.89,CZ_TYPE = 'C',0.04,False
+END_LOCATION,38.89,CZ_TYPE = 'C',0.04,False
+BEGIN_LAT,38.89,CZ_TYPE = 'C',0.04,False
+BEGIN_LON,38.89,CZ_TYPE = 'C',0.04,False
+END_LAT,38.89,CZ_TYPE = 'C',0.04,False
+END_LON,38.89,CZ_TYPE = 'C',0.04,False
+EPISODE_NARRATIVE,0.0,,0.0,False
+EVENT_NARRATIVE,20.25,,20.25,False
+DATA_SOURCE,0.0,,0.0,False

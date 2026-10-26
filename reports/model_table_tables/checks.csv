@@ -1,0 +1,8 @@
+check,passed
+one row per county x episode,True
+target has no nulls,True
+only lower 48 + DC,True
+"peak % out within [0, 1]",True
+splits do not share years,True
+no retro_ column among features,True
+history uses no own-year label (train),True
