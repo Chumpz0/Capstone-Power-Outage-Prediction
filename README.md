@@ -20,16 +20,17 @@ Data: [EAGLE-I](https://figshare.com/articles/dataset/24237376) county outage sn
 | 02 Data prep | [02_data_prep](notebooks/02_data_prep.ipynb) | [summary](reports/02_data_prep_summary.md) | Done |
 | 03 EDA (training years only) | [03_eda](notebooks/03_eda.ipynb) | [summary](reports/03_eda_summary.md) | Done |
 | 04 Modeling table | [04_modeling_table](notebooks/04_modeling_table.ipynb) | [summary](reports/04_modeling_table_summary.md) | Done |
-| 05 Baseline models | | | Next |
+| 05 Baseline models | [05_baseline_models](notebooks/05_baseline_models.ipynb) | | In progress (naive rules logged to W&B) |
 
-**Success criteria** were fixed before any model was trained: [reports/success_criteria.md](reports/success_criteria.md). The bar to beat is a no-ML rule (storm family rate × county history) with a 2024 PR-AUC of 0.472.
+**Success criteria** were fixed before any model was trained: [reports/success_criteria.md](reports/success_criteria.md). The bar to beat is a no-ML rule (storm family rate × county history) with a 2024 PR-AUC of 0.469. Every model is logged to the Weights & Biases team project **CAPSTONE MODEL** (`leslie-ortega-us-georgia-state-university`), with the shared checks in [src/evaluation.py](src/evaluation.py).
 
 Each step has a notebook with commented code, and a summary in `reports/` laid out as **[GOAL] – [FINDINGS] – [NEXT STEPS]**. Start with the summaries.
 
 ## Repo layout
 
 ```
-notebooks/                 one notebook per step, run in order (01 -> 04)
+notebooks/                 one notebook per step, run in order (01 -> 05)
+src/evaluation.py          shared success-criteria checks + W&B logging (used from step 05)
 reports/                   step summaries, success criteria
 reports/figures/           EDA charts
 reports/*_tables/          small CSV result and check tables written by the notebooks
@@ -97,6 +98,6 @@ Modeling table outputs (`processed/model_table/`):
 
 1. ~~Repo refactor to this structure~~ (this branch)
 2. ~~Host the data on Hugging Face~~ ([DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data))
-3. Weights & Biases experiment tracking
+3. ~~Weights & Biases experiment tracking~~ (team project CAPSTONE MODEL)
 4. Align with the course checkpoint expectations
 5. Baseline models: logistic regression, then gradient boosting, judged against [success criteria](reports/success_criteria.md)

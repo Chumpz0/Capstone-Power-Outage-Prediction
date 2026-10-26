@@ -10,12 +10,19 @@ Unit and target: county × storm episode, positive = ≥5% of customers out with
 
 | Naive rule | PR-AUC | ROC-AUC | Brier | Recall @ top 10% |
 |---|---|---|---|---|
-| Always predict the training rate (14.1%) | 0.165 | 0.50 | 0.138 | n/a |
-| Storm family rate | 0.312 | 0.72 | 0.125 | n/a |
-| County history rate | 0.368 | 0.75 | 0.124 | n/a |
-| **Storm family rate × county history** (reference) | **0.472** | **0.81** | **0.112** | **32.6%** |
+| Always predict the training rate (14.1%) | 0.165 | 0.50 | 0.138 | 9.3% |
+| Storm family rate | 0.312 | 0.72 | 0.125 | 23.2% |
+| County history rate | 0.368 | 0.75 | 0.124 | 26.9% |
+| **Storm family rate × county history** (reference) | **0.469** | **0.80** | **0.112** | **32.6%** |
 
 Validation positive rate is 16.5%. The Brier score of always predicting that rate is 0.138.
+
+How the rules are computed (code: `naive_rules()` in [src/evaluation.py](../src/evaluation.py), run in notebook 05). All rates come from training rows only.
+- **Storm family rate:** the highest training outage rate among the storm families present in the episode.
+- **County history rate:** `hist_outage_rate`.
+- **Reference:** family rate × county history ÷ training rate, clipped to [0, 1].
+
+> **Correction (2026-10-25, before any model was trained):** the reference row first said PR-AUC 0.472 and ROC-AUC 0.81. That came from an ad-hoc calculation that wasn't saved as code and can't be reproduced exactly. The reproducible rule above gives 0.469 and 0.80, with the same Brier, Brier skill and recall. The targets below are unchanged.
 
 ---
 
@@ -23,7 +30,7 @@ Validation positive rate is 16.5%. The Brier score of always predicting that rat
 
 | # | Criterion | Target | Reference rule |
 |---|---|---|---|
-| 1 | **Ranking:** PR-AUC on validation | **≥ 0.52**, and the 95% bootstrap CI of the gain over the reference rule (resampled by storm episode) stays above 0 | 0.472 |
+| 1 | **Ranking:** PR-AUC on validation | **≥ 0.52**, and the 95% bootstrap CI of the gain over the reference rule (resampled by storm episode) stays above 0 | 0.469 |
 | 2 | **Calibration:** Brier skill score vs always predicting the base rate | **≥ 0.25** | 0.19 |
 | 2b | Mean prediction vs observed rate | within **±2 points** overall, and within **±5 points** in each predicted-probability decile | n/a |
 | 3 | **No hidden failures** | PR-AUC above the storm-family-rate rule **within each major storm family** (thunderstorm wind, winter, high wind, hail, flood, tornado) **and each FEMA region** | n/a |
