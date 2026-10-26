@@ -2,13 +2,14 @@
 # The checks follow reports/success_criteria.md, so every model is judged the same way.
 # Nothing here uploads data: W&B only receives metrics, small summary tables and charts.
 import hashlib
+import os
 import subprocess
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.metrics import average_precision_score, brier_score_loss, precision_recall_curve, roc_auc_score
+from sklearn.metrics import average_precision_score, brier_score_loss, log_loss, precision_recall_curve, roc_auc_score
 
 ROOT = Path(__file__).resolve().parent.parent
 WANDB_ENTITY = "leslie-ortega-us-georgia-state-university"
@@ -132,6 +133,7 @@ def evaluate(frame, p, train, p_ref=None):
         "roc_auc": roc_auc_score(y, p),
         "brier": brier,
         "brier_skill": 1 - brier / brier_base,
+        "log_loss": log_loss(y, np.clip(p, 1e-6, 1 - 1e-6)),   # the loss both models train on (reported, not pass/fail)
         "cal_overall_pts": 100 * (p.mean() - y.mean()),
         "cal_worst_decile_pts": deciles["gap_pts"].abs().max(),
         "recall_top10": recall_at_top(y, p),
@@ -202,14 +204,16 @@ def git_commit():
         return "unknown"
 
 
-def log_run(name, job_type, frame, p, train, config, p_ref=None, data_paths=()):
-    """Evaluate predictions, then log metrics, tables and charts to W&B as one run. Returns (metrics, tables, url)."""
+def log_run(name, job_type, frame, p, train, config, p_ref=None, data_paths=(), extra_summary=None):
+    """Evaluate predictions, then log metrics, tables and charts to W&B as one run. Returns (metrics, tables, url).
+    extra_summary: other values to show with the metrics (e.g. fit time)."""
+    os.environ.setdefault("WANDB_SILENT", "true")   # keep notebook / console output short; the run url is returned
     import wandb
 
     metrics, tables = evaluate(frame, p, train, p_ref=p_ref)
     cfg = {**config, "git_commit": git_commit(), **data_version(data_paths), "eval_split": "validation_2024"}
     run = wandb.init(entity=WANDB_ENTITY, project=WANDB_PROJECT, name=name, job_type=job_type, config=cfg, reinit="finish_previous")
-    run.summary.update(metrics)
+    run.summary.update({**metrics, **(extra_summary or {})})
     for tname, t in tables.items():
         run.log({tname: wandb.Table(dataframe=t)})
     y = frame["target"].to_numpy()

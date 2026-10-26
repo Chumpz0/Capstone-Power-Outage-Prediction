@@ -31,7 +31,11 @@ Each step has a notebook with commented code, and a summary in `reports/` laid o
 
 ```
 notebooks/                 one notebook per step (01 -> 04 build the data, 05 models, 06 profiles the ML-ready table)
+src/data.py                data_path(): local file if present, otherwise streamed from Hugging Face; model-table loader
+src/features.py            the feature list, excluded features (with reasons), preprocessing groups
+src/models.py              logistic regression + gradient boosting pipelines, run_experiment()
 src/evaluation.py          shared success-criteria checks + W&B logging (used from step 05)
+scripts/train.py           train one model and log it:  python scripts/train.py --model hgb --learning-rate 0.05
 scripts/build_eda_report.py  renders reports/eda_report.md + dataset_card.md to reports/EDA_report.pdf
 reports/                   step summaries, success criteria
 reports/figures/           EDA charts
