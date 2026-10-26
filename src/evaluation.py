@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 WANDB_ENTITY = "leslie-ortega-us-georgia-state-university"
 WANDB_PROJECT = "CAPSTONE MODEL"
 HF_DATASET = "DSCI-Capstone/county-outage-data"
-HF_REVISION = "0377274dfb5c36a3116346ef05449862bd19219f"  # dataset commit the model table was downloaded from
+HF_REVISION = "5c01325258aa922bf395da1e39acda7c234fefcf"  # dataset commit the model table was downloaded from
 
 # Storm families as in the modeling table (n_<family> = report count in the episode)
 FAMILIES = ["tstm_wind", "hail", "tornado", "high_wind", "flood", "winter", "ice_storm",
