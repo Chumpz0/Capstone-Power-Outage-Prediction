@@ -56,7 +56,7 @@ Split: train 2017–2023, validation 2024, test 2025 (by the year of the episode
   - Validation and test rows get county history from all training years.
   - Training rows get history from the *other* training years, so a row never sees its own label.
   - History correlates 0.30 with the target in training and 0.34 in validation. If history were leaking labels, training would score higher, so this pattern is reassuring.
-  - Columns known only after the window (`retro_peak_24h`, `retro_peak_customers_out`, `retro_hour_of_peak`) are kept for analysis only, never as inputs.
+  - Columns known only after the window (`retro_peak_24h`, `retro_peak_customers_out`, `retro_hour_of_peak`) are kept for analysis only, never as inputs. When several hours tie for the peak (~19% of rows), `retro_hour_of_peak` is the earliest one.
 - **Gaps:**
   - Max wind exists for 41% of rows and max hail for 13% (only those storm types report them).
   - Hurricane category is almost always empty.
