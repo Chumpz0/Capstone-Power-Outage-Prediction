@@ -1,9 +1,13 @@
-# Data is too large for GitHub - everyone rebuilds it with scripts/download_data.py
-data/raw/
-data/processed/
+# Data is too large for GitHub. It is shared through the Hugging Face dataset DSCI-Capstone/county-outage-data.
+data/
+processed/
+work/
+holdout/
 *.parquet
-*.part
+*.duckdb
+*.duckdb.wal
 *.csv.gz
+*.zip
 
 # Python
 __pycache__/
@@ -14,13 +18,16 @@ env/
 .ipynb_checkpoints/
 
 # Experiment tracking
-mlruns/
-mlartifacts/
 wandb/
+
+# Secrets
+.env
 
 # OS / editor
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
-.env
+
+# Built report (machine-specific paths); the PDF is committed
+reports/EDA_report.html

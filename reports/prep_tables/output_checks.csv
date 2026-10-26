@@ -1,0 +1,13 @@
+check,value
+outages_15min: duplicate fips+ts,0
+outages_15min: rows with customers_out <= 0,0
+outages_15min: rows with pct_out > 1,0
+outages_15min: rows off the 15-min grid,0
+outages_15min: fips not in county lookup,0
+outages_15min: CT planning-region codes left,0
+outages_hourly: duplicate fips+hour,0
+observed_daily: duplicate fips+day,0
+storm_events_clean: duplicate event_id,0
+storm_events_clean: end before begin,0
+storm_county: duplicate event_id+fips,0
+storm_county: fips not in county lookup,122

@@ -1,0 +1,18 @@
+event_type,events,pct_peak_ge_1pct,pct_baseline_ge_1pct,median_peak_pct
+Thunderstorm Wind,75036,71.0,12.1,3.1
+Hail,32341,44.2,9.5,0.69
+Flash Flood,15299,48.5,14.6,0.94
+Flood,8174,36.6,13.0,0.47
+Tornado,6074,70.7,9.0,4.0
+Heavy Rain,3111,32.0,8.7,0.41
+Lightning,931,46.2,13.2,0.84
+Funnel Cloud,738,30.5,8.7,0.25
+Debris Flow,361,33.8,14.4,0.44
+Winter Storm,46,28.3,2.2,0.17
+Dust Devil,17,17.6,5.9,0.17
+Heavy Snow,4,25.0,75.0,0.41
+High Wind,3,33.3,33.3,0.43
+Heat,2,0.0,0.0,0.76
+Dust Storm,2,0.0,0.0,0.79
+Strong Wind,2,0.0,0.0,0.12
+Wildfire,1,0.0,0.0,0.19

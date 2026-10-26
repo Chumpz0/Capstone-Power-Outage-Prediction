@@ -1,0 +1,55 @@
+event_type,events,pct_county_coded,pct_with_magnitude,pct_with_damage
+Thunderstorm Wind,209029,100.0,100.0,53.4
+Hail,107058,100.0,100.0,8.5
+Flash Flood,49149,100.0,0.0,33.7
+Winter Weather,45427,0.0,0.0,3.2
+High Wind,44413,0.0,100.0,13.1
+Drought,37092,0.0,0.0,0.7
+Winter Storm,35212,0.0,0.0,6.8
+Flood,32714,100.0,0.0,22.9
+Marine Thunderstorm Wind,27428,0.0,100.0,0.2
+Heavy Snow,26492,0.0,0.0,2.4
+Heat,18371,0.0,0.0,0.0
+Tornado,17553,100.0,0.0,56.4
+Heavy Rain,16056,100.0,0.0,3.5
+Excessive Heat,15375,0.0,0.0,0.1
+Strong Wind,12805,0.0,100.0,91.9
+Extreme Cold/Wind Chill,11247,0.0,0.0,2.2
+Dense Fog,8458,0.0,0.0,1.5
+Cold/Wind Chill,7383,0.0,0.0,1.5
+Frost/Freeze,6507,0.0,0.0,0.3
+Blizzard,6501,0.0,0.0,4.7
+High Surf,4404,0.0,0.0,1.2
+Wildfire,4041,0.0,0.0,25.1
+Lightning,3905,100.0,0.0,82.4
+Funnel Cloud,3264,100.0,0.0,0.1
+Tropical Storm,3216,0.0,0.0,50.4
+Coastal Flood,2804,0.0,0.0,13.8
+Ice Storm,2765,0.0,0.0,27.0
+Waterspout,2368,0.0,0.0,0.4
+Debris Flow,1662,100.0,0.0,37.0
+Dust Storm,1342,0.0,0.0,8.0
+Lake-Effect Snow,1283,0.0,0.0,33.7
+Rip Current,982,0.0,0.0,0.0
+Marine High Wind,711,0.0,100.0,1.4
+Marine Tropical Storm,592,0.0,0.0,0.0
+Storm Surge/Tide,494,0.0,0.0,28.1
+Astronomical Low Tide,413,0.0,0.0,1.0
+Avalanche,386,0.0,0.0,6.8
+Hurricane (Typhoon),385,0.0,0.0,77.6
+Sleet,334,0.0,0.0,29.1
+Lakeshore Flood,317,0.0,0.0,41.5
+Marine Hail,312,0.0,100.0,0.0
+Tropical Depression,239,0.0,0.0,28.1
+Freezing Fog,184,0.0,0.0,10.5
+Dense Smoke,129,0.0,0.0,0.8
+Marine Hurricane/Typhoon,96,0.0,0.0,1.1
+Marine Strong Wind,85,0.0,100.0,66.7
+Dust Devil,83,100.0,0.0,66.2
+Volcanic Ashfall,73,0.0,0.0,0.0
+Sneakerwave,59,0.0,0.0,1.7
+Marine Tropical Depression,31,0.0,0.0,0.0
+Seiche,31,0.0,0.0,48.0
+Tsunami,20,0.0,0.0,33.3
+Marine Dense Fog,20,0.0,0.0,13.3
+Marine Lightning,2,0.0,0.0,50.0

@@ -1,0 +1,6 @@
+step,rows
+storm x county rows (notebook 02),643757
+after lower 48 + DC filter,629256
+after dropping drought / heat,558402
+county x episode rows,298398
+after observed filter (final rows),271644

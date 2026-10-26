@@ -1,0 +1,59 @@
+column,tag,pct_null_all_rows,pct_null_where_applies,drop_candidate
+fips_code,location,,,
+county,location,,,
+state,location,,,
+customers_out,outage target,,,
+total_customers,outage target (denominator),,,
+run_start_time,time,,,
+SOURCE_YEAR,time,0.0,0.0,False
+BEGIN_YEARMONTH,time,0.0,0.0,False
+BEGIN_DAY,time,0.0,0.0,False
+BEGIN_TIME,time,0.0,0.0,False
+END_YEARMONTH,time,0.0,0.0,False
+END_DAY,time,0.0,0.0,False
+END_TIME,time,0.0,0.0,False
+BEGIN_DATE_TIME,time,0.0,0.0,False
+END_DATE_TIME,time,0.0,0.0,False
+CZ_TIMEZONE,time,0.0,0.0,False
+YEAR,time,0.0,0.0,False
+MONTH_NAME,time,0.0,0.0,False
+EPISODE_ID,id,0.0,0.0,False
+EVENT_ID,id,0.0,0.0,False
+DATA_SOURCE,id,0.0,0.0,False
+STATE,location,0.0,0.0,False
+STATE_FIPS,location,0.0,0.0,False
+CZ_TYPE,location,0.0,0.0,False
+CZ_FIPS,location,0.0,0.0,False
+CZ_NAME,location,0.0,0.0,False
+WFO,location,0.0,0.0,False
+BEGIN_LAT,location,38.89,0.04,False
+BEGIN_LON,location,38.89,0.04,False
+END_LAT,location,38.89,0.04,False
+END_LON,location,38.89,0.04,False
+BEGIN_RANGE,location,38.89,0.04,False
+BEGIN_AZIMUTH,location,38.89,0.04,False
+BEGIN_LOCATION,location,38.89,0.04,False
+END_RANGE,location,38.89,0.04,False
+END_AZIMUTH,location,38.89,0.04,False
+END_LOCATION,location,38.89,0.04,False
+TOR_OTHER_WFO,location,99.69,86.42,True
+TOR_OTHER_CZ_STATE,location,99.69,86.42,True
+TOR_OTHER_CZ_FIPS,location,99.69,86.43,True
+TOR_OTHER_CZ_NAME,location,99.69,86.43,True
+EVENT_TYPE,storm (observed),0.0,0.0,False
+MAGNITUDE,storm (observed),47.9,0.0,False
+MAGNITUDE_TYPE,storm (observed),61.82,0.0,False
+CATEGORY,storm (observed),99.95,0.0,False
+FLOOD_CAUSE,storm (observed),89.17,0.0,False
+TOR_F_SCALE,leakage (rated after survey),97.72,0.0,False
+TOR_LENGTH,leakage (measured after),97.72,0.0,False
+TOR_WIDTH,leakage (measured after),97.72,0.0,False
+SOURCE,leakage (report source),0.0,0.0,False
+INJURIES_DIRECT,leakage,0.0,0.0,False
+INJURIES_INDIRECT,leakage,0.0,0.0,False
+DEATHS_DIRECT,leakage,0.0,0.0,False
+DEATHS_INDIRECT,leakage,0.0,0.0,False
+DAMAGE_PROPERTY,leakage,20.62,20.62,False
+DAMAGE_CROPS,leakage,20.48,20.48,False
+EPISODE_NARRATIVE,leakage (free text),0.0,0.0,False
+EVENT_NARRATIVE,leakage (free text),20.25,20.25,False

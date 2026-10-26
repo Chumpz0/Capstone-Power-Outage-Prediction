@@ -1,0 +1,47 @@
+column,group,unit,dtype,description,model_input,missing_pct_train,missing_pct_val,missing_pct_test,distinct,mean,std,min,p25,median,p75,p99,max,share_zero
+fips,id,text,str,5-digit county FIPS code (Census 2023),False,0.0,0.0,0.0,3073.0,,,,,,,,,
+episode_id,id,integer,int64,NOAA Storm Events EPISODE_ID (one storm system),False,0.0,0.0,0.0,54580.0,,,,,,,,,
+state_abbr,id,text,str,State postal code (lower 48 + DC),False,0.0,0.0,0.0,49.0,,,,,,,,,
+fema_region,id,1-10,int64,FEMA region of the county,False,0.0,0.0,0.0,10.0,,,,,,,,,
+year,id,year,int64,"UTC year of t0; sets the split (train 2017-2023, validation 2024, test 2025)",False,0.0,0.0,0.0,7.0,,,,,,,,,
+t0,id,UTC time,datetime64[us],Begin time of the episode's first report in this county,False,0.0,0.0,0.0,119453.0,,,,,,,,,
+n_events,storm,count,int64,Storm reports in this county during the episode (drought/heat excluded),True,0.0,0.0,0.0,,1.876291478401013,2.1081716957474503,1.0,1.0,1.0,2.0,10.0,83.0,0.0
+n_tstm_wind,storm,count,int64,Reports of type Thunderstorm Wind,True,0.0,0.0,0.0,,0.5612139177482948,1.3783550919803453,0.0,0.0,0.0,1.0,6.0,60.0,0.712766569775808
+n_hail,storm,count,int64,Reports of type Hail,True,0.0,0.0,0.0,,0.2571540948379237,1.0137448218551786,0.0,0.0,0.0,0.0,4.0,57.0,0.8719265931831045
+n_tornado,storm,count,int64,Reports of type Tornado or Funnel Cloud,True,0.0,0.0,0.0,,0.05378881630068783,0.3255898641211088,0.0,0.0,0.0,0.0,1.0,35.0,0.9610997592118264
+n_high_wind,storm,count,int64,Reports of type High Wind or Strong Wind,True,0.0,0.0,0.0,,0.20498172504101073,0.9285389557077232,0.0,0.0,0.0,0.0,3.0,83.0,0.8750539614930786
+n_flood,storm,count,int64,"Flash Flood, Flood, Heavy Rain, Coastal/Lakeshore Flood, Storm Surge/Tide, Debris Flow",True,0.0,0.0,0.0,,0.26807590103702,1.0516026765222537,0.0,0.0,0.0,0.0,4.0,68.0,0.8580884680691858
+n_winter,storm,count,int64,"Winter Weather, Winter Storm, Heavy Snow, Blizzard, Lake-Effect Snow, Sleet",True,0.0,0.0,0.0,,0.37755777477192276,0.8910856255768054,0.0,0.0,0.0,1.0,4.0,35.0,0.7351809748563425
+n_ice_storm,storm,count,int64,Reports of type Ice Storm,True,0.0,0.0,0.0,,0.008394010034439424,0.10763493238809267,0.0,0.0,0.0,0.0,0.0,12.0,0.9924501875461671
+n_tropical,storm,count,int64,"Tropical Storm, Hurricane (Typhoon), Tropical Depression",True,0.0,0.0,0.0,,0.012303220421906928,0.13998654556869894,0.0,0.0,0.0,0.0,0.0,10.0,0.9902677449372128
+n_cold,storm,count,int64,"Extreme Cold/Wind Chill, Cold/Wind Chill, Frost/Freeze",True,0.0,0.0,0.0,,0.06258094223961781,0.3066512334079196,0.0,0.0,0.0,0.0,1.0,12.0,0.9495112287871375
+n_lightning,storm,count,int64,Reports of type Lightning,True,0.0,0.0,0.0,,0.009746644794274806,0.11223549576172892,0.0,0.0,0.0,0.0,0.0,8.0,0.9912942124499957
+n_wildfire,storm,count,int64,Reports of type Wildfire,True,0.0,0.0,0.0,,0.01964198348058825,0.15836458232777376,0.0,0.0,0.0,0.0,1.0,7.0,0.9821327500695504
+n_other,storm,count,int64,"Any other event type (e.g. Dense Fog, Rip Current, Dust Storm)",True,0.0,0.0,0.0,,0.04085244769332604,0.2544782608865942,0.0,0.0,0.0,0.0,1.0,11.0,0.9668604483840332
+n_county_coded,storm,count,int64,Reports NOAA located by county (CZ_TYPE = C),True,0.0,0.0,0.0,,1.1394604810007578,2.06117810735334,0.0,0.0,1.0,1.0,9.0,68.0,0.4882963517234102
+n_zone_coded,storm,count,int64,"Reports issued for an NWS forecast zone, mapped to counties with the dated crosswalk",True,0.0,0.0,0.0,,0.7368309974002551,1.291641953088791,0.0,0.0,0.0,1.0,5.0,83.0,0.5003549467100277
+share_zone_coded,storm,0-1,float64,n_zone_coded / n_events,True,0.0,0.0,0.0,,0.49353549266371244,0.497609596530879,0.0,0.0,0.0,1.0,1.0,1.0,0.5003549467100277
+any_partial_county,storm,boolean,bool,At least one zone report whose zone covers only part of the county,True,0.0,0.0,0.0,,0.21646473076812386,0.4118356039030322,0.0,0.0,0.0,0.0,1.0,1.0,0.7835352692318761
+max_wind_kts,storm,knots,float64,Highest wind magnitude among the reports (measured or estimated); empty if none reported,True,59.048263159409444,55.565928405871745,57.60483519222382,,54.03195239935814,8.930756945770096,5.0,50.0,52.0,56.0,84.0,173.0,0.0
+max_hail_in,storm,inches,float64,Largest hail size among Hail reports; empty if no hail,True,87.19265931831045,87.08472830285862,88.0085986665836,,1.2900966255945467,0.5683854639300384,0.13,1.0,1.0,1.5,3.0,6.42,0.0
+max_hurricane_cat,storm,0-5,Int32,Highest Saffir-Simpson category reported; almost always empty,True,99.92181579225064,99.81006953386556,100.0,,1.7607361963190185,1.0647804841190278,1.0,1.0,1.0,2.0,4.0,5.0,0.0
+county_episode_hours,storm,hours,float64,First report begin to last report end in this county,True,0.0,0.0,0.0,,19.078825829887794,67.68298212488854,0.0,0.13333333333333333,4.0,15.0,367.5783333333345,743.9833333333333,0.16374075459751922
+episode_counties,storm,count,int64,Counties touched by the whole episode (storm-system size),True,0.0,0.0,0.0,,9.702947976324095,9.029104163995306,1.0,3.0,7.0,13.0,41.0,96.0,0.0
+log_episode_counties,storm,log10,float64,log10(episode_counties),True,0.0,0.0,0.0,,0.807478510976926,0.41886161197501726,0.0,0.47712125471966244,0.8450980400142568,1.1139433523068367,1.6127838567197355,1.9822712330395684,0.09065530837194578
+episode_states,storm,count,int64,States touched by the whole episode,True,0.0,0.0,0.0,,1.004029124816531,0.08967750197574054,1.0,1.0,1.0,1.0,1.0,3.0,0.0
+episode_events,storm,count,int64,"Distinct reports in the whole episode, all counties",True,0.0,0.0,0.0,,15.460241171899732,18.14008494133312,1.0,4.0,10.0,20.0,89.0,251.0,0.0
+month,time,1-12,int32,Month of t0 (UTC),True,0.0,0.0,0.0,,5.713423700847075,3.399393212916619,1.0,3.0,5.0,8.0,12.0,12.0,0.0
+local_hour,time,0-23,int64,Hour of t0 in local standard time (state's main time zone),True,0.0,0.0,0.0,,12.304923206799629,6.704826589678794,0.0,7.0,14.0,18.0,23.0,23.0,0.06457631833923312
+log_customers,county,log10,float64,"log10 of customers served: EAGLE-I MCC, or Census population x 0.508 where MCC is broken (all NC + 30 counties)",True,0.0,0.0,0.0,,4.327975321476414,0.6916751142453943,1.845098040014257,3.8465845028980463,4.2907467156120855,4.793476070790474,5.961518858649943,6.5754880511589935,0.0
+log_pop,county,log10,float64,log10 of Census 2023 county population; empty for Connecticut's 8 old counties,True,0.36214157577152944,0.31225856296677823,0.27104492491744037,,4.62732100171134,0.7024208915745705,1.6334684555795864,4.149280710341023,4.5767213355919525,5.072477833197706,6.341555397928184,6.985127484964335,0.0
+dqi,county,0-100,float64,"EAGLE-I data quality index of the FEMA region (2018-2022 values; 2017 uses 2018, 2023+ use 2022)",True,0.0,0.0,0.0,,78.18889344832144,10.647372156544355,39.36376378,72.75676896,79.90014928,87.26833565,93.67594916,94.04125192,0.0
+pct_customers_tracked,county,0-1,float64,Share of the state's customers EAGLE-I tracks (same year mapping as dqi),True,0.0,0.0,0.0,,0.8681345152099461,0.11927990984063248,0.16,0.81,0.9,0.95,1.0,1.0,0.0
+pre_peak_24h,pre-storm,0-1,float64,Worst share of customers out in the 24 h before the start hour; empty if the day before wasn't observed,True,3.3216296850567435,0.3991758949266031,2.82883668764409,,0.008510369294151807,0.04451696226433199,0.0,0.0,0.0002914602156805596,0.0023840688107703814,0.156636597447992,1.0,0.2736303373912376
+pct_out_at_start,pre-storm,0-1,float64,Share of customers out in the hour before the start hour; empty if the day before wasn't observed,True,3.3216296850567435,0.3991758949266031,2.82883668764409,,0.0032384406941971906,0.02950748095088706,0.0,0.0,0.0,0.00011856770215793219,0.06544190604374711,1.0,0.5931063593020021
+hist_episodes,history,count,float64,County-episodes for this county in the training years (training rows: other training years only),True,0.0,0.0,0.0,,86.62813096574284,65.1893873756057,0.0,44.0,68.0,109.0,369.0,463.0,0.001261499793747182
+hist_outage_rate,history,0-1,float64,"County's past outage rate, shrunk toward the national training rate: (pos + 20 x p0) / (n + 20)",True,0.0,0.0,0.0,,0.13428735956229665,0.08957162468291803,0.007046303428696225,0.0641439973353048,0.1150818775721645,0.18469432306129602,0.3971352845071301,0.5832223953558169,0.0
+hist_mean_peak,history,0-1,float64,"County's past mean peak share out, shrunk the same way",True,0.0,0.0,0.0,,0.03152420187693229,0.02487419881125946,0.0021399463435308364,0.014925274569236683,0.024829938456504483,0.03975946920453567,0.12428852588400052,0.2739940998133001,0.0
+target,target,0/1,int64,1 if peak share out in hours 0-23 from the start hour is >= 5% of customers,False,0.0,0.0,,,0.1412783837453593,0.34830932222586974,0.0,0.0,0.0,0.0,1.0,1.0,0.8587216162546407
+retro_peak_24h,retro (leakage),0-1,float64,Peak share of customers out in the 24 h window (defines the target),False,0.0,0.0,,,0.03347642967073789,0.10227472563266353,0.0,5.0803331774268934e-05,0.0019380995866851473,0.018186905428091774,0.5595959040435787,1.0,0.2199086731708253
+retro_peak_customers_out,retro (leakage),customers,int64,Peak customers out in the 24 h window,False,0.0,0.0,,,1237.3266708876545,6331.102921739198,0.0,1.0,56.0,697.0,17119.190000000002,630764.0,0.2199086731708253
+retro_hour_of_peak,retro (leakage),0-23,Int64,Hour of the peak after the start hour (earliest if tied),False,21.99086731708253,19.131470512490342,,,7.517908199342085,7.08883016913231,0.0,2.0,5.0,13.0,23.0,23.0,0.08520160013814142
