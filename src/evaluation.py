@@ -202,15 +202,16 @@ def git_commit():
         return "unknown"
 
 
-def log_run(name, job_type, frame, p, train, config, p_ref=None, data_paths=()):
-    """Evaluate predictions, then log metrics, tables and charts to W&B as one run. Returns (metrics, tables, url)."""
+def log_run(name, job_type, frame, p, train, config, p_ref=None, data_paths=(), extra_tables=None):
+    """Evaluate predictions, then log metrics, tables and charts to W&B as one run. Returns (metrics, tables, url).
+    extra_tables = optional {name: DataFrame} of model-specific tables (e.g. threshold comparison) to log alongside."""
     import wandb
 
     metrics, tables = evaluate(frame, p, train, p_ref=p_ref)
     cfg = {**config, "git_commit": git_commit(), **data_version(data_paths), "eval_split": "validation_2024"}
     run = wandb.init(entity=WANDB_ENTITY, project=WANDB_PROJECT, name=name, job_type=job_type, config=cfg, reinit="finish_previous")
     run.summary.update(metrics)
-    for tname, t in tables.items():
+    for tname, t in {**tables, **(extra_tables or {})}.items():
         run.log({tname: wandb.Table(dataframe=t)})
     y = frame["target"].to_numpy()
     for key, fig in [("calibration_plot", calibration_plot(tables["calibration_deciles"], f"Calibration: {name}")),
