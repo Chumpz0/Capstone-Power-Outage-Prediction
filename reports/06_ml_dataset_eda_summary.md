@@ -1,11 +1,8 @@
-# 06 – EDA of the ML-Ready Dataset + Dataset Card
+# 06 – EDA of the ML-Ready Dataset
 
 Notebook: [notebooks/06_ml_dataset_eda.ipynb](../notebooks/06_ml_dataset_eda.ipynb) · Tables: [reports/ml_eda_tables/](ml_eda_tables/) · Figures: [reports/figures/ml_eda/](figures/ml_eda/) · Run 2026-10-25
 
-**Checkpoint 2 deliverables produced in this step:**
-- **[EDA_report.pdf](EDA_report.pdf)**: the full EDA, findings first, with the dataset card attached (19 pages). Rebuild with `python scripts/build_eda_report.py`.
-- **[dataset_card.md](dataset_card.md)**: origin, lineage, cleaning and transformation steps, feature dictionary (all 46 columns), statistics, limitations.
-- **The ML-ready dataset** itself: the Hugging Face dataset `DSCI-Capstone/county-outage-data`, `processed/model_table/`.
+**Outputs:** EDA tables and figures linked above, plus the ML-ready dataset in Hugging Face `DSCI-Capstone/county-outage-data`, `processed/model_table/`.
 
 ---
 
@@ -25,7 +22,9 @@ Profile the modeling table from step 04 the way the models will see it: one row 
 
 ## [FINDINGS]
 
-The evidence and figures are in [EDA_report.pdf](EDA_report.pdf) (source: [eda_report.md](eda_report.md)).
+The evidence is in the [EDA notebook](../notebooks/06_ml_dataset_eda.ipynb), [result tables](ml_eda_tables/), and [figures](figures/ml_eda/).
+
+The [consolidated EDA report](eda_report.md) organizes these existing results and the earlier event-level EDA into a credited report template.
 
 1. **Size:** 271,644 rows (train 208,482 · validation 31,064 · test 32,098), 3,073 counties and 54,580 episodes in train. The positive rate is 14.1% in train, **rising from 11% (2017) to 17% (2023)**, and 16.5% in validation.
 2. **Strongest single signals (training ROC-AUC alone):**
@@ -52,14 +51,3 @@ The evidence and figures are in [EDA_report.pdf](EDA_report.pdf) (source: [eda_r
 - Up to 10 quantile bins per feature for the rate curves.
 - PSI computed with training deciles and thresholds of 0.1 / 0.25.
 - `max_hurricane_cat` left out of the drift chart because it's 99.9% empty.
-
----
-
-## [NEXT STEPS]
-
-**Decisions for you (they feed Stage 2, the baseline models):**
-1. **`dqi`:** leave it out of the baseline models (recommended, because of the drift by construction), or keep it?
-2. **Near-duplicate pairs in logistic regression:** keep all 36 features and rely on regularisation (recommended), or drop one of each pair (`log_episode_counties`, `log_pop`, `n_zone_coded`, `hist_mean_peak`)? Gradient boosting keeps all of them either way.
-3. **Dataset card on Hugging Face:** OK to replace the dataset README with the card (the download instructions are kept)?
-
-**Then:** Stage 1 (code structure) and Stage 2 (logistic regression + `HistGradientBoostingClassifier`) from the Checkpoint 2 plan.

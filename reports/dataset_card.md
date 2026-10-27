@@ -1,187 +1,262 @@
-# Dataset Card: Storm-to-Outage County Episodes (ML-ready)
+# Storm-to-Outage: County Power Outage Dataset
 
-| | |
+This dataset links EAGLE-I county power-outage observations with NOAA Storm Events to study the probability of a substantial county outage during a recorded storm episode. It contains 271,644 county-by-episode records for the lower 48 states and Washington, DC, spanning 2017-2025. A positive label means at least 5% of the county's estimated customers were without power during the defined 24-hour window.
+
+The dataset supports the DSCI 4350 undergraduate capstone at Georgia State University, Fall 2026. It is intended for retrospective analysis and model comparison, with utility crew staging as a motivating application. Whole-episode storm summaries stand in for forecasts; this is not a validated operational forecast dataset. Labels indicate outages coinciding with storms, not proven storm causation.
+
+**Dataset:** [DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data)
+
+**Code:** [Capstone-Power-Outage-Prediction](https://github.com/Chumpz0/Capstone-Power-Outage-Prediction)
+
+**Card reviewed:** 2026-10-27
+
+**Authors and contact:** To be supplied by the capstone team; see open items below.
+
+Adapted from the [PAIR Data Cards Playbook extended template](https://github.com/PAIR-code/datacardsplaybook/blob/main/templates/DataCardsExtendedTemplate.md). Relevant sections are condensed for this capstone. Publishers, funding, retention, and wipeout/deletion procedures are omitted. This card documents the current implementation; it does not imply a maintenance or deployment commitment.
+
+## Dataset Overview
+
+### Content and snapshot
+
+The primary release described here is `processed/model_table/`, not the much larger raw and intermediate tables. Records describe weather, places, and electricity-system behavior. The data modality is tabular, with temporal and geographic identifiers.
+
+| Property | Current dataset |
 |---|---|
-| **Name** | Storm-to-Outage County Episodes, 2017–2025 |
-| **Version** | Hugging Face dataset commit `5c01325` · GitHub commit `02c4471` (notebook 04) · built 2026-10-25 |
-| **Hosted at** | [huggingface.co/datasets/DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data) (private; access through the `DSCI-Capstone` org) |
-| **Code** | [github.com/Chumpz0/Capstone-Power-Outage-Prediction](https://github.com/Chumpz0/Capstone-Power-Outage-Prediction), notebooks 01–04 build it, 06 profiles it |
-| **Maintainer** | Christopher Walker, DSCI 4350 capstone team (Georgia State University, Fall 2026) |
-| **License** | CC BY 4.0 (inherits EAGLE-I's license; NOAA, NWS and Census inputs are public domain) |
+| Observation unit | One county FIPS code paired with one NOAA `episode_id` |
+| Geographic scope | Lower 48 states and DC; 49 state/DC codes in each split |
+| Time coverage | 2017-2025, split by the UTC year of the first episode report in each county |
+| Instances | 271,644 across train, validation, and test |
+| Candidate model inputs | 36: 25 storm, 2 time, 4 county, 2 pre-storm, 3 county-history features |
+| Training/validation schema | 46 columns: 6 identifiers, 36 features, 1 target, 3 retrospective fields |
+| Test feature schema | 42 columns: identifiers and features only |
+| Classes | Binary: 0 = below the threshold; 1 = threshold reached |
+| Label origin | Computed from outage observations; no capstone human-labeling workforce |
+| Local file sizes | Train 9,686,396 bytes; validation 1,601,759; test features 1,304,975 |
 
----
+Sizes describe the local Parquet snapshot inspected on the review date. The separate test-label file was not opened to prepare this card.
 
-## 1. Summary
+### Split statistics
 
-One row per **US county hit by one NOAA storm episode**, 2017–2025, lower 48 states + DC. Each row describes the storm in that county, the county itself, outage conditions just before the storm, and the county's past outage history. The binary **target** says whether at least **5% of the county's electricity customers lost power within 24 hours** of the storm's first report there.
+| Split | Years | Rows | Counties | Episodes | Positive labels | Positive rate |
+|---|---|---:|---:|---:|---:|---:|
+| Train | 2017-2023 | 208,482 | 3,073 | 54,580 | 29,454 | 14.13% |
+| Validation | 2024 | 31,064 | 3,023 | 7,734 | 5,120 | 16.48% |
+| Test features | 2025 | 32,098 | 3,014 | 7,866 | Withheld | Withheld |
 
-**Intended use:** train and evaluate models of *P(county outage | storm)* for **utility crew staging**, i.e. ranking which counties to pre-position crews in when a storm system arrives.
+Source: [dataset overview](ml_eda_tables/dataset_overview.csv), checked against the local training, validation, and test-feature files. Episode identifiers do not overlap between these three local splits. Counties recur across years, so this evaluates future-year performance rather than generalization to entirely unseen counties.
 
-**Not intended for:** predicting outages without a NOAA storm record (most outages, see §7), counting customers affected, or real-time use without swapping the observed storm summary for a forecast.
+### Descriptive statistics
 
-## 2. Structure
+Statistics below use training rows only. Numeric summaries exclude missing values; missingness is a percentage of all training rows.
 
-| File (HF path) | Rows | Columns | Years | Positive rate |
-|---|---|---|---|---|
-| `processed/model_table/train.parquet` | 208,482 | 46 | 2017–2023 | 14.1% |
-| `processed/model_table/validation.parquet` | 31,064 | 46 | 2024 | 16.5% |
-| `processed/model_table/test_features.parquet` | 32,098 | 42 | 2025 | not shown |
-| `holdout/test_labels.parquet` | 32,098 | 6 | 2025 | **held out: open once, for the final evaluation** |
+| Field | Mean | Median | 25th-75th percentile | Maximum | Missing |
+|---|---:|---:|---:|---:|---:|
+| Reports in county-episode (`n_events`) | 1.88 | 1 | 1-2 | 83 | 0% |
+| Maximum wind (`max_wind_kts`, knots) | 54.03 | 52 | 50-56 | 173 | 59.05% |
+| Maximum hail (`max_hail_in`, inches) | 1.29 | 1 | 1-1.5 | 6.42 | 87.19% |
+| County episode duration (hours) | 19.08 | 4 | 0.13-15 | 743.98 | 0% |
+| Historical outage rate (`hist_outage_rate`) | 0.1343 | 0.1151 | 0.0641-0.1847 | 0.5832 | 0% |
+| Peak share out (`retro_peak_24h`, analysis only) | 0.0335 | 0.0019 | 0.00005-0.0182 | 1 | 0% |
 
-- **Columns:** 6 identifiers, **36 model features**, `target`, and 3 `retro_*` columns that are only known after the storm (analysis only, **never model inputs**).
-- **Keys:** `fips` (5-character text, keep leading zeros) + `episode_id` are unique across all splits.
-- **Splits are by time** (year of the episode's first report in the county). The test year is touched once, at the end.
-- **Coverage:** 3,073 counties, 54,580 storm episodes and 49 states/DC in train; 3,023 counties and 7,734 episodes in validation; 3,014 and 7,866 in test.
+See the [full feature dictionary and statistics](ml_eda_tables/feature_dictionary.csv) for all 46 fields, data types, units, and missingness by split. Shares are fractions from 0 to 1, not percentages. `fips` must remain text to preserve leading zeros; Connecticut is harmonized to its eight legacy counties rather than using a uniform Census 2023 geography.
 
-Upstream tables are in the same dataset: `data/` (raw inputs) and `processed/` (cleaned 15-minute and hourly outages, daily observation flags, cleaned storm events, storm × county, county lookup).
+### Version and maintenance
 
-## 3. Origin
+The existing summaries record the dataset build as 2026-10-25. The evaluation module records Hugging Face revision `5c01325258aa922bf395da1e39acda7c234fefcf`. That is the recorded data reference, not a claim that the current remote HEAD or every local file was independently verified against it. Some notebook fallback paths read the Hub without a revision pin.
 
-| Source | What | Version used | License |
-|---|---|---|---|
-| **EAGLE-I** (Oak Ridge National Laboratory), [figshare 24237376](https://figshare.com/articles/dataset/24237376) | County customers-out snapshots every 15 minutes, 2014–2025 (249.3 M rows) plus reference files: modeled customer counts (MCC), data quality index (DQI), coverage history | Yearly files combined into one CSV (13 GB) | CC BY 4.0 |
-| **NOAA Storm Events** (NCEI), [csvfiles](https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/) | Storm reports with type, time, location, magnitude, episode id, 2014–2025 (771 K events) | `StormEvents_details-ftp_v1.0_dYYYY_c2026MMDD` (files created 2026-03-23 to 2026-08-19) | Public domain |
-| **NWS zone–county correlation** ([weather.gov](https://www.weather.gov/gis/ZoneCounty)) | Which counties each forecast zone covers | 23 dated versions (Oct 2014 – Apr 2026), combined into a dated crosswalk | Public domain |
-| **US Census** | County population estimates (Vintage 2023); Connecticut planning region ↔ county crosswalk | `co-est2023-alldata`, `sub-est2023_9` | Public domain |
+No formal dataset release number, future refresh schedule, or post-capstone maintenance commitment is documented. Reproduction uses the notebooks and [pinned requirements](../requirements.txt); release naming and source-version confirmation remain open items.
 
-## 4. Lineage
+## Example of Data Points
 
+These are selected fields from two actual training rows, chosen as examples rather than a statistically representative sample. Timestamps are UTC. Rounded fractions are shown for readability.
+
+| Field | One-report negative example | Already-out positive example |
+|---|---|---|
+| `fips` | `53055` | `28041` |
+| `episode_id` | 112713 | 112815 |
+| `t0` | 2017-01-02 01:15 | 2017-01-02 16:47 |
+| `n_events` | 1 | 1 |
+| `max_wind_kts` | 35 | 52 |
+| `pre_peak_24h` | 0 | 0.054521 |
+| `pct_out_at_start` | 0 | 0.054521 |
+| `target` | 0 | 1 |
+| `retro_peak_24h` | 0 | 0.051482 |
+
+The second row remains positive even though the peak during the label window is below the pre-storm level: the target requires reaching 5%, not an increase caused by the storm. `target` and all `retro_*` columns must be excluded from model inputs.
+
+### Field groups
+
+| Group | Fields and meaning |
+|---|---|
+| Identifiers | `fips`, `episode_id`, `state_abbr`, `fema_region`, `year`, `t0`; keys, grouping, and temporal split metadata |
+| Storm composition | `n_events`; counts for thunderstorm wind, hail, tornado, high wind, flood, winter, ice storm, tropical, cold, lightning, wildfire, and other reports |
+| Storm location and intensity | County/zone report counts, zone-coded share, partial-county flag, maximum wind/hail/hurricane category |
+| Storm extent | County episode duration; episode counties, log counties, states, and distinct events |
+| Time and county | Month, approximate local standard-time hour, log10 customers, log10 population, DQI, customer coverage share |
+| Pre-storm | `pre_peak_24h`: peak in the preceding 24 hourly bins; `pct_out_at_start`: share out in the preceding hour |
+| History | Number of eligible county-episodes, smoothed outage rate, and smoothed mean peak share |
+| Outcome and retrospective analysis | `target`, `retro_peak_24h`, `retro_peak_customers_out`, `retro_hour_of_peak` |
+
+The dictionary's `model_input` designation identifies candidate features in the modeling table, not a guarantee that each is available at forecast time or used by every fitted model.
+
+## Motivations & Intentions
+
+The research question is: **given a storm episode, how well can we rank counties by their probability of experiencing a substantial outage?** The project combines outage time series with storm reports to support reproducible feature engineering, evaluation, and comparison with simple historical rules.
+
+Suitable uses include undergraduate research, retrospective storm-outage analysis, temporal model evaluation, and comparisons of ranking, probability accuracy, and illustrative prioritization budgets.
+
+Unsuitable uses without further validation include live crew dispatch, household or utility-circuit risk estimates, forecasts for excluded regions, claims that storms caused individual outages, and prediction of all outages regardless of weather. Actual forecast-time use requires timestamped forecast or warning inputs, a feature-availability review, and utility-specific evaluation.
+
+## Access
+
+The project README describes the Hugging Face dataset as private. Access requires permission for `DSCI-Capstone/county-outage-data` and a Hugging Face login. Code, reports, and small CSV evidence tables are kept in this repository; raw and processed datasets are kept outside Git.
+
+For model development, download only the following files after `hf auth login`:
+
+```bash
+hf download DSCI-Capstone/county-outage-data --repo-type dataset --revision 5c01325258aa922bf395da1e39acda7c234fefcf --local-dir . --include "processed/model_table/train.parquet" "processed/model_table/validation.parquet" "processed/model_table/test_features.parquet"
 ```
-EAGLE-I CSV (249.3 M rows) --+
-NOAA Storm Events (771 K) ---+-- 01 audit: types, nulls, coverage, leakage tags (no data changed)
-NWS zone crosswalk ----------+
-Census, MCC, DQI ------------+-- 02 prep
-                                  -> outages_15min (208.1 M) -> outages_hourly (61.4 M)
-                                  -> county_observed_daily (10.7 M county-days)
-                                  -> storm_events_clean (573 K) -> storm_county_events (643,757)
-                                  -> counties (3,248)
-                                         |
-04 modeling table <----------------------+
-   643,757  storm x county rows
-   629,256  lower 48 + DC
-   558,402  drought / heat / excessive heat dropped
-   298,398  collapsed to county x episode
-   271,644  county observed on the start day and the window's end day (FINAL)
-            train 208,482 | validation 31,064 | test 32,098
+
+The Hub stores test labels in `holdout/test_labels.parquet`; notebook 04 writes a local copy under `processed/model_table/`. Reserve those labels for the selected model's final evaluation. Separate files support the evaluation protocol but are not evidence of access-control enforcement.
+
+Dataset licensing and redistribution terms have not been established in this card. Public source availability is not a substitute for documenting the applicable terms; see open items.
+
+## Provenance
+
+### Sources and collection
+
+The capstone integrates existing datasets rather than collecting new observations from people.
+
+| Source | Role | Repository evidence |
+|---|---|---|
+| [EAGLE-I outage archive](https://figshare.com/articles/dataset/24237376) | County outage readings on an approximately 15-minute grid; combined source files cover 2014-2025 | [Data audit](01_data_audit_summary.md) |
+| [NOAA Storm Events](https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/) | Reported weather-event types, timing, locations, intensity, and event/episode identifiers | [Data audit](01_data_audit_summary.md) |
+| Census Vintage 2023 county population | Population feature and fallback customer denominator | `data/01_raw/census_counties/co-est2023-alldata.csv` |
+| EAGLE-I MCC, DQI, coverage-history references | Modeled customer denominator, regional quality score, state customer coverage | `data/reference/eaglei_archive/` |
+| Dated NWS zone-to-county crosswalk | Expands forecast-zone-coded reports into county records | `data/reference/nws_zone_county_versions.parquet` |
+| Connecticut region-to-county weights | Maps planning-region outage records back to legacy counties | `data/reference/ct_region_to_county_weights.csv` |
+
+The exact upstream release identifiers, download dates, and provenance of the supporting crosswalk/weight files need a completed source manifest. The pipeline records local paths and a hosted dataset revision, but these do not fully establish each upstream source version.
+
+### Selection and integration
+
+The raw audit covers 2014-2025; processing and modeling use 2017-2025. Earlier EAGLE-I years have poorer county coverage, and 2014 contains only November-December. The modeling population consists of eligible reported storm episodes with sufficient inferred observation coverage, not a random sample of all county-days.
+
+| Modeling-table step | Rows remaining |
+|---|---:|
+| Prepared event-by-county records | 643,757 |
+| Lower 48 and DC | 629,256 |
+| Exclude Drought, Heat, and Excessive Heat triggers | 558,402 |
+| Aggregate to county-by-episode | 298,398 |
+| Require observation coverage for label-window days | 271,644 |
+
+Marine/waterspout events are removed during preparation. Alaska, Hawaii, and territories are outside the modeling scope. Source: [row waterfall](model_table_tables/row_waterfall.csv) and [modeling-table notebook](../notebooks/04_modeling_table.ipynb).
+
+## Transformations
+
+The preparation and modeling notebooks use DuckDB, pandas, NumPy, and Parquet storage. The main operations are:
+
+1. **Clean outage readings.** Parse identifiers and timestamps, snap off-grid readings to the 15-minute grid, resolve collisions by retaining the larger reading, remove null/zero readings from the positive-outage table, and preserve observation information separately. Cap readings above the denominator and retain raw counts and an over-denominator flag in the cleaned table.
+2. **Construct customer denominators.** Use MCC when suitable; otherwise use Census population times the median MCC-to-population ratio, approximately 0.508. The preparation summary reports 130 fallbacks: 9 missing-MCC counties, all 100 North Carolina counties, and 21 other implausible county estimates. The state rule uses half the national median; county cutoffs of 0.1 and 5 customers per person are provisional heuristics.
+3. **Harmonize geography and time.** Normalize territory/state codes, convert NOAA local standard times to UTC, expand zone events with the dated crosswalk, and allocate Connecticut planning-region outages to legacy counties using population weights. The model's `local_hour` uses the state's main standard-time zone, an approximation for states spanning time zones.
+4. **Build hourly and observation tables.** Hourly outage values use the maximum snapshot in each hour. A county-day is considered observed when the county appears somewhere in that year, at least 90% of the day's national snapshots exist, and that county-day does not consist entirely of null readings. This is a coverage heuristic, not proof of continuous county monitoring.
+5. **Aggregate storms and join outages.** Collapse eligible reports to county-by-episode, set `t0` to the first report, and summarize the whole episode. Require observation on the UTC dates containing label hours 0 and 23. Missing hourly outage records are then interpreted as zero under that observation assumption.
+6. **Build features.** Add log transforms, storm-family counts, quality references, pre-storm outage features, and county history. Quality references exist for 2018-2022: 2017 uses 2018, while 2023-2025 use 2022. Pre-storm features become missing when the preceding day is not observed.
+7. **Separate outcomes.** Exclude damage, casualties, narratives, source descriptions, and tornado damage/path fields from model inputs. Keep the three `retro_*` fields for analysis only and place test outcomes in a separate file.
+
+There is no documented PCA or other learned dimensionality reduction. Raw numeric feature missingness is retained in the modeling table; any model-specific imputation or scaling must be fit using training data only. See [preparation summary](02_data_prep_summary.md) and [notebook 02](../notebooks/02_data_prep.ipynb).
+
+### County history: exact construction and caveat
+
+For validation/test, history uses 2017-2023 labels. For a training row, county-specific counts and sums exclude that row's entire year. Outage rates are smoothed as `(positive_count + 20 * p0) / (episode_count + 20)`; mean peak uses the corresponding formula. The prior weight of 20 is provisional.
+
+The global priors `p0` and `peak0` are computed from all training years, including the row's year. Other training years can also be later than the row's date. Thus, this is leave-one-year-out county aggregation with a full-training prior, not a strictly historical, as-of-time feature pipeline. The saved history check is marked true by construction rather than independently testing exclusion of every own-year label contribution.
+
+## Annotations & Labeling
+
+Labels are assigned algorithmically:
+
+```text
+start_hour = floor(t0 to the UTC hour)
+peak_share = maximum hourly outage share in hours 0 through 23 from start_hour
+target = 1 if peak_share >= 0.05, otherwise 0
 ```
 
-## 5. Cleaning and transformation steps
+The 24-hour interval is aligned to the start hour, not the exact minute of `t0`; it can include observations before the report within that first hour. The denominator is estimated customers, not necessarily a measured customer total at the event date.
 
-**Outages (notebook 02)**
+The 5% threshold and 24-hour window are project choices informed by training EDA: the earlier analysis found stronger storm-versus-background separation at 5% and 83% of examined peaks within 24 hours. They are not utility-approved service standards. Already-out counties remain eligible, and a negative label means the threshold was not reached under the observation assumptions, not that no customer lost power. See [EDA summary](03_eda_summary.md).
 
-1. Kept 2017–2025 (2014 starts on Nov 1, and county coverage only reaches ~92% from 2017). 221.4 M raw rows.
-2. **Dropped 8.7 M null readings** (they are gaps, not zeros) and **4.8 M explicit zero rows** (zeros are only reported from 2022). A missing row means "0 or no data", so a separate **daily observation flag** records whether EAGLE-I was watching the county (county reported that year, ≥90% of the day's snapshots collected nationally, readings not all null).
-3. Snapped 20 K off-grid timestamps to the 15-minute grid.
-4. **Denominator:** EAGLE-I's modeled customer count (MCC). `total_customers` from the raw file was dropped (100% null except 2024, where it is unreliable). Where MCC is broken, an estimate of Census population × 0.508 customers per person is used: **all 100 North Carolina counties** (MCC gives 0.17 customers per person vs 0.35–0.60 elsewhere), 9 counties with no MCC, and 21 counties below 0.1 or above 5 customers per person.
-5. **Capped customers out at the denominator** (~0.05% of rows), flagged `over_mcc`, raw value kept.
-6. Connecticut: 2025 planning-region rows converted back to the 8 old counties with population weights.
-7. Built an hourly table (worst snapshot per county-hour).
+## Validation Types
 
-**Storms (notebook 02)**
+Saved automated checks cover unique keys, required targets, bounded outage shares, geographic scope, temporal splits, absence of retrospective inputs, and agreement between target and peak-share threshold. Notebook 06 also checks that the feature dictionary covers the columns and that the test-feature file contains no target. Results are in [preparation checks](prep_tables/output_checks.csv), [model-table checks](model_table_tables/checks.csv), and [ML EDA checks](ml_eda_tables/checks.csv).
 
-1. Dropped marine and waterspout events, and **33 leakage or unneeded columns** (damage, injuries, deaths, narratives, tornado scale and path size, which are only known afterwards).
-2. Converted local times to **UTC**; fixed NOAA territory state codes.
-3. Expanded **forecast-zone reports to counties** with the zone crosswalk version in force on the event date; flagged zones that cover only part of a county (`partial_county`).
+For this card, local schema sizes, split counts, training/validation positives, examples, and disjoint episode identifiers were checked directly. No test labels were read. These checks establish structural consistency; they do not independently validate outage completeness, storm causality, or real-time feature availability. No utility/operator validation or independent labeling review is documented.
 
-**Modeling table (notebook 04)**
+## Extended Use and Sampling Methods
 
-1. Scope: lower 48 + DC; Drought, Heat and Excessive Heat are not storm triggers.
-2. **Unit:** all reports of one NOAA episode in one county collapse into one row; `t0` = first report there.
-3. **Kept only county-episodes EAGLE-I observed** on the start day and the 24 h window's end day (drops 26,754 rows, mostly in 2017–2021 when coverage was lower).
-4. **Target:** peak share of customers out over hours 0–23 from the start hour ≥ 5%. Hours with no outage row count as 0 (the county is known to be observed).
-5. **Storm features** summarise the whole episode in the county: report counts by family, how reports were located, max wind/hail, duration, and storm-system size. This **observed summary stands in for a forecast**.
-6. **Pre-storm features** from the 24 h before the start hour (missing when the day before wasn't observed).
-7. **County history** from training-year labels only, shrunk toward the national rate with 20 pseudo-episodes. Training rows use the *other* training years (leave-one-year-out) so no row sees its own label; validation and test rows use all training years.
-8. Test labels are written to a separate file.
+Preserve the time-based split when comparing models. Rows from the same storm episode are dependent; use episode-level resampling for uncertainty estimates and avoid treating county rows as independent storm samples. Rebuild history features from the permitted training portion if changing splits or running cross-validation. Do not reuse the existing history columns unchanged in a different validation design.
 
-## 6. Dataset statistics
+Additional data should join through checked county geography and timestamps. Forecasts, warnings, infrastructure, or land-cover features would require their own provenance and availability checks. Do not join retrospective damage, future outage aggregates, or test labels into predictors.
 
-**Target**
+The current dataset uses all retained eligible rows rather than a documented class-balancing sample. Any subset or resampling should record its selection rule and preserve the natural prevalence in evaluation data. The top-10% scoring budget is an illustrative prioritization scenario, not a measured crew-capacity constraint.
 
-- 14.1% positive in train, rising over time: 11.2% (2017), 12.2%, 12.4%, 16.7% (2020), 15.5%, 14.0%, 16.8% (2023); validation 2024 16.5%.
-- The label-defining peak: 22% of county-episodes have no customers out at all in the window, 32% reach 1%, 14.1% reach 5%, 8.3% reach 10%, 1.2% reach 50%. The median peak among positives is 11.9%.
+## Known Applications & Benchmarks
 
-**Features** (training rows; full table in `reports/ml_eda_tables/feature_dictionary.csv`, missing values by split included)
+The documented application is this capstone. Saved 2024 validation results are:
 
-- A typical county-episode has **1 report** (65% of rows; mean 1.9, max 83) and is active in the county for a median of 4 hours (75th percentile 15 h). The whole storm system touches a median of 7 counties (mean 9.7).
-- **71% of rows have no thunderstorm wind report and 87% no hail**; tropical, ice storm and lightning are present in ≤1%.
-- **Half of all rows are zone-coded only** (101,801), half county-coded only (104,315), ~1% mixed.
-- **Missing values:** `max_hurricane_cat` 99.9%, `max_hail_in` 87.2%, `max_wind_kts` 59.0% (empty when no report of that kind; the empty value carries information), `pre_peak_24h` and `pct_out_at_start` 3.3% (day before unobserved), `log_pop` 0.4% (Connecticut old counties). All other features are complete.
+| Predictor | Average precision (reported as PR-AUC) | Brier score | Brier skill | Recall at top 10% |
+|---|---:|---:|---:|---:|
+| Storm family rate x county history reference | 0.469056 | 0.111560 | 0.189567 | 32.58% |
+| Initial four-feature logistic regression | 0.363576 | 0.125422 | 0.088865 | 24.24% |
 
-## 7. Known limitations and biases
+Sources: [reference rules](baseline_tables/naive_rules_validation.csv) and [initial logistic regression](baseline_tables/logistic_regression_initial_validation.csv). The latter uses month, local hour, pre-storm peak, and preceding-hour outage share; it is not a result for all 36 candidate features.
 
-- **Only storm-linked outages.** In 2017–2023 only ~20% of significant outage county-days have a NOAA storm record within ±1 day. The data says nothing about outages without one.
-- **Observed storms stand in for forecasts.** Real forecast-time accuracy will be lower.
-- **Coverage grows over time:** EAGLE-I watched 84–88% of county-episodes in 2017–2021 vs 92–98% in 2022–2025, and tracks more customers each year. This is part of why the positive rate rises; models trained on all years may under-predict 2024–2025.
-- **`dqi` and `pct_customers_tracked` are year-mapped quality scores** (values exist for 2018–2022 only; 2023–2025 all use 2022). `dqi` shifts strongly between train and validation/test (PSI 3.7) and partly acts as a year marker. Use with care.
-- **`hist_episodes` scale differs by split:** training rows count 6 other training years, validation/test rows count all 7 (mean 87 vs 102).
-- **Small-county effect:** 5% of a small county is few customers, so small counties cross the threshold more easily (the positive rate is ~18% for mid-sized counties and falls to ~5% for the largest).
-- **Zone-coded storms are blurry:** a zone report is assigned to every county the zone touches, so their outage rate (9.9%) is half that of county-coded storms (17.9%).
-- **Denominator estimates** for North Carolina and 30 other counties rely on a national customers-per-person ratio.
-- **Overlapping storms make rows dependent** (one storm system, many counties). Evaluate with resampling by `episode_id`.
-- 2025 (test) has almost no tropical activity in the features (9 rows), so tropical performance can't be checked on test.
+The [success criteria](success_criteria.md), revised on 2026-10-27 after initial model results existed, require improved ranking over the reference and no worse Brier score or top-10% recall. Calibration, subgroup results, and episode-bootstrap uncertainty are reported separately. These are validation benchmarks, not final test performance or evidence of operational readiness.
 
-## 8. Feature dictionary
+## Reflections on Data
 
-Statistics are from the training rows. Shares are fractions (0.05 = 5%). `retro_*` columns are **leakage**: they describe the outcome and must never be model inputs.
+### Coverage, representativeness, and missingness
 
-| Column | Group | Unit | Description | Missing (train) | Mean | Median | Max |
-|---|---|---|---|---|---|---|---|
-| `fips` | id | text | 5-digit county FIPS code (Census 2023) | 0 |  |  |  |
-| `episode_id` | id | integer | NOAA Storm Events EPISODE_ID (one storm system) | 0 |  |  |  |
-| `state_abbr` | id | text | State postal code (lower 48 + DC) | 0 |  |  |  |
-| `fema_region` | id | 1-10 | FEMA region of the county | 0 |  |  |  |
-| `year` | id | year | UTC year of t0; sets the split (train 2017-2023, validation 2024, test 2025) | 0 |  |  |  |
-| `t0` | id | UTC time | Begin time of the episode's first report in this county | 0 |  |  |  |
-| `n_events` | storm | count | Storm reports in this county during the episode (drought/heat excluded) | 0 | 1.88 | 1.00 | 83.00 |
-| `n_tstm_wind` | storm | count | Reports of type Thunderstorm Wind | 0 | 0.56 | 0.00 | 60.00 |
-| `n_hail` | storm | count | Reports of type Hail | 0 | 0.26 | 0.00 | 57.00 |
-| `n_tornado` | storm | count | Reports of type Tornado or Funnel Cloud | 0 | 0.0538 | 0.00 | 35.00 |
-| `n_high_wind` | storm | count | Reports of type High Wind or Strong Wind | 0 | 0.20 | 0.00 | 83.00 |
-| `n_flood` | storm | count | Flash Flood, Flood, Heavy Rain, Coastal/Lakeshore Flood, Storm Surge/Tide, Debris Flow | 0 | 0.27 | 0.00 | 68.00 |
-| `n_winter` | storm | count | Winter Weather, Winter Storm, Heavy Snow, Blizzard, Lake-Effect Snow, Sleet | 0 | 0.38 | 0.00 | 35.00 |
-| `n_ice_storm` | storm | count | Reports of type Ice Storm | 0 | 0.0084 | 0.00 | 12.00 |
-| `n_tropical` | storm | count | Tropical Storm, Hurricane (Typhoon), Tropical Depression | 0 | 0.0123 | 0.00 | 10.00 |
-| `n_cold` | storm | count | Extreme Cold/Wind Chill, Cold/Wind Chill, Frost/Freeze | 0 | 0.0626 | 0.00 | 12.00 |
-| `n_lightning` | storm | count | Reports of type Lightning | 0 | 0.0097 | 0.00 | 8.00 |
-| `n_wildfire` | storm | count | Reports of type Wildfire | 0 | 0.0196 | 0.00 | 7.00 |
-| `n_other` | storm | count | Any other event type (e.g. Dense Fog, Rip Current, Dust Storm) | 0 | 0.0409 | 0.00 | 11.00 |
-| `n_county_coded` | storm | count | Reports NOAA located by county (CZ_TYPE = C) | 0 | 1.14 | 1.00 | 68.00 |
-| `n_zone_coded` | storm | count | Reports issued for an NWS forecast zone, mapped to counties with the dated crosswalk | 0 | 0.74 | 0.00 | 83.00 |
-| `share_zone_coded` | storm | 0-1 | n_zone_coded / n_events | 0 | 0.49 | 0.00 | 1.00 |
-| `any_partial_county` | storm | boolean | At least one zone report whose zone covers only part of the county | 0 | 0.22 | 0.00 | 1.00 |
-| `max_wind_kts` | storm | knots | Highest wind magnitude among the reports (measured or estimated); empty if none reported | 59.0% | 54.03 | 52.00 | 173 |
-| `max_hail_in` | storm | inches | Largest hail size among Hail reports; empty if no hail | 87.2% | 1.29 | 1.00 | 6.42 |
-| `max_hurricane_cat` | storm | 0-5 | Highest Saffir-Simpson category reported; almost always empty | 99.9% | 1.76 | 1.00 | 5.00 |
-| `county_episode_hours` | storm | hours | First report begin to last report end in this county | 0 | 19.08 | 4.00 | 744 |
-| `episode_counties` | storm | count | Counties touched by the whole episode (storm-system size) | 0 | 9.70 | 7.00 | 96.00 |
-| `log_episode_counties` | storm | log10 | log10(episode_counties) | 0 | 0.81 | 0.85 | 1.98 |
-| `episode_states` | storm | count | States touched by the whole episode | 0 | 1.00 | 1.00 | 3.00 |
-| `episode_events` | storm | count | Distinct reports in the whole episode, all counties | 0 | 15.46 | 10.00 | 251 |
-| `month` | time | 1-12 | Month of t0 (UTC) | 0 | 5.71 | 5.00 | 12.00 |
-| `local_hour` | time | 0-23 | Hour of t0 in local standard time (state's main time zone) | 0 | 12.30 | 14.00 | 23.00 |
-| `log_customers` | county | log10 | log10 of customers served: EAGLE-I MCC, or Census population x 0.508 where MCC is broken (all NC + 30 counties) | 0 | 4.33 | 4.29 | 6.58 |
-| `log_pop` | county | log10 | log10 of Census 2023 county population; empty for Connecticut's 8 old counties | 0.4% | 4.63 | 4.58 | 6.99 |
-| `dqi` | county | 0-100 | EAGLE-I data quality index of the FEMA region (2018-2022 values; 2017 uses 2018, 2023+ use 2022) | 0 | 78.19 | 79.90 | 94.04 |
-| `pct_customers_tracked` | county | 0-1 | Share of the state's customers EAGLE-I tracks (same year mapping as dqi) | 0 | 0.87 | 0.90 | 1.00 |
-| `pre_peak_24h` | pre-storm | 0-1 | Worst share of customers out in the 24 h before the start hour; empty if the day before wasn't observed | 3.3% | 0.0085 | 0.0003 | 1.00 |
-| `pct_out_at_start` | pre-storm | 0-1 | Share of customers out in the hour before the start hour; empty if the day before wasn't observed | 3.3% | 0.0032 | 0.00 | 1.00 |
-| `hist_episodes` | history | count | County-episodes for this county in the training years (training rows: other training years only) | 0 | 86.63 | 68.00 | 463 |
-| `hist_outage_rate` | history | 0-1 | County's past outage rate, shrunk toward the national training rate: (pos + 20 x p0) / (n + 20) | 0 | 0.13 | 0.12 | 0.58 |
-| `hist_mean_peak` | history | 0-1 | County's past mean peak share out, shrunk the same way | 0 | 0.0315 | 0.0248 | 0.27 |
-| `target` | target | 0/1 | 1 if peak share out in hours 0-23 from the start hour is >= 5% of customers | 0 | 0.14 | 0.00 | 1.00 |
-| `retro_peak_24h` | retro (leakage) | 0-1 | Peak share of customers out in the 24 h window (defines the target) | 0 | 0.0335 | 0.0019 | 1.00 |
-| `retro_peak_customers_out` | retro (leakage) | customers | Peak customers out in the 24 h window | 0 | 1,237 | 56.00 | 630,764 |
-| `retro_hour_of_peak` | retro (leakage) | 0-23 | Hour of the peak after the start hour (earliest if tied) | 22.0% | 7.52 | 5.00 | 23.00 |
+EAGLE-I coverage varies by county and year. A missing record can mean zero outages or missing observation; the coverage heuristic cannot fully resolve that ambiguity. Coverage improves over time, while the training positive rate rises from 11.15% in 2017 to 16.85% in 2023. These changes can reflect measurement differences as well as weather and grid conditions. A nationwide geographic scope does not imply uniform county representation.
 
-## 9. Responsible use and maintenance
+Wind, hail, and hurricane-category missingness is largely conditional on event type. Hurricane category is 99.92% missing in training and entirely missing in the test features. Filling these values with zero would conflate unknown intensity with an observed zero.
 
-- **No personal data:** all records are county-level aggregates or public storm reports.
-- **Leakage guard:** never use `retro_*` columns as inputs; never fit anything on `holdout/`. County history must be rebuilt from training years only if the split changes.
-- **Rebuilding:** run notebooks 01 → 02 → 04 (~25 minutes); 06 regenerates every statistic in this card.
-- **Updates:** a new year needs the next EAGLE-I and NOAA releases, a crosswalk version check, and a re-run of notebooks 02 and 04. Then bump the version above.
+### Forecast-time limitations and dependence
 
-## 10. Citation
+Whole-episode maxima, duration, counts, and extent can include information observed after `t0`. They stand in for forecast descriptions, so retrospective model performance may overstate advance-warning performance. Population and quality references are also not uniformly as-of-event measurements. Removing `retro_*` alone does not establish absence of temporal leakage.
 
-- Oak Ridge National Laboratory. *EAGLE-I power outage data, 2014–2025*. figshare, dataset 24237376. https://figshare.com/articles/dataset/24237376
-- NOAA National Centers for Environmental Information. *Storm Events Database*. https://www.ncdc.noaa.gov/stormevents/
+### Measurement choices and uneven effects
+
+Zone-coded reports can cover only part of a county; expansion can associate an entire county with localized weather. Connecticut population-weighted allocations and overlapping legacy/planning-region records can distort outage totals. MCC repairs, capping, and the 5% threshold affect labels, particularly in small counties. These assumptions warrant sensitivity analysis before stronger conclusions.
+
+### Drift and subgroup performance
+
+The saved drift table shows large DQI shifts (PSI about 3.69 for validation and 3.75 for test), consistent with its year mapping. Hurricane category has an additional sparse-data shift and should not be treated as stable. Tropical episodes are rare in the test features. Training outage rates differ substantially by storm family: about 62.5% for tropical episodes versus 7.7% for winter episodes. Families overlap, so these are not mutually exclusive classes. See [drift](ml_eda_tables/feature_drift_psi.csv) and [family rates](ml_eda_tables/rate_by_storm_family.csv).
+
+### Sensitivity and human attributes
+
+The modeling schema contains county aggregates and storm descriptors, with no individual names, customer addresses, or demographic attributes such as race or income. Population is an aggregate exposure feature. This is a schema description, not a formal privacy audit of every raw source. Geographic and coverage differences can still produce unequal model errors; no demographic fairness assessment or privacy guarantee is claimed.
+
+## Terms of Art
+
+| Term | Meaning in this project |
+|---|---|
+| FIPS | Five-digit county identifier; stored as text |
+| Episode | NOAA grouping of related storm reports; may affect multiple counties |
+| MCC | EAGLE-I modeled customer count used as the default denominator |
+| DQI | EAGLE-I regional data-quality index |
+| Observed | Project heuristic that a county-day has sufficient observation coverage |
+| PR-AUC | Here, scikit-learn average precision, not trapezoidal PR integration |
+| Brier skill | `1 - Brier / (p * (1-p))`, using observed prevalence `p` in the evaluation split |
+| PSI | Population stability index, used here to compare feature distributions |
+
+## Open Items for the Capstone Team
+
+- [ ] Add data-card authors, contributor roles, and a preferred project contact.
+- [ ] Confirm the intended release/version name and whether the recorded Hugging Face revision is the final deliverable; record file hashes or a release manifest.
+- [ ] Record exact upstream release IDs, download dates, and origins of the NWS crosswalk and Connecticut allocation weights.
+- [ ] Confirm source licenses/attribution requirements and the license and redistribution permissions for the derived dataset.
+- [ ] Supply a preferred project citation and any instructor-required acknowledgments.
+- [ ] State whether the dataset will remain private and whether any maintenance is planned after the course.
+
+Publishers, funding, retention, deletion policies, and human-annotator demographics are intentionally not left as mandatory blanks. They can be added only if the project's requirements change.

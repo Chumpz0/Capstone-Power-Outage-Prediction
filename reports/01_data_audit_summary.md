@@ -106,35 +106,3 @@ Sources audited: `data/02_combined/` raw combined CSVs, plus the NWS zone→coun
 | Test | 2025 | Good coverage, but **6.5% null `customers_out`**. Rules must be set before we look at test results. |
 
 Storm Events looks consistent across all years: 56–76 K events a year, about 57% county-coded and 99%+ of zone events mapped.
-
----
-
-## [NEXT STEPS]
-
-**Decisions for you**
-1. **Scope:** all counties (recommended) or Southeast only.
-2. **Training years:** keep all of 2014–2023, or start in **2015** (2014 has only 2 months of data). A later start such as **2017–2018** would give the model the ~92%+ county coverage that matches what 2024–2025 will look like.
-3. **Target definition:** what counts as "losing power"? For example, at least X% of the county's customers (MCC) out, or at least N customers, within H hours of storm start. The signal check used ≥1% within 24 h only as a test.
-4. **Prediction unit:** one row per county per storm event, or per county per day.
-
-**Data preparation (after the decisions above)**
-1. Build a clean typed EAGLE-I table:
-   - Drop `total_customers`; join MCC as the denominator, with Census population as backup.
-   - Cap `customers_out` at MCC, or flag rows above it.
-   - Keep nulls as nulls (not zero).
-   - Snap off-grid timestamps to the 15-minute grid.
-   - Merge the two US Virgin Islands names.
-   - Handle the Connecticut county → planning region change.
-2. Build a **"was this county being observed?" flag** per county and time window, so missing rows aren't silently treated as "no outage". It should use the county's first and last reporting dates, collection gaps, coverage history and DQI.
-3. Expand Storm Events to **one row per county per event**: county-coded events directly, zone-coded events through the dated crosswalk. Convert all times to UTC and parse damage to dollars (damage only for analysis).
-4. Drop the four `TOR_OTHER_*` columns. Keep the leakage columns out of model inputs.
-
-**Feature ideas**
-- **Storm:** event type, wind or hail magnitude, hurricane category, duration, number of storm reports in the county and its neighbours during the episode, and day/night and season.
-- **County exposure:** MCC customers, population and population density, plus urban/rural (needs land area).
-- **County history** (train years only, to avoid leakage): past outage rate per storm, typical peak % out, and typical restoration time.
-- **Outage severity and duration targets:** peak % out, customer-hours out, and hours until back below 1% out. These can be computed from the 15-minute series for a second model.
-- **Forecast-time data (later):** NWS warning and watch alerts (IEM VTEC files exist for the Southeast in `data/01_raw/iem_vtec/`) or gridded forecasts. These would replace the observed storm fields so the model matches the "given a storm prediction" use case.
-- **Possible extra data:** land cover and tree canopy, underground vs overhead power lines, and which utility serves the county.
-
-**Housekeeping:** `work/audit.duckdb` (2.7 GB) is a working copy of the raw CSVs for fast queries. Delete it any time, and the notebook will rebuild it (~2 min).

@@ -104,29 +104,3 @@ Full table: [outage_row_waterfall.csv](prep_tables/outage_row_waterfall.csv).
 - **Codes and times:** every outage FIPS is in the county lookup, no CT planning-region codes remain, and no storm ends before it begins.
 
 Two bugs were caught by these checks during the build and fixed before the final run: the Virgin Islands counties were duplicated, and NOAA's territory codes didn't match Census codes.
-
----
-
-## [NEXT STEPS]
-
-**EDA (step 03), built on these tables:**
-1. **Outage behaviour:**
-   - distribution of peak % out and outage duration
-   - how outages vary by season and time of day
-   - the biggest outage events, and whether each lines up with a storm
-2. **Storms → outages:**
-   - per event type and magnitude: the share of storm-county rows followed by an outage (several % thresholds and time windows)
-   - the same comparison for zone-coded and partial-county rows vs county-coded rows
-3. **Geography:** outage rate per storm by county and state on maps. Compare EAGLE-I coverage (observed rate, DQI) with outage rates to see where low coverage hides outages.
-4. **Over time:** check whether outage rates drift between 2017–2023, 2024 and 2025 because coverage grew. That drift would affect validation and test results.
-5. **Outages with no matching storm:** find large outages with no storm nearby, which hints at missing storm records or non-weather causes.
-
-**Decisions EDA should inform (yours):**
-1. **Target definition:** the % of customers out that counts as "losing power", and the time window after storm start (e.g. ≥1% within 24 h).
-2. **Prediction unit:** county × storm event (the current table) or county × day.
-3. **Overlapping storms:** whether to merge storm events that hit the same county close together into one episode.
-4. **Unobserved and partial counties:** whether to drop or down-weight rows where the county wasn't observed, or where the zone covers only part of the county.
-
-**Housekeeping:**
-- `work/audit.duckdb` (2.7 GB) is still used as the raw-data cache.
-- `processed/` can be fully rebuilt by running the notebook (~15 min).

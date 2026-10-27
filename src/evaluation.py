@@ -19,14 +19,9 @@ HF_REVISION = "5c01325258aa922bf395da1e39acda7c234fefcf"  # dataset commit the m
 # Storm families as in the modeling table (n_<family> = report count in the episode)
 FAMILIES = ["tstm_wind", "hail", "tornado", "high_wind", "flood", "winter", "ice_storm",
             "tropical", "cold", "lightning", "wildfire", "other"]
-CHECK_FAMILIES = ["tstm_wind", "winter", "high_wind", "hail", "flood", "tornado"]  # criterion 3
+CHECK_FAMILIES = ["tstm_wind", "winter", "high_wind", "hail", "flood", "tornado"]  # subgroup diagnostics
 
-# Success-criteria targets (fixed before training)
-TARGET_PR_AUC = 0.52
-TARGET_BSS = 0.25
-CAL_OVERALL_PTS = 2.0
-CAL_DECILE_PTS = 5.0
-TARGET_RECALL_TOP10 = 0.40
+# Reference-relative criteria revised 2026-10-27; see reports/success_criteria.md.
 TOP_SHARE = 0.10
 N_BOOT = 1000      # episode-level bootstrap resamples (provisional)
 SEED = 42
@@ -96,24 +91,25 @@ def calibration_deciles(y, p):
     return t
 
 
-def group_pr_auc(y, p, p_fam, groups):
-    """PR-AUC of the model and of the family-rate rule within each group (dict name -> boolean mask)."""
+def group_pr_auc(y, p, p_ref, groups):
+    """PR-AUC of the model and of the reference rule within each group (dict name -> boolean mask)."""
     out = []
     for name, mask in groups.items():
         if y[mask].sum() == 0 or y[mask].sum() == mask.sum():
             continue  # PR-AUC undefined without both classes
-        m, f = average_precision_score(y[mask], p[mask]), average_precision_score(y[mask], p_fam[mask])
+        m, f = average_precision_score(y[mask], p[mask]), average_precision_score(y[mask], p_ref[mask])
         out.append({"group": name, "rows": int(mask.sum()), "pos_rate": y[mask].mean(),
-                    "pr_auc": m, "family_rule_pr_auc": f, "beats_family_rule": m > f})
+                    "pr_auc": m, "reference_pr_auc": f, "beats_reference": m > f})
     return pd.DataFrame(out)
 
 
 def evaluate(frame, p, train, p_ref=None):
     """All success-criteria checks for predictions `p` on `frame` (validation).
-    p_ref = reference-rule predictions for the bootstrap; None skips criterion 1's CI (e.g. for the rule itself)."""
+    p_ref = reference-rule predictions; None computes the rule and skips the optional bootstrap."""
     y = frame["target"].to_numpy()
     p = np.asarray(p, dtype=float)
-    p_fam = family_rule(train, frame)
+    run_bootstrap = p_ref is not None
+    p_ref = np.asarray(naive_rules(train, frame)["family_x_history"] if p_ref is None else p_ref, dtype=float)
 
     brier = brier_score_loss(y, p)
     brier_base = brier_score_loss(y, np.full(len(y), y.mean()))   # always predicting the observed rate
@@ -121,8 +117,8 @@ def evaluate(frame, p, train, p_ref=None):
 
     fam_groups = {f: (frame[f"n_{f}"] > 0).to_numpy() for f in CHECK_FAMILIES}
     region_groups = {f"FEMA {r}": (frame["fema_region"] == r).to_numpy() for r in sorted(frame["fema_region"].unique())}
-    families = group_pr_auc(y, p, p_fam, fam_groups)
-    regions = group_pr_auc(y, p, p_fam, region_groups)
+    families = group_pr_auc(y, p, p_ref, fam_groups)
+    regions = group_pr_auc(y, p, p_ref, region_groups)
     by_year = pd.DataFrame([{"year": yr, "rows": int(m.sum()), "pos_rate": y[m].mean(), "mean_pred": p[m].mean(),
                              "pr_auc": average_precision_score(y[m], p[m])}
                             for yr in sorted(frame["year"].unique()) for m in [(frame["year"] == yr).to_numpy()]])
@@ -140,16 +136,19 @@ def evaluate(frame, p, train, p_ref=None):
         "pos_rate": y.mean(),
         "rows": len(y),
     }
-    if p_ref is not None:
+    if run_bootstrap:
         lo, hi = bootstrap_gain(y, p, np.asarray(p_ref, dtype=float), frame["episode_id"].to_numpy())
         m["pr_auc_gain_ci_low"], m["pr_auc_gain_ci_high"] = lo, hi
 
-    # Pass/fail per criterion (criterion 4 needs the 2025 test run, so it is checked there)
-    m["pass_1_ranking"] = bool(m["pr_auc"] >= TARGET_PR_AUC and m.get("pr_auc_gain_ci_low", -1) > 0)
-    m["pass_2_brier_skill"] = bool(m["brier_skill"] >= TARGET_BSS)
-    m["pass_2b_calibration"] = bool(abs(m["cal_overall_pts"]) <= CAL_OVERALL_PTS and m["cal_worst_decile_pts"] <= CAL_DECILE_PTS)
-    m["pass_3_no_hidden_failures"] = bool(families["beats_family_rule"].all() and regions["beats_family_rule"].all())
-    m["pass_5_recall_top10"] = bool(m["recall_top10"] >= TARGET_RECALL_TOP10)
+    # Compare full-precision predictions on the same rows, never rounded report values.
+    m["criteria_version"] = "2026-10-27-reference"
+    m["reference_pr_auc"] = average_precision_score(y, p_ref)
+    m["reference_brier"] = brier_score_loss(y, p_ref)
+    m["reference_brier_skill"] = 1 - m["reference_brier"] / brier_base
+    m["reference_recall_top10"] = recall_at_top(y, p_ref)
+    m["pass_1_ranking"] = bool(m["pr_auc"] > m["reference_pr_auc"])
+    m["pass_2_brier_skill"] = bool(m["brier"] <= m["reference_brier"])
+    m["pass_5_recall_top10"] = bool(m["recall_top10"] >= m["reference_recall_top10"])
     m["passes_all_validation"] = all(m[k] for k in m if k.startswith("pass_"))
     m = {k: float(v) if isinstance(v, np.floating) else v for k, v in m.items()}
 

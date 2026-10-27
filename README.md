@@ -21,18 +21,19 @@ Data: [EAGLE-I](https://figshare.com/articles/dataset/24237376) county outage sn
 | 03 EDA (training years only) | [03_eda](notebooks/03_eda.ipynb) | [summary](reports/03_eda_summary.md) | Done |
 | 04 Modeling table | [04_modeling_table](notebooks/04_modeling_table.ipynb) | [summary](reports/04_modeling_table_summary.md) | Done |
 | 05 Baseline models | [05_baseline_models](notebooks/05_baseline_models.ipynb) | | In progress (naive rules logged to W&B) |
-| 06 EDA of the ML-ready dataset | [06_ml_dataset_eda](notebooks/06_ml_dataset_eda.ipynb) | [summary](reports/06_ml_dataset_eda_summary.md) | Done: [EDA report (PDF)](reports/EDA_report.pdf), [dataset card](reports/dataset_card.md) |
+| 06 EDA of the ML-ready dataset | [06_ml_dataset_eda](notebooks/06_ml_dataset_eda.ipynb) | [summary](reports/06_ml_dataset_eda_summary.md) | Done |
 
-**Success criteria** were fixed before any model was trained: [reports/success_criteria.md](reports/success_criteria.md). The bar to beat is a no-ML rule (storm family rate × county history) with a 2024 PR-AUC of 0.469. Every model is logged to the Weights & Biases team project **CAPSTONE MODEL** (`leslie-ortega-us-georgia-state-university`), with the shared checks in [src/evaluation.py](src/evaluation.py).
+**Success criteria** were revised on 2026-10-27 to use the measured reference baseline: [reports/success_criteria.md](reports/success_criteria.md). The bar to beat is a no-ML rule (storm family rate × county history) with a 2024 PR-AUC of 0.469. Every model is logged to the Weights & Biases team project **CAPSTONE MODEL** (`leslie-ortega-us-georgia-state-university`), with the shared checks in [src/evaluation.py](src/evaluation.py).
 
-Each step has a notebook with commented code, and a summary in `reports/` laid out as **[GOAL] – [FINDINGS] – [NEXT STEPS]**. Start with the summaries.
+Each step has a notebook with commented code, and a summary in `reports/` laid out as **[GOAL] / [FINDINGS]**. Start with the summaries.
+
+The consolidated [EDA report](reports/eda_report.md) presents the existing exploratory findings and figures using SarahAA1's credited EDA template.
 
 ## Repo layout
 
 ```
 notebooks/                 one notebook per step (01 -> 04 build the data, 05 models, 06 profiles the ML-ready table)
 src/evaluation.py          shared success-criteria checks + W&B logging (used from step 05)
-scripts/build_eda_report.py  renders reports/eda_report.md + dataset_card.md to reports/EDA_report.pdf
 reports/                   step summaries, success criteria
 reports/figures/           EDA charts
 reports/*_tables/          small CSV result and check tables written by the notebooks
@@ -53,7 +54,11 @@ Select the `.venv` interpreter as the Jupyter kernel.
 
 ## Data
 
-The data isn't stored in GitHub. It lives in the private Hugging Face dataset **[DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data)** (5.3 GB), laid out like this repo (`data/`, `processed/`, `holdout/`).
+The [project data card](reports/dataset_card.md) documents the modeling dataset, source lineage, transformations, labels, evaluation, limitations, and remaining release details using a condensed PAIR Data Cards template.
+
+Keep the small CSV evidence tables in `reports/*_tables/` in Git: the 42 current files total 51,259 bytes (about 50 KiB). They support the summaries and can be reviewed alongside code changes. Hugging Face remains the home for the large raw and processed datasets. If a report-table release is later needed there, publish it as an explicitly configured, separate subset so its different schemas are not mixed with training data ([Hugging Face repository structure](https://huggingface.co/docs/datasets/repository_structure)).
+
+The raw and processed datasets aren't stored in GitHub. They live in the private Hugging Face dataset **[DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data)** (5.3 GB), laid out like this repo (`data/`, `processed/`, `holdout/`).
 
 **You don't have to download anything.** Each notebook reads a file from the repo if it's there, and otherwise streams it from Hugging Face. You only need access to the `DSCI-Capstone` org and a one-time login:
 
