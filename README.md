@@ -27,12 +27,15 @@ Data: [EAGLE-I](https://figshare.com/articles/dataset/24237376) county outage sn
 
 Each step has a notebook with commented code, and a summary in `reports/` laid out as **[GOAL] / [FINDINGS]**. Start with the summaries.
 
+All six steps also have standalone `.py` versions in [scripts/](scripts/README.md), including execution order, inputs, outputs, and run instructions. The scripts contain the analysis code directly and do not require Jupyter.
+
 The consolidated [EDA report](reports/eda_report.md) presents the existing exploratory findings and figures using SarahAA1's credited EDA template.
 
 ## Repo layout
 
 ```
 notebooks/                 one notebook per step (01 -> 04 build the data, 05 models, 06 profiles the ML-ready table)
+scripts/                   standalone Python versions of all six notebooks and a run guide
 src/evaluation.py          shared success-criteria checks + W&B logging (used from step 05)
 reports/                   step summaries, success criteria
 reports/figures/           EDA charts
