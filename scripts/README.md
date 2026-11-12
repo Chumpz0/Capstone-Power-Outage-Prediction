@@ -15,6 +15,9 @@ All six notebooks have standalone Python counterparts in this folder. These are 
 
 ## Running
 
+For the separate gradient boosting implementation, synthetic smoke test, and
+teammate training handoff, see [GRADIENT_BOOSTING.md](GRADIENT_BOOSTING.md).
+
 Use the project's Python environment and [requirements](../requirements.txt). From the repository root, with the virtual environment activated:
 
 ```bash
