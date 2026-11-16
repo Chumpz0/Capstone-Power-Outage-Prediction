@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "outage-prediction"
+version = "0.1.0"
+description = "County storm-to-outage capstone analysis"
+requires-python = ">=3.14"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+include = ["outage_prediction*"]
+
+[tool.ruff]
+cache-dir = ".cache/ruff"

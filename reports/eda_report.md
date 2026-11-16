@@ -18,8 +18,8 @@ The project asks: **given a storm, what is the probability that a US county expe
 
 This report combines two completed analyses:
 
-- [Notebook 03](../notebooks/03_eda.ipynb) explores cleaned outage and storm tables using training years only. Its main unit is an individual storm report paired with a county, and its initial outage threshold is 1%.
-- [Notebook 06](../notebooks/06_ml_dataset_eda.ipynb) profiles the final modeling table, whose unit is county-by-episode and whose target threshold is 5%. Feature-target relationships use 2017-2023 training rows. Split comparisons use features, with previously reported validation prevalence included for context. Test outcomes are withheld.
+- [Event-level EDA](../notebooks/02_eda.ipynb) explores cleaned outage and storm tables using training years only. Its main unit is an individual storm report paired with a county, and its initial outage threshold is 1%.
+- [Modeling-dataset EDA](../notebooks/02_eda.ipynb) profiles the final modeling table, whose unit is county-by-episode and whose target threshold is 5%. Feature-target relationships use 2017-2023 training rows. Split comparisons use features, with previously reported validation prevalence included for context. Test outcomes are withheld.
 
 Findings below refer to the final modeling table unless explicitly labeled as earlier event-level EDA. Percentages from these two populations should not be treated as interchangeable.
 
@@ -27,7 +27,7 @@ Findings below refer to the final modeling table unless explicitly labeled as ea
 
 ### Dataset Information
 
-**Dataset:** Storm-to-Outage, hosted in [DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data). Sources are EAGLE-I outage readings, NOAA Storm Events, Census population, and geographic/coverage references. Full provenance and definitions are documented in the [project data card](dataset_card.md).
+**Dataset:** Storm-to-Outage, hosted in [DSCI-Capstone/county-outage-data](https://huggingface.co/datasets/DSCI-Capstone/county-outage-data). Sources are EAGLE-I outage readings, NOAA Storm Events, Census population, and geographic/coverage references. Full provenance and definitions are documented in the [project data card](../docs/dataset.md).
 
 | Split | Years | Rows | Counties | Episodes | Positive rate |
 |---|---|---:|---:|---:|---:|
@@ -35,7 +35,7 @@ Findings below refer to the final modeling table unless explicitly labeled as ea
 | Validation | 2024 | 31,064 | 3,023 | 7,734 | 16.48% |
 | Test features | 2025 | 32,098 | 3,014 | 7,866 | Withheld |
 
-Source: [dataset overview](ml_eda_tables/dataset_overview.csv). Scope is the lower 48 states and DC. Training and validation each have 46 columns: six identifiers, 36 candidate features, the target, and three retrospective analysis fields. Test features contain only the 42 identifier/feature columns.
+Source: [dataset overview](../notebooks/02_eda.ipynb). Scope is the lower 48 states and DC. Training and validation each have 46 columns: six identifiers, 36 candidate features, the target, and three retrospective analysis fields. Test features contain only the 42 identifier/feature columns.
 
 ### Data Loading and Cleaning
 
@@ -43,9 +43,9 @@ Existing notebooks use local source files where available and otherwise read fro
 
 Null and zero outage readings are excluded from the positive-outage table, with observation status maintained separately. Missing hourly records are interpreted as zero only under the project's coverage assumptions. Readings above the denominator are capped, and hourly observations retain the worst snapshot within each hour.
 
-The modeling-table preparation reduces 643,757 event-county records to 271,644 county-episode records after geographic filtering, exclusion of drought/heat triggers, episode aggregation, and observation-coverage filtering. See [row waterfall](model_table_tables/row_waterfall.csv) and [preparation summary](02_data_prep_summary.md).
+The modeling-table preparation reduces 643,757 event-county records to 271,644 county-episode records after geographic filtering, exclusion of drought/heat triggers, episode aggregation, and observation-coverage filtering. See [row waterfall](../notebooks/02_eda.ipynb) and [preparation summary](../docs/dataset.md).
 
-Saved [ML dataset checks](ml_eda_tables/checks.csv) report unique county-episode keys, no missing training/validation targets, agreement between the label and the 5% threshold, non-overlapping split years, and no target in the test-feature file. These establish structural consistency rather than complete observation coverage or forecast-time validity.
+Saved [ML dataset checks](../notebooks/02_eda.ipynb) report unique county-episode keys, no missing training/validation targets, agreement between the label and the 5% threshold, non-overlapping split years, and no target in the test-feature file. These establish structural consistency rather than complete observation coverage or forecast-time validity.
 
 ## Data Summary and Descriptive Statistics
 
@@ -63,7 +63,7 @@ The following are saved training statistics. Numeric summaries exclude missing v
 | Historical county outage rate | 0.1343 | 0.1151 | 0.0641-0.1847 | 0.5832 |
 | Peak share out, retrospective | 0.0335 | 0.0019 | 0.00005-0.0182 | 1.00 |
 
-Source: [feature dictionary and statistics](ml_eda_tables/feature_dictionary.csv). The gaps between means and medians show long right tails in episode duration, report counts, and outage severity. The retrospective peak defines the outcome and must not be used as a predictor.
+Source: [feature dictionary and statistics](../notebooks/02_eda.ipynb). The gaps between means and medians show long right tails in episode duration, report counts, and outage severity. The retrospective peak defines the outcome and must not be used as a predictor.
 
 ### Feature Distribution
 
@@ -83,7 +83,7 @@ This existing plot excludes missing values and places values above the pooled 99
 | Pre-storm peak / preceding-hour outage share | 3.32% each | 11.62% | 14.21% |
 | Log population | 0.36% | 11.26% | 14.14% |
 
-Source: [missingness versus target](ml_eda_tables/missingness_vs_target.csv).
+Source: [missingness versus target](../notebooks/02_eda.ipynb).
 
 Wind, hail, and hurricane measurements are conditional on the kinds of events reported. Their missingness therefore contains information about episode composition. The small observed hurricane-category subset should not be treated as representative of all storms. Pre-storm features are unknown when the preceding day is not observed. Population gaps correspond to Connecticut's legacy county geography.
 
@@ -95,7 +95,7 @@ The modeling table retains these missing values. A missing intensity is not an o
 
 ![Training distribution of retrospective peak outage share](figures/ml_eda/02_peak_share_distribution.png)
 
-Training severity is highly skewed: 21.99% of county-episodes have a zero peak, 32.01% reach at least 1%, 14.13% reach 5%, 8.25% reach 10%, and 1.21% reach 50%. Among positives, median peak share is 11.87%. The threshold therefore identifies a minority class with substantial variation in severity. Source: [peak summary](ml_eda_tables/peak_summary.csv).
+Training severity is highly skewed: 21.99% of county-episodes have a zero peak, 32.01% reach at least 1%, 14.13% reach 5%, 8.25% reach 10%, and 1.21% reach 50%. Among positives, median peak share is 11.87%. The threshold therefore identifies a minority class with substantial variation in severity. Source: [peak summary](../notebooks/02_eda.ipynb).
 
 Long episode durations and high report counts also have strongly asymmetric distributions, as shown in the descriptive statistics and feature-distribution figure. These ranges should not be mistaken for data errors solely because they are far above the median.
 
@@ -114,7 +114,7 @@ Storm families are derived from report types and can coexist in an episode. Coun
 | Tropical | 2,029 |
 | Ice storm | 1,574 |
 
-Source: [storm-family table](ml_eda_tables/rate_by_storm_family.csv). The smaller tropical and ice-storm samples matter when interpreting their high positive rates. County-coded-only and zone-coded-only episodes are both common: 104,315 and 101,801 rows respectively; another 2,366 contain both report types. Source: [coding table](ml_eda_tables/rate_by_storm_coding.csv).
+Source: [storm-family table](../notebooks/02_eda.ipynb). The smaller tropical and ice-storm samples matter when interpreting their high positive rates. County-coded-only and zone-coded-only episodes are both common: 104,315 and 101,801 rows respectively; another 2,366 contain both report types. Source: [coding table](../notebooks/02_eda.ipynb).
 
 ## Bivariate Analysis
 
@@ -126,13 +126,13 @@ The saved Spearman analysis identifies strong associations among numerical input
 
 ![Existing single-feature target-association chart](figures/ml_eda/03_univariate_signal.png)
 
-County historical outage rate has a training ROC-AUC of 0.738 when used directly as a score, followed by historical mean peak at 0.732 and pre-storm peak at 0.668. Episode report count has ROC-AUC 0.645; thunderstorm-wind count has 0.638. Source: [single-feature signal](ml_eda_tables/univariate_signal.csv).
+County historical outage rate has a training ROC-AUC of 0.738 when used directly as a score, followed by historical mean peak at 0.732 and pre-storm peak at 0.668. Episode report count has ROC-AUC 0.645; thunderstorm-wind count has 0.638. Source: [single-feature signal](../notebooks/02_eda.ipynb).
 
 Each score uses rows where that feature is observed, so features with different missingness are evaluated on different subsets. The figure displays `max(AUC, 1-AUC)` for strength and uses color to indicate direction. For example, historical episode count has raw AUC 0.351 but displayed strength 0.649 because higher values are associated with fewer positives. These are training associations, not held-out model scores or estimates of causal importance.
 
 ![Training positive rates across existing feature bins](figures/ml_eda/04_rate_by_feature_bins.png)
 
-The positive rate rises from 1.52% in the lowest county-history bin to 37.35% in the highest. The existing curves also show non-linear associations for county size and episode duration. These patterns support examining non-linear relationships rather than assuming a constant linear effect. Source: [feature-bin rates](ml_eda_tables/rate_by_feature_bins.csv).
+The positive rate rises from 1.52% in the lowest county-history bin to 37.35% in the highest. The existing curves also show non-linear associations for county size and episode duration. These patterns support examining non-linear relationships rather than assuming a constant linear effect. Source: [feature-bin rates](../notebooks/02_eda.ipynb).
 
 ### Categorical-Numeric Relationships
 
@@ -149,11 +149,11 @@ The positive rate rises from 1.52% in the lowest county-history bin to 37.35% in
 | Flood | 11.62% |
 | Winter | 7.67% |
 
-These differences describe associations between episode composition and a binary numerical outcome. They do not isolate the effect of a storm type from geography, intensity, or coverage. Source: [family rates](ml_eda_tables/rate_by_storm_family.csv).
+These differences describe associations between episode composition and a binary numerical outcome. They do not isolate the effect of a storm type from geography, intensity, or coverage. Source: [family rates](../notebooks/02_eda.ipynb).
 
 County-coded-only episodes have a 17.86% positive rate, zone-coded-only episodes 9.89%, and mixed episodes 32.04%. Different event types use different location coding, so the contrast does not establish that coding itself causes different outcomes.
 
-Pre-existing outages strongly separate outcomes: rows with less than 0.1% out in the preceding hour are positive 11.67% of the time, versus 89.37% for the 2,596 rows already at or above 5%. The current target includes these already-out rows and does not require a subsequent increase. Sources: [coding rates](ml_eda_tables/rate_by_storm_coding.csv) and [pre-storm bands](ml_eda_tables/rate_by_pre_storm_outage.csv).
+Pre-existing outages strongly separate outcomes: rows with less than 0.1% out in the preceding hour are positive 11.67% of the time, versus 89.37% for the 2,596 rows already at or above 5%. The current target includes these already-out rows and does not require a subsequent increase. Sources: [coding rates](../notebooks/02_eda.ipynb) and [pre-storm bands](../notebooks/02_eda.ipynb).
 
 ## Feature Engineering
 
@@ -169,13 +169,13 @@ The existing modeling pipeline creates 36 candidate features:
 
 History rates use a provisional prior weight of 20. Training rows exclude their own year from county-specific aggregates, while global priors use all training years; validation and test history use all training years. This is not a strictly past-only feature pipeline. Whole-episode storm summaries can also include information collected after the prediction time.
 
-The pipeline excludes `target` and `retro_*` from predictors, but that exclusion alone does not establish forecast-time availability. See [notebook 04](../notebooks/04_modeling_table.ipynb) and the [data card](dataset_card.md) for exact construction and limitations.
+The pipeline excludes `target` and `retro_*` from predictors, but that exclusion alone does not establish forecast-time availability. See [dataset definitions](../docs/dataset.md) and the [data card](../docs/dataset.md) for exact construction and limitations.
 
 ## Outlier Detection
 
 The completed audit and preparation identified implausible customer denominators and outage readings above those denominators. North Carolina's MCC estimate was approximately 0.17 customers per person, compared with roughly 0.5 nationally. The pipeline substitutes a Census-based estimate for all North Carolina counties, missing-MCC cases, and 21 other counties with implausible ratios.
 
-County ratios below 0.1 or above 5 customers per person trigger substitution; these are provisional rules. Outage readings exceeding the selected denominator are capped, with the original count and a flag retained in the cleaned data. A spurious MCC "Grand Total" county row was also removed. These are documented data-quality corrections, not a blanket removal of extreme storms. Sources: [preparation summary](02_data_prep_summary.md) and [modeling-table summary](04_modeling_table_summary.md).
+County ratios below 0.1 or above 5 customers per person trigger substitution; these are provisional rules. Outage readings exceeding the selected denominator are capped, with the original count and a flag retained in the cleaned data. A spurious MCC "Grand Total" county row was also removed. These are documented data-quality corrections, not a blanket removal of extreme storms. Sources: [preparation summary](../docs/dataset.md) and [modeling-table summary](../docs/dataset.md).
 
 The final table still contains large values, including 173-knot reported wind, 6.42-inch hail, and nearly 744-hour county episodes. The saved summaries document these extrema but do not establish that each is erroneous. Plot clipping above the 99th percentile changes only the display.
 
@@ -191,7 +191,7 @@ The final table still contains large values, including 173-knot reported wind, 6
 | Historical outage rate / historical mean peak | 0.944 |
 | County-coded count / zone-coded share | -0.927 |
 
-Source: [correlated pairs](ml_eda_tables/top_correlated_pairs.csv). The first pair is a deliberate monotonic transformation. Others indicate overlapping information or complementary coding patterns. Strong correlation can complicate interpretation of individual linear-model coefficients; it does not establish that either feature is invalid or justify automatic deletion. Correlation also does not establish causation.
+Source: [correlated pairs](../notebooks/02_eda.ipynb). The first pair is a deliberate monotonic transformation. Others indicate overlapping information or complementary coding patterns. Strong correlation can complicate interpretation of individual linear-model coefficients; it does not establish that either feature is invalid or justify automatic deletion. Correlation also does not establish causation.
 
 ## Custom Analyses
 
@@ -199,9 +199,9 @@ Source: [correlated pairs](ml_eda_tables/top_correlated_pairs.csv). The first pa
 
 ![Target rates by year, month, and FEMA region](figures/ml_eda/01_target_by_year_month_region.png)
 
-Training positive rates rise from 11.15% in 2017 to 16.85% in 2023, with fluctuations between years. Validation prevalence is 16.48%. EAGLE-I observation coverage also changes over time, so the increase cannot be attributed entirely to worsening weather or grid conditions. Source: [annual rates](ml_eda_tables/rows_by_year.csv).
+Training positive rates rise from 11.15% in 2017 to 16.85% in 2023, with fluctuations between years. Validation prevalence is 16.48%. EAGLE-I observation coverage also changes over time, so the increase cannot be attributed entirely to worsening weather or grid conditions. Source: [annual rates](../notebooks/02_eda.ipynb).
 
-Within training data, January's positive rate is 7.95% and June's is 20.11%. FEMA regions IV and VI are both near 20.6%, while region VIII is 4.84%. These patterns reflect the observed mix of storms, places, and measurement coverage. Source: [month and region rates](ml_eda_tables/target_by_month_region.csv).
+Within training data, January's positive rate is 7.95% and June's is 20.11%. FEMA regions IV and VI are both near 20.6%, while region VIII is 4.84%. These patterns reflect the observed mix of storms, places, and measurement coverage. Source: [month and region rates](../notebooks/02_eda.ipynb).
 
 ### Feature Drift Across Splits
 
@@ -209,7 +209,7 @@ Within training data, January's positive rate is 7.95% and June's is 20.11%. FEM
 
 The saved PSI table shows substantial DQI drift: 3.69 for validation and 3.75 for test. DQI is available only for 2018-2022 and mapped to neighboring years outside that range, making its distribution partly a product of the reference-year mapping. Customer coverage and historical episode count show smaller shifts, with PSI values around 0.04-0.06.
 
-The chart excludes the extremely sparse hurricane-category feature and caps its displayed axis. The full table records hurricane-category PSI of 0.197 for validation and 8.064 for test; the feature is entirely missing in the test data. Its test value should not be interpreted as an ordinary comparison of observed category distributions. Missingness needs separate consideration because the PSI routine drops missing values. Source: [drift table](ml_eda_tables/feature_drift_psi.csv) and [feature dictionary](ml_eda_tables/feature_dictionary.csv).
+The chart excludes the extremely sparse hurricane-category feature and caps its displayed axis. Hurricane category is entirely missing in test features. The refactored diagnostic reports test PSI as unavailable and includes missingness counts; the old finite value was an empty-distribution artifact. Retained figures are the original curated report figures, not a new result for that sparse field. Source: [drift table](../notebooks/02_eda.ipynb) and [feature dictionary](../notebooks/02_eda.ipynb).
 
 ### Earlier Event-Level EDA: Target Threshold and Window
 
@@ -228,7 +228,7 @@ The 5% threshold provides stronger relative separation from the background compa
 
 ![Existing event-level time-to-peak analysis](figures/07_hours_to_peak.png)
 
-These findings informed the chosen threshold and window; they do not make them operational standards. The final label uses hourly bins 0-23 starting at the hour containing `t0`, so the first bin can include observations before the exact report minute. Sources: [03 EDA summary](03_eda_summary.md) and [label construction](../notebooks/04_modeling_table.ipynb).
+These findings informed the chosen threshold and window; they do not make them operational standards. The final label uses hourly bins 0-23 starting at the hour containing `t0`, so the first bin can include observations before the exact report minute. Sources: [03 EDA summary](../notebooks/02_eda.ipynb) and [label construction](../docs/dataset.md).
 
 ## Conclusions and Recommendations
 
@@ -240,6 +240,6 @@ The evidence supports the following modeling guidance:
 - Treat missing storm measurements as informative; fit any preprocessing on training data.
 - Account for non-linear relationships and correlated inputs when fitting and interpreting models.
 - Treat DQI as a shifting measurement-context feature, and distinguish whole-episode retrospective inputs from features available at a real prediction time.
-- Report calibration and subgroup behavior alongside ranking, and evaluate against the reproducible reference specified in [success criteria](success_criteria.md).
+- Report calibration and subgroup behavior alongside ranking, and evaluate against the reproducible reference specified in [success criteria](../docs/evaluation.md).
 
-These recommendations follow the existing analyses. The report's figures and tables describe the current retrospective dataset, with the [data card](dataset_card.md) providing the fuller record of provenance and limitations.
+These recommendations follow the existing analyses. The report's figures and tables describe the current retrospective dataset, with the [data card](../docs/dataset.md) providing the fuller record of provenance and limitations.

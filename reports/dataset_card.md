@@ -8,9 +8,9 @@ The dataset supports the DSCI 4350 undergraduate capstone at Georgia State Unive
 
 **Code:** [Capstone-Power-Outage-Prediction](https://github.com/Chumpz0/Capstone-Power-Outage-Prediction)
 
-**Card reviewed:** 2026-10-27
+**Card reviewed:** 2026-11-16 (structure, links, release identity, and verification updated; descriptive statistics retain the existing release).
 
-**Authors and contact:** To be supplied by the capstone team; see open items below.
+**Authors and contact:** Christopher Walker; chriswalker5705@gmail.com.
 
 Adapted from the [PAIR Data Cards Playbook extended template](https://github.com/PAIR-code/datacardsplaybook/blob/main/templates/DataCardsExtendedTemplate.md). Relevant sections are condensed for this capstone. Publishers, funding, retention, and wipeout/deletion procedures are omitted. This card documents the current implementation; it does not imply a maintenance or deployment commitment.
 
@@ -18,7 +18,7 @@ Adapted from the [PAIR Data Cards Playbook extended template](https://github.com
 
 ### Content and snapshot
 
-The primary release described here is `processed/model_table/`, not the much larger raw and intermediate tables. Records describe weather, places, and electricity-system behavior. The data modality is tabular, with temporal and geographic identifiers.
+The primary release is local `data/processed/`, corresponding to `processed/model_table/` on Hugging Face. The much larger raw and intermediate tables are separate. Records describe weather, places, and electricity-system behavior. The data modality is tabular, with temporal and geographic identifiers.
 
 | Property | Current dataset |
 |---|---|
@@ -43,7 +43,7 @@ Sizes describe the local Parquet snapshot inspected on the review date. The sepa
 | Validation | 2024 | 31,064 | 3,023 | 7,734 | 5,120 | 16.48% |
 | Test features | 2025 | 32,098 | 3,014 | 7,866 | Withheld | Withheld |
 
-Source: [dataset overview](ml_eda_tables/dataset_overview.csv), checked against the local training, validation, and test-feature files. Episode identifiers do not overlap between these three local splits. Counties recur across years, so this evaluates future-year performance rather than generalization to entirely unseen counties.
+Source: [dataset overview](../notebooks/02_eda.ipynb), checked against the local training, validation, and test-feature files. Episode identifiers do not overlap between these three local splits. Counties recur across years, so this evaluates future-year performance rather than generalization to entirely unseen counties.
 
 ### Descriptive statistics
 
@@ -58,13 +58,13 @@ Statistics below use training rows only. Numeric summaries exclude missing value
 | Historical outage rate (`hist_outage_rate`) | 0.1343 | 0.1151 | 0.0641-0.1847 | 0.5832 | 0% |
 | Peak share out (`retro_peak_24h`, analysis only) | 0.0335 | 0.0019 | 0.00005-0.0182 | 1 | 0% |
 
-See the [full feature dictionary and statistics](ml_eda_tables/feature_dictionary.csv) for all 46 fields, data types, units, and missingness by split. Shares are fractions from 0 to 1, not percentages. `fips` must remain text to preserve leading zeros; Connecticut is harmonized to its eight legacy counties rather than using a uniform Census 2023 geography.
+See the [full feature dictionary and statistics](../notebooks/02_eda.ipynb) for all 46 fields, data types, units, and missingness by split. Shares are fractions from 0 to 1, not percentages. `fips` must remain text to preserve leading zeros; Connecticut is harmonized to its eight legacy counties rather than using a uniform Census 2023 geography.
 
 ### Version and maintenance
 
-The existing summaries record the dataset build as 2026-10-25. The evaluation module records Hugging Face revision `5c01325258aa922bf395da1e39acda7c234fefcf`. That is the recorded data reference, not a claim that the current remote HEAD or every local file was independently verified against it. Some notebook fallback paths read the Hub without a revision pin.
+The existing release was built on 2026-10-25. Remote reads now default to fixed Hugging Face revision `5c01325258aa922bf395da1e39acda7c234fefcf`, with no silent latest fallback. On 2026-11-16 the local train, validation, and test-feature files matched that revision's remote LFS SHA-256 hashes. These checks verify the current release, not the identity of future local replacements or every upstream source.
 
-No formal dataset release number, future refresh schedule, or post-capstone maintenance commitment is documented. Reproduction uses the notebooks and [pinned requirements](../requirements.txt); release naming and source-version confirmation remain open items.
+No formal dataset release number, future refresh schedule, or post-capstone maintenance commitment is documented. Reproduction uses the package, narrative notebooks, and [pinned requirements](../requirements.txt); release naming and source-version confirmation remain open items.
 
 ## Example of Data Points
 
@@ -109,7 +109,7 @@ Unsuitable uses without further validation include live crew dispatch, household
 
 ## Access
 
-The project README describes the Hugging Face dataset as private. Access requires permission for `DSCI-Capstone/county-outage-data` and a Hugging Face login. Code, reports, and small CSV evidence tables are kept in this repository; raw and processed datasets are kept outside Git.
+The project README describes the Hugging Face dataset as private. Access requires permission for `DSCI-Capstone/county-outage-data` and a Hugging Face login. Code, inline notebook evidence, the curated EDA report and this dataset card are kept in this repository. Routine CSV exports, raw/processed datasets and model artifacts are excluded from Git. The concise [dataset guide](../docs/dataset.md) documents current execution and storage contracts.
 
 For model development, download only the following files after `hf auth login`:
 
@@ -117,9 +117,9 @@ For model development, download only the following files after `hf auth login`:
 hf download DSCI-Capstone/county-outage-data --repo-type dataset --revision 5c01325258aa922bf395da1e39acda7c234fefcf --local-dir . --include "processed/model_table/train.parquet" "processed/model_table/validation.parquet" "processed/model_table/test_features.parquet"
 ```
 
-The Hub stores test labels in `holdout/test_labels.parquet`; notebook 04 writes a local copy under `processed/model_table/`. Reserve those labels for the selected model's final evaluation. Separate files support the evaluation protocol but are not evidence of access-control enforcement.
+The Hub stores test labels in `holdout/test_labels.parquet`; the local location is `data/holdout/test_labels.parquet`. The feature-build command creates them only with explicit `--write-holdout`. Reserve those labels for the selected model's final evaluation. Separate files support the evaluation protocol but are not evidence of access-control enforcement.
 
-Dataset licensing and redistribution terms have not been established in this card. Public source availability is not a substitute for documenting the applicable terms; see open items.
+Dataset licensing and redistribution terms have not been established in this card. Public source availability is not a substitute for documenting the applicable terms. Source release identifiers, crosswalk/weight origins, and redistribution permissions remain to be completed.
 
 ## Provenance
 
@@ -129,8 +129,8 @@ The capstone integrates existing datasets rather than collecting new observation
 
 | Source | Role | Repository evidence |
 |---|---|---|
-| [EAGLE-I outage archive](https://figshare.com/articles/dataset/24237376) | County outage readings on an approximately 15-minute grid; combined source files cover 2014-2025 | [Data audit](01_data_audit_summary.md) |
-| [NOAA Storm Events](https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/) | Reported weather-event types, timing, locations, intensity, and event/episode identifiers | [Data audit](01_data_audit_summary.md) |
+| [EAGLE-I outage archive](https://figshare.com/articles/dataset/24237376) | County outage readings on an approximately 15-minute grid; combined source files cover 2014-2025 | [Data audit](../notebooks/01_data_audit.ipynb) |
+| [NOAA Storm Events](https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/) | Reported weather-event types, timing, locations, intensity, and event/episode identifiers | [Data audit](../notebooks/01_data_audit.ipynb) |
 | Census Vintage 2023 county population | Population feature and fallback customer denominator | `data/01_raw/census_counties/co-est2023-alldata.csv` |
 | EAGLE-I MCC, DQI, coverage-history references | Modeled customer denominator, regional quality score, state customer coverage | `data/reference/eaglei_archive/` |
 | Dated NWS zone-to-county crosswalk | Expands forecast-zone-coded reports into county records | `data/reference/nws_zone_county_versions.parquet` |
@@ -140,7 +140,7 @@ The exact upstream release identifiers, download dates, and provenance of the su
 
 ### Selection and integration
 
-The raw audit covers 2014-2025; processing and modeling use 2017-2025. Earlier EAGLE-I years have poorer county coverage, and 2014 contains only November-December. The modeling population consists of eligible reported storm episodes with sufficient inferred observation coverage, not a random sample of all county-days.
+Source coverage spans 2014-2025; processing and modeling use 2017-2025. Current raw-audit outcome summaries are restricted to training years, while all-year inventory checks report source counts only. Earlier EAGLE-I years have poorer county coverage, and 2014 contains only November-December. The modeling population consists of eligible reported storm episodes with sufficient inferred observation coverage, not a random sample of all county-days.
 
 | Modeling-table step | Rows remaining |
 |---|---:|
@@ -150,11 +150,11 @@ The raw audit covers 2014-2025; processing and modeling use 2017-2025. Earlier E
 | Aggregate to county-by-episode | 298,398 |
 | Require observation coverage for label-window days | 271,644 |
 
-Marine/waterspout events are removed during preparation. Alaska, Hawaii, and territories are outside the modeling scope. Source: [row waterfall](model_table_tables/row_waterfall.csv) and [modeling-table notebook](../notebooks/04_modeling_table.ipynb).
+Marine/waterspout events are removed during preparation. Alaska, Hawaii, and territories are outside the modeling scope. Source: [row waterfall](../docs/dataset.md) and [feature construction](../outage_prediction/features.py).
 
 ## Transformations
 
-The preparation and modeling notebooks use DuckDB, pandas, NumPy, and Parquet storage. The main operations are:
+The preparation and feature modules use DuckDB, pandas, NumPy, and Parquet storage; notebooks import their calculations. The main operations are:
 
 1. **Clean outage readings.** Parse identifiers and timestamps, snap off-grid readings to the 15-minute grid, resolve collisions by retaining the larger reading, remove null/zero readings from the positive-outage table, and preserve observation information separately. Cap readings above the denominator and retain raw counts and an over-denominator flag in the cleaned table.
 2. **Construct customer denominators.** Use MCC when suitable; otherwise use Census population times the median MCC-to-population ratio, approximately 0.508. The preparation summary reports 130 fallbacks: 9 missing-MCC counties, all 100 North Carolina counties, and 21 other implausible county estimates. The state rule uses half the national median; county cutoffs of 0.1 and 5 customers per person are provisional heuristics.
@@ -164,13 +164,13 @@ The preparation and modeling notebooks use DuckDB, pandas, NumPy, and Parquet st
 6. **Build features.** Add log transforms, storm-family counts, quality references, pre-storm outage features, and county history. Quality references exist for 2018-2022: 2017 uses 2018, while 2023-2025 use 2022. Pre-storm features become missing when the preceding day is not observed.
 7. **Separate outcomes.** Exclude damage, casualties, narratives, source descriptions, and tornado damage/path fields from model inputs. Keep the three `retro_*` fields for analysis only and place test outcomes in a separate file.
 
-There is no documented PCA or other learned dimensionality reduction. Raw numeric feature missingness is retained in the modeling table; any model-specific imputation or scaling must be fit using training data only. See [preparation summary](02_data_prep_summary.md) and [notebook 02](../notebooks/02_data_prep.ipynb).
+There is no documented PCA or other learned dimensionality reduction. Raw numeric feature missingness is retained in the modeling table; any model-specific imputation or scaling must be fit using training data only. See [preparation summary](../docs/dataset.md) and [preparation implementation](../outage_prediction/dataset.py).
 
 ### County history: exact construction and caveat
 
 For validation/test, history uses 2017-2023 labels. For a training row, county-specific counts and sums exclude that row's entire year. Outage rates are smoothed as `(positive_count + 20 * p0) / (episode_count + 20)`; mean peak uses the corresponding formula. The prior weight of 20 is provisional.
 
-The global priors `p0` and `peak0` are computed from all training years, including the row's year. Other training years can also be later than the row's date. Thus, this is leave-one-year-out county aggregation with a full-training prior, not a strictly historical, as-of-time feature pipeline. The saved history check is marked true by construction rather than independently testing exclusion of every own-year label contribution.
+The global priors `p0` and `peak0` are computed from all training years, including the row's year. Other training years can also be later than the row's date. Thus, this is leave-one-year-out county aggregation with a full-training prior, not a strictly historical, as-of-time feature pipeline. The former hard-coded passing history check was removed. Regression tests now verify the actual full-training-prior dependency rather than claiming that no own-label contribution exists.
 
 ## Annotations & Labeling
 
@@ -184,11 +184,11 @@ target = 1 if peak_share >= 0.05, otherwise 0
 
 The 24-hour interval is aligned to the start hour, not the exact minute of `t0`; it can include observations before the report within that first hour. The denominator is estimated customers, not necessarily a measured customer total at the event date.
 
-The 5% threshold and 24-hour window are project choices informed by training EDA: the earlier analysis found stronger storm-versus-background separation at 5% and 83% of examined peaks within 24 hours. They are not utility-approved service standards. Already-out counties remain eligible, and a negative label means the threshold was not reached under the observation assumptions, not that no customer lost power. See [EDA summary](03_eda_summary.md).
+The 5% threshold and 24-hour window are project choices informed by training EDA: the earlier analysis found stronger storm-versus-background separation at 5% and 83% of examined peaks within 24 hours. They are not utility-approved service standards. Already-out counties remain eligible, and a negative label means the threshold was not reached under the observation assumptions, not that no customer lost power. See [EDA summary](../notebooks/02_eda.ipynb).
 
 ## Validation Types
 
-Saved automated checks cover unique keys, required targets, bounded outage shares, geographic scope, temporal splits, absence of retrospective inputs, and agreement between target and peak-share threshold. Notebook 06 also checks that the feature dictionary covers the columns and that the test-feature file contains no target. Results are in [preparation checks](prep_tables/output_checks.csv), [model-table checks](model_table_tables/checks.csv), and [ML EDA checks](ml_eda_tables/checks.csv).
+Enforced package checks cover unique keys, required targets, bounded outage shares, geographic scope, temporal splits, absence of retrospective inputs, and agreement between target and peak-share threshold. The ML-dataset EDA also checks that the feature dictionary covers the columns and that the test-feature file contains no target. Verification and implementations are in [preparation checks](../outage_prediction/dataset.py), [model-table checks](../outage_prediction/features.py), and [ML EDA checks](../outage_prediction/analysis.py).
 
 For this card, local schema sizes, split counts, training/validation positives, examples, and disjoint episode identifiers were checked directly. No test labels were read. These checks establish structural consistency; they do not independently validate outage completeness, storm causality, or real-time feature availability. No utility/operator validation or independent labeling review is documented.
 
@@ -209,9 +209,9 @@ The documented application is this capstone. Saved 2024 validation results are:
 | Storm family rate x county history reference | 0.469056 | 0.111560 | 0.189567 | 32.58% |
 | Initial four-feature logistic regression | 0.363576 | 0.125422 | 0.088865 | 24.24% |
 
-Sources: [reference rules](baseline_tables/naive_rules_validation.csv) and [initial logistic regression](baseline_tables/logistic_regression_initial_validation.csv). The latter uses month, local hour, pre-storm peak, and preceding-hour outage share; it is not a result for all 36 candidate features.
+Sources: [reference rules](../notebooks/03_modeling.ipynb) and [initial logistic regression](../notebooks/03_modeling.ipynb). The latter uses month, local hour, pre-storm peak, and preceding-hour outage share; it is not a result for all 36 candidate features.
 
-The [success criteria](success_criteria.md), revised on 2026-10-27 after initial model results existed, require improved ranking over the reference and no worse Brier score or top-10% recall. Calibration, subgroup results, and episode-bootstrap uncertainty are reported separately. These are validation benchmarks, not final test performance or evidence of operational readiness.
+The [evaluation criteria](../docs/evaluation.md), revised on 2026-10-27 after initial model results existed, require improved ranking over the reference and no worse Brier score or top-10% recall. Calibration, subgroup results, and episode-bootstrap uncertainty are reported separately. These are validation benchmarks, not final test performance or evidence of operational readiness.
 
 ## Reflections on Data
 
@@ -231,7 +231,7 @@ Zone-coded reports can cover only part of a county; expansion can associate an e
 
 ### Drift and subgroup performance
 
-The saved drift table shows large DQI shifts (PSI about 3.69 for validation and 3.75 for test), consistent with its year mapping. Hurricane category has an additional sparse-data shift and should not be treated as stable. Tropical episodes are rare in the test features. Training outage rates differ substantially by storm family: about 62.5% for tropical episodes versus 7.7% for winter episodes. Families overlap, so these are not mutually exclusive classes. See [drift](ml_eda_tables/feature_drift_psi.csv) and [family rates](ml_eda_tables/rate_by_storm_family.csv).
+The saved drift table shows large DQI shifts (PSI about 3.69 for validation and 3.75 for test), consistent with its year mapping. Hurricane category has an additional sparse-data shift and should not be treated as stable. Tropical episodes are rare in the test features. Training outage rates differ substantially by storm family: about 62.5% for tropical episodes versus 7.7% for winter episodes. Families overlap, so these are not mutually exclusive classes. See [drift](../notebooks/02_eda.ipynb) and [family rates](../notebooks/02_eda.ipynb).
 
 ### Sensitivity and human attributes
 
@@ -249,14 +249,3 @@ The modeling schema contains county aggregates and storm descriptors, with no in
 | PR-AUC | Here, scikit-learn average precision, not trapezoidal PR integration |
 | Brier skill | `1 - Brier / (p * (1-p))`, using observed prevalence `p` in the evaluation split |
 | PSI | Population stability index, used here to compare feature distributions |
-
-## Open Items for the Capstone Team
-
-- [ ] Add data-card authors, contributor roles, and a preferred project contact.
-- [ ] Confirm the intended release/version name and whether the recorded Hugging Face revision is the final deliverable; record file hashes or a release manifest.
-- [ ] Record exact upstream release IDs, download dates, and origins of the NWS crosswalk and Connecticut allocation weights.
-- [ ] Confirm source licenses/attribution requirements and the license and redistribution permissions for the derived dataset.
-- [ ] Supply a preferred project citation and any instructor-required acknowledgments.
-- [ ] State whether the dataset will remain private and whether any maintenance is planned after the course.
-
-Publishers, funding, retention, deletion policies, and human-annotator demographics are intentionally not left as mandatory blanks. They can be added only if the project's requirements change.
