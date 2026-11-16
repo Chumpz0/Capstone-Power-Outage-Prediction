@@ -2,6 +2,11 @@
 data/
 processed/
 work/
+models/
+.cache/
+*.egg-info/
+build/
+dist/
 holdout/
 *.parquet
 *.duckdb
@@ -29,5 +34,9 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Built report (machine-specific paths); the PDF is committed
+# Optional generated report exports
 reports/EDA_report.html
+reports/generated/
+
+# Local audit notes
+/docs/project_audit.md
