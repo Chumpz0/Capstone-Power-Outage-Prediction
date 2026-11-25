@@ -87,6 +87,17 @@ Progress is printed as JSON after each candidate and outer fold. The defaults
 require 148 model fits (12 candidates across 3 inner folds in each of 3 outer
 folds, plus 3 outer fits, a final 36-fit search, and a final model fit).
 
+Compare saved outer predictions with the reference without refitting any models:
+
+```powershell
+python -u -m outage_prediction.compare_cv --run-dir models/nested-1 --offline --n-boot 1000 --output-dir reports/generated/nested-reference-1
+```
+
+This rebuilds the reference within each outer training fold, checks saved row keys
+and outcomes, and reports AP, Brier, and top-10% recall with paired episode-bootstrap
+intervals for AP gain. Output contains aggregate metrics only. See the
+[recorded comparison](docs/evaluation.md#outer-fold-reference-comparison) for the real-data results.
+
 Rebuilding large data is separate from analysis and is not required when the
 prepared release is available:
 

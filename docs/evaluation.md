@@ -128,3 +128,42 @@ Aggregate evidence: [results and provenance](../reports/optimization/2026-11-24/
 [inner-fold trials](../reports/optimization/2026-11-24/nested_cv_trials.csv).
 Models, plots, and row predictions remain in ignored local run directories
 `models/tuned-20261124-214757` and `models/nested-20261124-215019`.
+
+### Outer-fold reference comparison
+
+The saved outer predictions were compared with `family_x_history`, rebuilt using
+the same expanding-year, episode-purged training folds and fold-local histories.
+All 93,160 rows and their targets were matched by county/episode/year keys. No
+models were refit, no hyperparameters changed, and 2024/2025 were not loaded.
+
+| Outer year | Model AP | Reference AP | AP gain | Paired 95% interval for gain |
+|---|---:|---:|---:|---|
+| 2021 | 0.514840 | 0.363946 | 0.150894 | [0.127269, 0.175479] |
+| 2022 | 0.481226 | 0.364233 | 0.116994 | [0.100071, 0.132473] |
+| 2023 | 0.565612 | 0.454875 | 0.110737 | [0.095391, 0.127347] |
+| Pooled | 0.522248 | 0.397270 | 0.124978 | [0.114759, 0.135088] |
+
+| Outer year | Model Brier | Reference Brier | Model top-10% recall | Reference top-10% recall |
+|---|---:|---:|---:|---:|
+| 2021 | 0.102495 | 0.117012 | 37.29% | 28.09% |
+| 2022 | 0.096059 | 0.105460 | 37.69% | 30.99% |
+| 2023 | 0.104724 | 0.114674 | 37.29% | 31.21% |
+| Pooled | 0.100835 | 0.111939 | 37.79% | 30.57% |
+
+The model passed all three reference-relative point criteria in every outer year
+and in the pooled comparison. All AP-gain intervals were above zero. Intervals
+use 1,000 paired whole-episode resamples, seed 42; the pooled bootstrap keeps
+episodes spanning multiple years together. Year composition may vary across
+pooled resamples. Pooled top-10% recall ranks all years together; yearly scores
+allocate the risk budget separately within each year.
+
+These results support improvement over the reference across the observed years.
+Intervals condition on fitted models and exclude retraining/selection uncertainty;
+yearwise intervals are exploratory and unadjusted for multiple comparisons.
+They do not resolve the retrospective feature limitations or replace evaluation
+of a frozen model on 2025. The full test suite passed 23 tests after adding this
+comparison, including key alignment, target mismatch rejection, reproducibility,
+and zero paired gain when model scores equal reference scores.
+
+Aggregate evidence: [comparison table](../reports/optimization/2026-11-24/reference-comparison/reference_comparison.csv)
+and [bootstrap settings and provenance](../reports/optimization/2026-11-24/reference-comparison/summary.json).
