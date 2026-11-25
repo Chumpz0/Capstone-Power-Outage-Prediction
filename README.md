@@ -40,6 +40,7 @@ silently reading latest. Old local data paths remain compatible during migration
 python -m outage_prediction.train --smoke-test --output-dir models/smoke-1
 python -m outage_prediction.train baseline --offline --output-dir models/baseline-1
 python -m outage_prediction.train boosting --offline --output-dir models/boosting-1
+python -m outage_prediction.train boosting --tune --n-trials 12 --offline --output-dir models/tuned-1
 python -m unittest discover -s tests -v
 ```
 
@@ -50,6 +51,41 @@ are off by default. To upload a completed real-data run explicitly:
 ```powershell
 python -m outage_prediction.tracking models/boosting-1
 ```
+
+`--tune` samples boosting configurations without replacement using seed 42 and
+selects the highest 2024 validation average precision (first trial wins ties).
+The default space is 50/100/200/300 estimators, learning rates
+0.01/0.03/0.1/0.2, and depths 1/2/3; `--n-trials` is capped at the space size.
+Every candidate fits on 2017-2023 only. The saved pipeline is the winning fitted
+candidate, with all trial scores in `hyperparameter_trials.csv` and search settings
+in `config.json`. Validation scores are model-selection estimates; 2025 stays
+sealed. Fixed parameter flags cannot be combined with `--tune`.
+`--smoke-test --tune --n-trials 2` exercises a small synthetic search.
+In notebooks, `tune_model(train, validation, n_trials=12)` returns the same
+`ModelResult` as `fit_model` without saving; import it from `outage_prediction.train`.
+
+For nested cross-validation with expanding-year folds:
+
+```powershell
+python -u -m outage_prediction.nested_cv --offline --n-trials 12 --outer-folds 3 --inner-folds 3 --output-dir models/nested-1
+```
+
+Defaults score outer years 2021/2022/2023, tuning each model on the last three
+available earlier years. Each inner/outer training window expands from 2017;
+episodes shared with its held-out year are purged from training. County histories
+are rebuilt using only that fold's training outcomes and priors, preserving the
+released leave-one-training-year-out definition. Training-row histories remain
+retrospective within that window. After outer scoring, a separate inner search
+on all 2017-2023 selects the final configuration, which is fitted on those years
+and evaluated on 2024. 2024 is excluded from nested selection, though it has been
+used in previous project development. 2025 is never loaded.
+
+The run saves `nested_cv_trials.csv`, `nested_cv_outer_folds.csv`, keyed outer
+predictions in `nested_cv_predictions.csv`, and the final model/2024 diagnostics.
+`config.json` includes outer mean, standard deviation, and pooled scores.
+Progress is printed as JSON after each candidate and outer fold. The defaults
+require 148 model fits (12 candidates across 3 inner folds in each of 3 outer
+folds, plus 3 outer fits, a final 36-fit search, and a final model fit).
 
 Rebuilding large data is separate from analysis and is not required when the
 prepared release is available:

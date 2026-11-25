@@ -258,6 +258,103 @@ def save_run(result, directory, validation, train):
                 plt.close(fig)
 
 
+def tune_model(
+    train,
+    validation,
+    *,
+    n_trials=12,
+    parameter_space=None,
+    sources=(),
+    bootstrap=False,
+    smoke_test=False,
+):
+    """Select boosting parameters by 2024 AP; fit every candidate on training only.
+
+    Returns the winning fitted pipeline with trial scores and search provenance.
+    Validation is used for selection, so its metrics are development estimates.
+    No files are written and no test data or external services are accessed.
+    """
+    from sklearn.model_selection import ParameterSampler
+
+    if isinstance(n_trials, bool) or not isinstance(n_trials, int) or n_trials < 1:
+        raise ValueError("n_trials must be a positive integer")
+    if parameter_space is None:
+        parameter_space = {
+            "n_estimators": [2, 5] if smoke_test else [50, 100, 200, 300],
+            "learning_rate": [0.03, 0.1] if smoke_test else [0.01, 0.03, 0.1, 0.2],
+            "max_depth": [1, 2] if smoke_test else [1, 2, 3],
+        }
+    allowed = {"n_estimators", "learning_rate", "max_depth"}
+    if not parameter_space or not set(parameter_space) <= allowed:
+        raise ValueError(f"Search parameters must be a nonempty subset of {sorted(allowed)}")
+    # Finite lists make the complete search space serializable and sample without replacement.
+    if any(not isinstance(values, (list, tuple)) or not values for values in parameter_space.values()):
+        raise ValueError("Each search parameter needs a nonempty list or tuple")
+    for name, values in parameter_space.items():
+        for value in values:
+            if (
+                isinstance(value, bool)
+                or not isinstance(value, (int, float))
+                or not np.isfinite(value)
+                or value <= 0
+                or (name != "learning_rate" and not isinstance(value, int))
+            ):
+                raise ValueError(f"Invalid search value for {name}: {value!r}")
+    candidates = list(ParameterSampler(
+        parameter_space,
+        n_iter=min(n_trials, int(np.prod([len(v) for v in parameter_space.values()]))),
+        random_state=SEED,
+    ))
+    started = time.perf_counter()
+    best = None
+    best_trial = None
+    trials = []
+    for trial, parameters in enumerate(candidates, start=1):
+        result = fit_model(
+            train, validation, sources=sources, smoke_test=smoke_test, **parameters
+        )
+        score = float(result.metrics["pr_auc"])
+        if not np.isfinite(score):
+            raise ValueError(f"Trial {trial} produced a nonfinite average precision")
+        trials.append({
+            "trial": trial,
+            **{name: result.config["parameters"][name] for name in sorted(allowed)},
+            "pr_auc": score,
+            "brier": result.metrics["brier"],
+            "fit_seconds": result.config["fit_seconds"],
+            "validation_predict_seconds": result.config["validation_predict_seconds"],
+        })
+        # Ties retain the first sampled candidate deterministically.
+        if best is None or score > best.metrics["pr_auc"]:
+            best, best_trial = result, trial
+    if bootstrap:
+        best.metrics, best.tables = evaluate(
+            validation, best.predictions.probability.to_numpy(), train, bootstrap=True
+        )
+        best.config["bootstrap"] = True
+    table = pd.DataFrame(trials)
+    table["selected"] = table.trial.eq(best_trial)
+    best.tables["hyperparameter_trials"] = table
+    best.config["hyperparameter_optimization"] = {
+        "method": "random_search",
+        "seed": SEED,
+        "objective": "average_precision",
+        "direction": "maximize",
+        "selection_split": "validation_2024",
+        "parameter_space": parameter_space,
+        "requested_trials": n_trials,
+        "completed_trials": len(trials),
+        "best_trial": best_trial,
+        "best_score": float(best.metrics["pr_auc"]),
+        "best_parameters": {name: best.config["parameters"][name] for name in sorted(allowed)},
+        "search_seconds": time.perf_counter() - started,
+    }
+    best.config["limitations"].append(
+        "2024 validation is used for hyperparameter selection; scores are development estimates."
+    )
+    return best
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -272,6 +369,8 @@ def main():
     parser.add_argument("--n-estimators", type=int, default=100)
     parser.add_argument("--learning-rate", type=float, default=0.1)
     parser.add_argument("--max-depth", type=int, default=3)
+    parser.add_argument("--tune", action="store_true", help="Select boosting parameters using 2024 validation AP")
+    parser.add_argument("--n-trials", type=int, default=12, help="Maximum random-search candidates (default: 12)")
     args = parser.parse_args()
     if args.upload_existing:
         if (
@@ -284,6 +383,8 @@ def main():
             or args.n_estimators != 100
             or args.learning_rate != 0.1
             or args.max_depth != 3
+            or args.tune
+            or args.n_trials != 12
         ):
             parser.error("Saved-run upload cannot be combined with training options")
         from .tracking import upload_saved_runs
@@ -292,6 +393,14 @@ def main():
             for result in upload_saved_runs(directory):
                 print(result["url"])
         return
+    if args.n_trials < 1:
+        parser.error("--n-trials must be positive")
+    if args.tune and args.kind != "boosting":
+        parser.error("--tune is supported only for boosting")
+    if not args.tune and args.n_trials != 12:
+        parser.error("--n-trials requires --tune")
+    if args.tune and (args.n_estimators != 100 or args.learning_rate != 0.1 or args.max_depth != 3):
+        parser.error("--tune cannot be combined with fixed boosting parameters")
     if (
         args.n_estimators < 1
         or args.learning_rate <= 0
@@ -305,7 +414,7 @@ def main():
         parser.error("Synthetic runs cannot be uploaded")
     paths = ProjectPaths(offline=args.offline)
     output = args.output_dir or paths.models / (
-        "smoke" if args.smoke_test else args.kind
+        "smoke" if args.smoke_test else ("boosting-tuned" if args.tune else args.kind)
     )
     if output.exists():
         parser.error("Choose a new output directory; existing runs are preserved")
@@ -314,16 +423,19 @@ def main():
         sources = []
     else:
         train, validation, sources = load_model_data(paths)
-    result = fit_model(
+    options = {"n_trials": args.n_trials} if args.tune else {
+        "kind": args.kind,
+        "n_estimators": 5 if args.smoke_test else args.n_estimators,
+        "learning_rate": args.learning_rate,
+        "max_depth": args.max_depth,
+    }
+    result = (tune_model if args.tune else fit_model)(
         train,
         validation,
-        kind=args.kind,
         sources=sources,
         bootstrap=args.bootstrap,
-        n_estimators=5 if args.smoke_test else args.n_estimators,
-        learning_rate=args.learning_rate,
-        max_depth=args.max_depth,
         smoke_test=args.smoke_test,
+        **options,
     )
     save_run(result, output, validation, train)
     print(

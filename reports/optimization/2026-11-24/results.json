@@ -1,0 +1,184 @@
+{
+  "tuning": {
+    "directory": "models/tuned-20261124-214757",
+    "metrics": {
+      "pr_auc": 0.5903788824576005,
+      "roc_auc": 0.8471689775333411,
+      "brier": 0.098249808298757,
+      "brier_skill": 0.2862607665364453,
+      "cal_overall_pts": -1.393036230462108,
+      "cal_worst_decile_pts": 3.4699843671424535,
+      "recall_top10": 0.3994140625,
+      "precision_top10": 0.6581911812037335,
+      "max_recall_top10": 0.6068359375,
+      "pos_rate": 0.16482101467937163,
+      "rows": 31064,
+      "criteria_version": "2026-10-27-reference",
+      "reference_pr_auc": 0.4690555266188338,
+      "reference_brier": 0.11156025420064533,
+      "reference_brier_skill": 0.18956655797184618,
+      "reference_recall_top10": 0.32578125,
+      "pass_1_ranking": true,
+      "pass_2_brier_skill": true,
+      "pass_5_recall_top10": true,
+      "passes_all_validation": true
+    },
+    "search": {
+      "method": "random_search",
+      "seed": 42,
+      "objective": "average_precision",
+      "direction": "maximize",
+      "selection_split": "validation_2024",
+      "parameter_space": {
+        "n_estimators": [
+          50,
+          100,
+          200,
+          300
+        ],
+        "learning_rate": [
+          0.01,
+          0.03,
+          0.1,
+          0.2
+        ],
+        "max_depth": [
+          1,
+          2,
+          3
+        ]
+      },
+      "requested_trials": 12,
+      "completed_trials": 12,
+      "best_trial": 4,
+      "best_score": 0.5903788824576005,
+      "best_parameters": {
+        "learning_rate": 0.2,
+        "max_depth": 2,
+        "n_estimators": 300
+      },
+      "search_seconds": 223.27222959999926
+    },
+    "artifact_validation": "passed"
+  },
+  "nested": {
+    "directory": "models/nested-20261124-215019",
+    "metrics": {
+      "pr_auc": 0.5903788824576005,
+      "roc_auc": 0.8471689775333411,
+      "brier": 0.098249808298757,
+      "brier_skill": 0.2862607665364453,
+      "cal_overall_pts": -1.393036230462108,
+      "cal_worst_decile_pts": 3.4699843671424535,
+      "recall_top10": 0.3994140625,
+      "precision_top10": 0.6581911812037335,
+      "max_recall_top10": 0.6068359375,
+      "pos_rate": 0.16482101467937163,
+      "rows": 31064,
+      "criteria_version": "2026-10-27-reference",
+      "reference_pr_auc": 0.4690555266188338,
+      "reference_brier": 0.11156025420064533,
+      "reference_brier_skill": 0.18956655797184618,
+      "reference_recall_top10": 0.32578125,
+      "pass_1_ranking": true,
+      "pass_2_brier_skill": true,
+      "pass_5_recall_top10": true,
+      "passes_all_validation": true
+    },
+    "search": {
+      "method": "nested_expanding_year",
+      "seed": 42,
+      "objective": "mean_inner_year_average_precision",
+      "outer_folds": 3,
+      "inner_folds": 3,
+      "parameter_space": {
+        "n_estimators": [
+          50,
+          100,
+          200,
+          300
+        ],
+        "learning_rate": [
+          0.01,
+          0.03,
+          0.1,
+          0.2
+        ],
+        "max_depth": [
+          1,
+          2,
+          3
+        ]
+      },
+      "requested_trials": 12,
+      "candidates_per_search": 12,
+      "best_parameters": {
+        "n_estimators": 300,
+        "max_depth": 2,
+        "learning_rate": 0.2
+      },
+      "final_inner_mean_pr_auc": 0.5211952090676705,
+      "outer_mean_pr_auc": 0.5205593603700087,
+      "outer_std_pr_auc": 0.03468678974851168,
+      "outer_mean_brier": 0.10109255738548949,
+      "outer_pooled_pr_auc": 0.5222482079764967,
+      "outer_pooled_brier": 0.10083512146765053,
+      "history_policy": "fold-local leave-one-training-year-out, fold-training priors",
+      "validation_role": "2024 evaluation only, excluded from search",
+      "search_seconds": 1229.225175700005
+    },
+    "artifact_validation": "passed"
+  },
+  "experiment_date": "2026-11-24",
+  "validation_checks": {
+    "unittest_tests_passed": 20,
+    "notebook_schemas_valid": 3,
+    "compileall": "passed",
+    "git_diff_check": "passed",
+    "persisted_model_predictions_and_metrics": "passed",
+    "source_hashes_match": "passed",
+    "nested_fold_and_selection_checks": "passed",
+    "test_2025": "not accessed"
+  },
+  "provenance": {
+    "train_rows": 208482,
+    "validation_rows": 31064,
+    "train_years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "validation_year": 2024,
+    "python": "3.14.3",
+    "sklearn": "1.9.1",
+    "base_git_commit": "66ec7ee58f1f4f4b06c9d00800d4fb004a1cbb56",
+    "source_sha256": {
+      "outage_prediction\\analysis.py": "c68c375f052438d038acfeffc4186a13d76af6a3f50a87a86fd5cd4d41eac14b",
+      "outage_prediction\\config.py": "c2a386631354cb59a98a4612718ed968b0187d5f656c677537c282b14dea7a62",
+      "outage_prediction\\dataset.py": "6e664245c246c65ea2a33bcf44f8e3cb9151d0a0eadf4586733ba62a4229d22e",
+      "outage_prediction\\evaluation.py": "b24b29d0557f609c3e0db6475a172b3f7fa2e2d8a37bf4992ab32b99b23e9486",
+      "outage_prediction\\features.py": "4f7ddd34de819a7b5d9a14b6874675a189606ddaad411cf98499dee502e830a9",
+      "outage_prediction\\nested_cv.py": "23b97831b034304e6124e56fb8b3499d153fa0a070df9c8a7fa9eb0085f7c65d",
+      "outage_prediction\\plots.py": "d78abc0aa130d77b649a9bf70515c055b8c3d4d62b3520408fb13239c838d78e",
+      "outage_prediction\\tracking.py": "7199b2c852c91edd2cd6d5d77a52f1e15c52a199a1eab49221937f68f592556c",
+      "outage_prediction\\train.py": "239d337532cd914bba4c20e33a7622bd3fef83bbdc05c36848a0743aa6bfc0c5",
+      "outage_prediction\\__init__.py": "a15eea723fe16b7ee09bae2dec7b5c3a9ed564f4fc5cb4943e9cb04c25f5329a"
+    },
+    "sources": [
+      {
+        "logical_path": "processed/model_table/train.parquet",
+        "sha256": "69e3a42433bc3743090722f223b56c3e35e45d49950a0b6f9919d72cafd0b1a5",
+        "hf_revision_verified": false
+      },
+      {
+        "logical_path": "processed/model_table/validation.parquet",
+        "sha256": "1052dd05ff6545ae905d69300f11a2754d5f036ab7b90f44614677293e2bce2a",
+        "hf_revision_verified": false
+      }
+    ]
+  }
+}
