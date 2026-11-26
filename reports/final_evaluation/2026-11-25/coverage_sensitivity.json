@@ -1,0 +1,23 @@
+{
+  "definition": "At least one county non-null reading on each label-window UTC date.",
+  "interpretation": "Exploratory subset comparison, not continuous coverage or relabeled outcomes.",
+  "excluded_rows": 7385,
+  "results": [
+    {
+      "subset": "all_validation",
+      "rows": 31064,
+      "positive_rate": 0.16482101467937163,
+      "pr_auc": 0.5903788824576005,
+      "brier": 0.09787281938368657,
+      "recall_top10": 0.3994140625
+    },
+    {
+      "subset": "county_readings_on_both_dates",
+      "rows": 23679,
+      "positive_rate": 0.20710334051269058,
+      "pr_auc": 0.6130367703812398,
+      "brier": 0.11873966315666903,
+      "recall_top10": 0.3433931484502447
+    }
+  ]
+}

@@ -3,6 +3,65 @@
 Train on 2017–2023, develop on validation 2024, and evaluate the frozen model
 once on 2025 outcomes. Ordinary loaders and notebooks never resolve test labels.
 Dataset/label definitions are in [dataset.md](dataset.md).
+The frozen 2025 evaluation was completed on **2026-11-25 (America/New_York)**;
+see [final results](#final-2025-results-2026-11-25). 2025 is now an evaluated test
+set, not an untouched resource for further model selection.
+
+## Frozen 2025 evaluation protocol
+
+The final predictor starts with `models/nested-20261124-215019/model.joblib`:
+300 estimators, learning rate 0.2, depth 2, nineteen features, fitted only on
+2017-2023. Before implementation, all original source/data hashes matched and its
+saved 2024 predictions and metrics were reproduced to tolerance 1e-12.
+
+`python -m outage_prediction.final_evaluation` provides three explicit actions:
+
+1. **freeze** verifies the saved training/validation data and reproduces the raw
+   2024 results. A sigmoid calibrator wraps the frozen base estimator and fits
+   only January-June 2024; episodes also appearing in July-December are removed
+   from calibration fitting. Raw and calibrated scores are compared on identical
+   July-December rows. Calibration is selected only for strictly lower Brier and
+   no AP/top-10% recall decrease beyond 1e-12. Otherwise raw probabilities remain
+   selected. Infeasible/invalid calibration also retains raw with an explanation.
+   The chosen calibrator is not refit on all 2024. This is development evidence,
+   since 2024 has been used previously.
+2. **benchmark**, in its own CLI process, measures thirty warmed predictions for
+   one row and the complete 2024 batch. Median/p95 times, platform, versions,
+   serialized size, current process RSS, and lifetime peak RSS are recorded.
+   Whole-process memory includes imports and data; model bytes are storage, not RAM.
+3. **score --allow-holdout** opens 2025 labels only after verifying checksums and
+   the frozen source snapshot. It joins exact county/episode key sets one-to-one
+   in feature-file order, requires all 32,098 expected rows, and rejects malformed
+   outcomes, invalid probabilities, or episodes shared with development. It scores
+   saved probabilities; it never fits or selects anything.
+
+Freeze snapshots 2025 features/predictions, the selected predictor, original base
+model/configuration, training-derived reference rates, excluded development
+episode IDs, calibration membership/diagnostics, coverage sensitivity, code, and
+hashes. Released train/test histories are independently rebuilt from 2017-2023
+outcomes and checked without reading test outcomes. Full-training priors and
+retrospective storm inputs remain unchanged.
+
+The primary criteria remain AP > reference, Brier <= reference, and top-10%
+recall >= reference on identical rows. Top-10% flags ceil(0.1 * rows), with stable
+feature-file ordering for ties. AP means sklearn average precision. Brier skill
+uses evaluation prevalence. A paired 95% AP-gain interval uses 1,000 whole-episode
+bootstrap draws, seed 42; it is separate from the three point criteria and excludes
+training/selection uncertainty. Family/FEMA and calibration diagnostics accompany
+the final results without new pass thresholds.
+
+Before unsealing, a 2024-only sensitivity comparison retains rows with at least
+one county non-null reading on each label-window UTC date. It uses the same labels
+and fixed predictions, does not establish continuous coverage, and does not alter
+the primary 2025 population. Chronological histories, truly available storm
+features, exact-minute labels, and stricter coverage definitions require a separate
+dataset experiment; they are not retroactively introduced into this final test.
+
+Use the commands in the [README](../README.md#frozen-2025-evaluation). All row-level
+artifacts remain local. Final scoring preserves output directories and may be
+reproduced for the same frozen predictor, but 2025 cannot guide subsequent model,
+calibration, feature, or threshold selection. These results are held-out
+retrospective performance, not validation of operational forecasting.
 
 ## Reference and success criteria
 
@@ -59,7 +118,7 @@ procedure; their standard deviation describes variation across years, not a
 confidence interval. Pooled AP is also reported and can differ from mean yearly AP.
 The final inner search uses all training years and leaves 2024 out of selection.
 2024 evaluation is still a development check given prior project use. The sealed
-2025 outcomes remain reserved for the final frozen-model evaluation.
+2025 outcomes were reserved until the final frozen-model evaluation below.
 
 `evaluate(..., bootstrap=True)` explicitly requests the paired 95% percentile
 interval for AP gain, resampling whole episode IDs: 1,000 draws, seed 42.
@@ -167,3 +226,88 @@ and zero paired gain when model scores equal reference scores.
 
 Aggregate evidence: [comparison table](../reports/optimization/2026-11-24/reference-comparison/reference_comparison.csv)
 and [bootstrap settings and provenance](../reports/optimization/2026-11-24/reference-comparison/summary.json).
+
+## Final 2025 results: 2026-11-25
+
+The existing nested-CV base model was retained without refitting. Sigmoid
+calibration was selected before test-label access: fitting used 19,864 rows from
+January-June 2024; 26 earlier rows sharing episodes with July-December were
+purged. Comparison used 11,174 July-December rows. Brier improved from 0.104849
+to 0.104482, while AP remained 0.647390 and top-10% recall remained 38.87%.
+The calibrator was not refit after comparison. These are development results.
+
+The final bundle and all keyed 2025 predictions were frozen at
+2026-11-26 03:33:40 UTC (November 25, 10:33:40 PM Eastern). Test labels were first
+opened at 03:34:18 UTC, after checksums, source verification, synthetic tests,
+and benchmarking. Every one of the **32,098** rows matched by county/episode;
+there were 7,866 episodes and 4,961 positive rows (15.46%). No test rows were
+dropped, and no model/calibration/threshold selection used the test outcomes.
+
+| 2025 metric | Frozen calibrated predictor | Training-derived reference | Criterion |
+|---|---:|---:|---|
+| Average precision | **0.525606** | 0.398987 | Passed: higher |
+| Brier score | **0.099618** | 0.111522 | Passed: no higher |
+| Recall in highest-risk 10% | **38.22%** | 30.30% | Passed: no lower |
+| Brier skill | 0.237637 | 0.146533 | Diagnostic |
+
+ROC-AUC was 0.823758. Flagging 3,210 rows caught 1,896 positives, versus 1,503
+for the reference: **393 additional positives** at the same illustrative risk
+budget. Top-10% precision was 59.07%. This budget is not a demonstrated crew
+capacity or an operational allocation policy.
+
+AP gain was **0.126619**, with a paired whole-episode 95% bootstrap interval
+**[0.110354, 0.143254]** (1,000 draws, seed 42). The interval supports improvement
+over the reference for the frozen predictions; it excludes retraining and
+selection uncertainty. AP exceeded the reference in all ten FEMA regions and
+the six reported storm-family groups. These subgroup point estimates do not
+establish significance or improvement in every metric or every storm family.
+
+Mean predicted probability exceeded observed prevalence by 0.61 percentage
+points; the worst absolute calibration-decile gap was 2.22 points. The
+[calibration table](../reports/final_evaluation/2026-11-25/calibration_deciles.csv)
+and plots accompany the aggregate evidence.
+
+### Runtime and coverage checks
+
+The selected predictor's fresh-process benchmark used Windows 11, Python 3.14.3,
+scikit-learn 1.9.1, and the AMD processor identifier recorded in
+[benchmark.json](../reports/final_evaluation/2026-11-25/benchmark.json). After one
+warm-up per workload, thirty repetitions gave single-row median/p95 latency of
+**1.29/1.90 ms**, and 31,064-row batch median/p95 latency of **38.70/46.32 ms**.
+The predictor occupied 232,258 serialized bytes. Peak whole-process working set
+was **225.7 MiB**, including imports, model and data; this is not isolated model
+RAM or a guarantee on other hardware. Historical base-model fit time was 46.97 s.
+
+The pre-test 2024 coverage sensitivity retained 23,679 rows and excluded 7,385
+with no county non-null readings on at least one label-window date. On that
+subset, prevalence was 20.71%, AP 0.613037, Brier 0.118740, and top-10% recall
+34.34%. The changed population prevents interpreting this as a like-for-like
+model improvement. It reinforces uncertainty in missing-as-zero labels. Primary
+test eligibility and labels were unchanged; no 2025 coverage subset was selected.
+
+### Evidence and interpretation
+
+All **29 tests** passed. Python syntax, notebook schemas, frozen source/artifact
+hashes, exact row alignment, and model prediction reproduction passed.
+An independent NumPy implementation reproduced AP, Brier, top-10% metrics, and
+the complete 1,000-draw episode-bootstrap interval within 1e-12. The independent
+check also verified that freeze preceded label access and output hashes matched.
+
+- [Results and validation summary](../reports/final_evaluation/2026-11-25/results.json)
+- [Independent validation](../reports/final_evaluation/2026-11-25/independent_validation.json)
+- [Frozen manifest](../reports/final_evaluation/2026-11-25/frozen_manifest.json)
+- [Scoring provenance](../reports/final_evaluation/2026-11-25/provenance.json)
+- [Calibration selection](../reports/final_evaluation/2026-11-25/calibration_selection.json)
+- [Coverage sensitivity](../reports/final_evaluation/2026-11-25/coverage_sensitivity.json)
+
+Local bundles are `models/final-20261125-frozen`,
+`models/final-20261125-benchmark`, and `models/final-20261125-test`. Row-level
+predictions and labels remain local; no uploads were performed. The older
+modeling notebook is explicitly historical and does not read 2025 outcomes.
+
+The final result supports the selected predictor over its reference on held-out
+2025 retrospective storm episodes. It does not remove whole-episode feature
+timing, training-history prior dependence, hour alignment, or coverage/denominator
+limitations. Forecast-time feature availability and chronological histories
+remain a separately versioned future experiment. 2025 must not guide additional
+selection; further model development needs another evaluation design.

@@ -1,0 +1,111 @@
+{
+  "experiment_date_local": "2026-11-25",
+  "timezone": "America/New_York",
+  "task": "Frozen 2025 held-out retrospective evaluation",
+  "base_run": "models/nested-20261124-215019",
+  "frozen_bundle": "models\\final-20261125-frozen",
+  "test_run": "models\\final-20261125-test",
+  "model": {
+    "classifier": "GradientBoostingClassifier",
+    "n_estimators": 300,
+    "learning_rate": 0.2,
+    "max_depth": 2,
+    "features": 19,
+    "training_years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ]
+  },
+  "calibration": {
+    "selected": "sigmoid",
+    "cutoff_utc": "2024-07-01T00:00:00+00:00",
+    "fit_rows": 19864,
+    "comparison_rows": 11174,
+    "purged_rows": 26,
+    "method": "sigmoid on FrozenEstimator; base model unchanged",
+    "rule": "strictly lower Brier; AP and top10 recall no lower within 1e-12",
+    "refit_after_comparison": false,
+    "comparison_metrics": {
+      "raw": {
+        "pr_auc": 0.6473904436615965,
+        "brier": 0.10484868916271212,
+        "recall_top10": 0.3886544772620722
+      },
+      "sigmoid": {
+        "pr_auc": 0.6473904436615965,
+        "brier": 0.10448217361018215,
+        "recall_top10": 0.3886544772620722
+      }
+    },
+    "reason": "Passed the fixed calibration selection rule."
+  },
+  "metrics": {
+    "pr_auc": 0.5256060457015025,
+    "roc_auc": 0.8237578312592283,
+    "brier": 0.09961780317412948,
+    "brier_skill": 0.23763694109110634,
+    "cal_overall_pts": 0.608117383681725,
+    "cal_worst_decile_pts": 2.2247397235817035,
+    "recall_top10": 0.38218101189276354,
+    "precision_top10": 0.5906542056074766,
+    "max_recall_top10": 0.647046966337432,
+    "pos_rate": 0.15455791638108293,
+    "rows": 32098,
+    "pr_auc_gain_ci_low": 0.11035359762420476,
+    "pr_auc_gain_ci_high": 0.1432543455330636,
+    "criteria_version": "2026-10-27-reference",
+    "reference_pr_auc": 0.39898676795221033,
+    "reference_brier": 0.11152235256407411,
+    "reference_brier_skill": 0.14653285729610155,
+    "reference_recall_top10": 0.30296311227575085,
+    "pass_1_ranking": true,
+    "pass_2_brier_skill": true,
+    "pass_5_recall_top10": true,
+    "passes_all_test": true
+  },
+  "validation": {
+    "rows": 32098,
+    "positive_rows": 4961,
+    "episodes": 7866,
+    "flagged_rows": 3210,
+    "caught_positives": 1896,
+    "reference_caught_positives": 1503,
+    "checks": {
+      "frozen_model_predictions": "exactly reproduced",
+      "frozen_artifact_and_source_hashes": "matched",
+      "row_keys": "exactly matched in feature order",
+      "metrics": "independent NumPy AP/Brier/top10 computation matched",
+      "bootstrap": "independent 1000-draw episode bootstrap matched",
+      "freeze_before_label_access": true,
+      "output_artifact_hashes": "matched",
+      "unittest_tests_passed": 29,
+      "notebook_schemas_valid": 3
+    },
+    "independent_metrics": {
+      "pr_auc": 0.5256060457015025,
+      "reference_pr_auc": 0.3989867679522103,
+      "brier": 0.09961780317412948,
+      "reference_brier": 0.11152235256407411,
+      "recall_top10": 0.38218101189276354,
+      "reference_recall_top10": 0.30296311227575085,
+      "precision_top10": 0.5906542056074766,
+      "pr_auc_gain_ci_low": 0.1103535976242048,
+      "pr_auc_gain_ci_high": 0.1432543455330635
+    }
+  },
+  "limitations": [
+    "Held-out retrospective performance, not demonstrated advance-warning forecasting.",
+    "Storm-family counts summarize whole episodes and can include reports after t0.",
+    "Training histories use later training years and full-training smoothing priors.",
+    "Missing outage readings may become zero under a daily coverage heuristic.",
+    "Labels use 24 hourly bins from floor_hour(t0), including part of the preceding hour.",
+    "2024 has been used in prior development; calibration comparison is a development estimate.",
+    "Bootstrap intervals condition on frozen predictions and exclude training/selection uncertainty."
+  ],
+  "row_level_artifacts": "Kept in ignored local model directories; no uploads performed."
+}
