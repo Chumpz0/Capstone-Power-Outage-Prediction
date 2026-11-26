@@ -1,4 +1,4 @@
-"""Training-derived reference rules and pure validation scoring; no file or network I/O."""
+"""Training-derived reference rules and explicit split scoring; no file or network I/O."""
 
 import numpy as np
 import pandas as pd
@@ -14,6 +14,7 @@ from .config import (
     TRAIN_FIRST,
     TRAIN_LAST,
     VAL_YEAR,
+    TEST_YEAR,
 )
 
 
@@ -24,9 +25,11 @@ def validate_frame(frame, name, features=None):
     missing = sorted(set(required) - set(frame.columns))
     if missing:
         raise ValueError(f"{name}: missing columns {missing}")
-    if name not in {"train", "validation"}:
-        raise ValueError("Expected train or validation split")
-    allowed = range(TRAIN_FIRST, TRAIN_LAST + 1) if name == "train" else [VAL_YEAR]
+    if name not in {"train", "validation", "test"}:
+        raise ValueError("Expected train, validation or test split")
+    allowed = range(TRAIN_FIRST, TRAIN_LAST + 1) if name == "train" else [
+        VAL_YEAR if name == "validation" else TEST_YEAR
+    ]
     if frame.empty or not frame["year"].isin(allowed).all():
         raise ValueError(
             f"{name}: expected only years {list(allowed)} and nonempty data"
@@ -40,6 +43,14 @@ def validate_frame(frame, name, features=None):
         or frame.duplicated(["fips", "episode_id"]).any()
     ):
         raise ValueError(f"{name}: county/episode keys must be present and unique")
+    validate_features(frame, features, name)
+
+
+def validate_features(frame, features, name="features"):
+    """Validate numeric model inputs independently of labels, including unlabeled test rows."""
+    missing = sorted(set(features) - set(frame.columns))
+    if missing:
+        raise ValueError(f"{name}: missing columns {missing}")
     for feature in features:
         if not pd.api.types.is_numeric_dtype(frame[feature]):
             raise ValueError(f"{name}: {feature} must be numeric")
@@ -175,7 +186,8 @@ def group_pr_auc(y, p, p_ref, groups):
     )
 
 
-def evaluate(frame, p, train, p_ref=None, *, bootstrap=False, n_boot=N_BOOT):
+def evaluate(frame, p, train, p_ref=None, *, bootstrap=False, n_boot=N_BOOT,
+             split="validation"):
     """Return (scalar metrics, diagnostic DataFrames) for labeled, keyed rows.
 
     Predictions are positional arrays or Series with exactly matching indexes.
@@ -184,15 +196,17 @@ def evaluate(frame, p, train, p_ref=None, *, bootstrap=False, n_boot=N_BOOT):
     Tied top-risk scores retain input row order. Brier skill is normalized by
     evaluation prevalence, as described in docs/evaluation.md.
     """
+    if split not in {"validation", "test"}:
+        raise ValueError("Evaluation split must be validation or test")
     validate_frame(train, "train", [])
-    validate_frame(frame, "validation", [])
+    validate_frame(frame, split, [])
     required = STORM_FEATURES + ["hist_outage_rate", "fema_region"]
-    for name, data in [("train", train), ("validation", frame)]:
+    for name, data in [("train", train), (split, frame)]:
         missing = set(required) - set(data.columns)
         if missing:
             raise ValueError(f"{name}: missing evaluation columns {sorted(missing)}")
     if set(train.episode_id) & set(frame.episode_id):
-        raise ValueError("Training and validation share storm episodes")
+        raise ValueError(f"Training and {split} share storm episodes")
     y = frame["target"].to_numpy()
     p = validate_probabilities(frame, p)
     run_bootstrap = bootstrap
@@ -261,7 +275,7 @@ def evaluate(frame, p, train, p_ref=None, *, bootstrap=False, n_boot=N_BOOT):
     m["pass_1_ranking"] = bool(m["pr_auc"] > m["reference_pr_auc"])
     m["pass_2_brier_skill"] = bool(m["brier"] <= m["reference_brier"])
     m["pass_5_recall_top10"] = bool(m["recall_top10"] >= m["reference_recall_top10"])
-    m["passes_all_validation"] = all(m[k] for k in m if k.startswith("pass_"))
+    m[f"passes_all_{split}"] = all(m[k] for k in m if k.startswith("pass_"))
     m = {k: float(v) if isinstance(v, np.floating) else v for k, v in m.items()}
 
     tables = {

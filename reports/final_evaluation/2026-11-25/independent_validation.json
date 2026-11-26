@@ -1,0 +1,30 @@
+{
+  "rows": 32098,
+  "positive_rows": 4961,
+  "episodes": 7866,
+  "flagged_rows": 3210,
+  "caught_positives": 1896,
+  "reference_caught_positives": 1503,
+  "checks": {
+    "frozen_model_predictions": "exactly reproduced",
+    "frozen_artifact_and_source_hashes": "matched",
+    "row_keys": "exactly matched in feature order",
+    "metrics": "independent NumPy AP/Brier/top10 computation matched",
+    "bootstrap": "independent 1000-draw episode bootstrap matched",
+    "freeze_before_label_access": true,
+    "output_artifact_hashes": "matched",
+    "unittest_tests_passed": 29,
+    "notebook_schemas_valid": 3
+  },
+  "independent_metrics": {
+    "pr_auc": 0.5256060457015025,
+    "reference_pr_auc": 0.3989867679522103,
+    "brier": 0.09961780317412948,
+    "reference_brier": 0.11152235256407411,
+    "recall_top10": 0.38218101189276354,
+    "reference_recall_top10": 0.30296311227575085,
+    "precision_top10": 0.5906542056074766,
+    "pr_auc_gain_ci_low": 0.1103535976242048,
+    "pr_auc_gain_ci_high": 0.1432543455330635
+  }
+}

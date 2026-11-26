@@ -1,0 +1,123 @@
+{
+  "frozen_at_utc": "2026-11-26T03:33:40.613326+00:00",
+  "git_commit": "201a2de9bff38bcd2f7717a292ceab7b67fa7a41",
+  "original_run": "models\\nested-20261124-215019",
+  "original_model_sha256": "6ec84157f921c0f2e8773d4b82a7cbdf595077c12271832d134c416054a5542d",
+  "features": [
+    "month",
+    "local_hour",
+    "pre_peak_24h",
+    "pct_out_at_start",
+    "n_tstm_wind",
+    "n_hail",
+    "n_tornado",
+    "n_high_wind",
+    "n_flood",
+    "n_winter",
+    "n_ice_storm",
+    "n_tropical",
+    "n_cold",
+    "n_lightning",
+    "n_wildfire",
+    "n_other",
+    "hist_episodes",
+    "hist_outage_rate",
+    "hist_mean_peak"
+  ],
+  "expected_test_rows": 32098,
+  "sources": [
+    {
+      "path": "D:/Capstone-Power-Outage-Prediction/data/processed/train.parquet",
+      "logical_path": "processed/model_table/train.parquet",
+      "sha256": "69e3a42433bc3743090722f223b56c3e35e45d49950a0b6f9919d72cafd0b1a5",
+      "hf_revision_verified": false
+    },
+    {
+      "path": "D:/Capstone-Power-Outage-Prediction/data/processed/validation.parquet",
+      "logical_path": "processed/model_table/validation.parquet",
+      "sha256": "1052dd05ff6545ae905d69300f11a2754d5f036ab7b90f44614677293e2bce2a",
+      "hf_revision_verified": false
+    },
+    {
+      "path": "D:/Capstone-Power-Outage-Prediction/data/processed/test_features.parquet",
+      "logical_path": "processed/model_table/test_features.parquet",
+      "sha256": "0160295326a783aee1b5c53ab0c8f3898d82d9ddda1cae2a5808c352116d1218",
+      "hf_revision_verified": false
+    }
+  ],
+  "calibration": {
+    "selected": "sigmoid",
+    "cutoff_utc": "2024-07-01T00:00:00+00:00",
+    "fit_rows": 19864,
+    "comparison_rows": 11174,
+    "purged_rows": 26,
+    "method": "sigmoid on FrozenEstimator; base model unchanged",
+    "rule": "strictly lower Brier; AP and top10 recall no lower within 1e-12",
+    "refit_after_comparison": false,
+    "comparison_metrics": {
+      "raw": {
+        "pr_auc": 0.6473904436615965,
+        "brier": 0.10484868916271212,
+        "recall_top10": 0.3886544772620722
+      },
+      "sigmoid": {
+        "pr_auc": 0.6473904436615965,
+        "brier": 0.10448217361018215,
+        "recall_top10": 0.3886544772620722
+      }
+    },
+    "reason": "Passed the fixed calibration selection rule."
+  },
+  "limitations": [
+    "Held-out retrospective performance, not demonstrated advance-warning forecasting.",
+    "Storm-family counts summarize whole episodes and can include reports after t0.",
+    "Training histories use later training years and full-training smoothing priors.",
+    "Missing outage readings may become zero under a daily coverage heuristic.",
+    "Labels use 24 hourly bins from floor_hour(t0), including part of the preceding hour.",
+    "2024 has been used in prior development; calibration comparison is a development estimate.",
+    "Bootstrap intervals condition on frozen predictions and exclude training/selection uncertainty."
+  ],
+  "bootstrap": {
+    "n_boot": 1000,
+    "seed": 42,
+    "cluster": "episode_id",
+    "interval": "95% percentile AP gain"
+  },
+  "success_criteria": [
+    "AP > reference",
+    "Brier <= reference",
+    "top10 recall >= reference"
+  ],
+  "top_share": 0.1,
+  "tie_policy": "stable feature-file row order",
+  "brier_skill": "1 - Brier / (evaluation_prevalence * (1-evaluation_prevalence))",
+  "test_labels_accessed": false,
+  "test_histories_verified_from_training_only": true,
+  "artifacts": {
+    "base_model.joblib": "6ec84157f921c0f2e8773d4b82a7cbdf595077c12271832d134c416054a5542d",
+    "calibration.json": "56d4db8895a031dfe219f48727410313e430b2dad337d2187ff90e8d011239be",
+    "calibration_membership.csv": "39cea701798d203397fdf83aeadce489b7a8fa23fd72e2e5a8070dd0f8037b02",
+    "comparison_raw_deciles.csv": "f8b709aa230fcd008630748dc5243cf30ea2f100854783ecb32d950f7cb5542c",
+    "comparison_sigmoid_deciles.csv": "bd6427e1e2f84cb8371fb28c4a26c5d6e96552cfbf671905fcc0ca0f8dbded55",
+    "coverage_sensitivity.json": "243c2ed81ab4fcfa79b3eee9508c30ebc159a08c652c4e7055b6db5d2adcb093",
+    "development_episodes.json": "e41ca0646fdbe110e8b703095885544deaa98265f4b38d78b83d58728f6cf203",
+    "original_config.json": "9db70cc844fbf6bfcdf35270835201a5a465d4b0278adfaaaf18091b1dd50bc3",
+    "predictor.joblib": "c751c99505bf11f41fc349e07723db9ad54d81733bbd2d08f977b241b157a550",
+    "reference.json": "38fb236da06b78af7d6b30e8c8a222bf3384660daf725943db9e7af9c06c04e6",
+    "reproduced_validation_metrics.json": "9a0a49f928d96211706886a89856489e12689a1c6c28ec4f92055679720573da",
+    "test_features.parquet": "0160295326a783aee1b5c53ab0c8f3898d82d9ddda1cae2a5808c352116d1218",
+    "test_predictions.parquet": "d6fbba75abfe0490684025dd8b1b469bd6cb50b08d3385e8ec52416b81a71f0c",
+    "source/analysis.py": "c68c375f052438d038acfeffc4186a13d76af6a3f50a87a86fd5cd4d41eac14b",
+    "source/compare_cv.py": "0b546f8a77a18df8f3ea461ed20ec5769ef74c9541c8e5358584a74f56bb3d74",
+    "source/config.py": "025627ebdbedbd4e687d813076174366bc54f81d9ab0dc849f715157e57db4ef",
+    "source/dataset.py": "6e664245c246c65ea2a33bcf44f8e3cb9151d0a0eadf4586733ba62a4229d22e",
+    "source/evaluation.py": "a4b5a9e387d4d8a29269e25a096be09024c4a9a3111704220238ba33a99950ce",
+    "source/features.py": "4f7ddd34de819a7b5d9a14b6874675a189606ddaad411cf98499dee502e830a9",
+    "source/final_evaluation.py": "d09c24e3770431c9e500c6d66ad46fd6d6825ea82e50df24f49f55306f99d8f7",
+    "source/nested_cv.py": "23b97831b034304e6124e56fb8b3499d153fa0a070df9c8a7fa9eb0085f7c65d",
+    "source/plots.py": "d78abc0aa130d77b649a9bf70515c055b8c3d4d62b3520408fb13239c838d78e",
+    "source/tracking.py": "7199b2c852c91edd2cd6d5d77a52f1e15c52a199a1eab49221937f68f592556c",
+    "source/train.py": "239d337532cd914bba4c20e33a7622bd3fef83bbdc05c36848a0743aa6bfc0c5",
+    "source/__init__.py": "a15eea723fe16b7ee09bae2dec7b5c3a9ed564f4fc5cb4943e9cb04c25f5329a"
+  }
+}

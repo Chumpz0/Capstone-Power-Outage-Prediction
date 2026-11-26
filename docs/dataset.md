@@ -26,13 +26,19 @@ snapshot; future local files must still be identified independently.
 |---|---|---:|---|
 | Train | 2017–2023 | 208,482 | Available |
 | Validation | 2024 | 31,064 | Available for development |
-| Test | 2025 | 32,098 | Sealed until final evaluation |
+| Test | 2025 | 32,098 | Final evaluation completed; excluded from ordinary workflows |
 
 The unit is county FIPS × NOAA episode. Train/validation have six identifiers,
 36 candidate features, the target, and three `retro_` fields (46 columns). Test
 features contain identifiers/features only (42 columns). The selected boosting
 candidate uses nineteen of the candidate features. Field definitions and training
 statistics are returned by `analysis.feature_dictionary()` in the EDA notebook.
+
+The frozen retrospective predictor was evaluated on all 2025 rows on 2026-11-25.
+Base-model fitting uses 2017-2023; the selected sigmoid calibrator uses only
+January-June 2024. The dataset and labels were not rebuilt for final evaluation.
+See [final results](evaluation.md#final-2025-results-2026-11-25). Ordinary analysis
+and training continue to exclude test outcomes.
 
 ## Preparation and labels
 

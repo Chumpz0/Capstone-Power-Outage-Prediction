@@ -5,13 +5,16 @@ DSCI 4350 capstone · Georgia State University · Fall 2026.
 Estimate the probability that a county reaches **5% of customers out** during
 the 24 hourly bins beginning at its first storm-report hour. The data support
 retrospective storm/outage research; whole-episode reports stand in for forecasts.
-Train: 2017–2023 · validation: 2024 · sealed test outcomes: 2025.
+Base-model train: 2017–2023 · development/calibration: 2024 · final test: 2025.
+The frozen 2025 evaluation is complete: AP **0.525606** versus **0.398987** for
+the reference; all three reference-relative criteria passed. See
+[final results](docs/evaluation.md#final-2025-results-2026-11-25).
 
 ## Start here
 
 1. [Data audit](notebooks/01_data_audit.ipynb): input availability, schema and denominators.
 2. [EDA](notebooks/02_eda.ipynb): event-level and modeling-dataset findings, displayed inline.
-3. [Modeling](notebooks/03_modeling.ipynb): baselines, selected boosting candidate and historical run links.
+3. [Modeling](notebooks/03_modeling.ipynb): historical baselines/candidate and run links. The latest selected model and final evaluation are documented in the evaluation guide.
 
 Definitions: [dataset](docs/dataset.md) · [evaluation](docs/evaluation.md).
 Deliverable: [curated EDA report](reports/eda_report.md).
@@ -52,14 +55,49 @@ are off by default. To upload a completed real-data run explicitly:
 python -m outage_prediction.tracking models/boosting-1
 ```
 
+The default `boosting` command reproduces the historical 100-tree/depth-3
+candidate. The latest nested-CV selection uses **300 trees, learning rate 0.2,
+depth 2**, fitted on 2017-2023. To reproduce those fixed base-model settings:
+
+```powershell
+python -m outage_prediction.train boosting --n-estimators 300 --learning-rate 0.2 --max-depth 2 --offline --output-dir models/selected-1
+```
+
+### Frozen 2025 evaluation
+
+Use the existing saved nested run; do not retrain or rebuild the dataset for final
+scoring. Run these commands in order, with new output directories:
+
+```powershell
+python -m outage_prediction.final_evaluation freeze --run-dir models/nested-20261124-215019 --offline --output-dir models/final-20261125-frozen
+python -m outage_prediction.final_evaluation benchmark --frozen-dir models/final-20261125-frozen --offline --output-dir models/final-20261125-benchmark
+python -m outage_prediction.final_evaluation score --frozen-dir models/final-20261125-frozen --allow-holdout --offline --output-dir models/final-20261125-test
+```
+
+Freeze compares a sigmoid calibrator fitted on January-June 2024 with raw
+probabilities on July-December 2024, purging shared episodes from calibration
+fitting. It retains calibration only for better Brier without worse AP/top-10%
+recall. The base model is never refit. It saves the chosen predictor, frozen
+reference, source snapshot, checksummed manifest, and all 32,098 keyed 2025
+predictions **without reading test labels**. Benchmark measures latency and
+whole-process memory in a fresh CLI process. Score explicitly opens labels,
+requires exact key alignment and unchanged frozen artifacts/source, and saves
+metrics, episode-bootstrap uncertainty, diagnostics, plots, and provenance.
+
+Ordinary training and notebooks still cannot load test outcomes. Raw labels and
+row predictions remain local; no final-evaluation command uploads anything.
+Results describe held-out retrospective performance. After final scoring, do not
+use 2025 to select models, features, calibration, or thresholds. See the
+[evaluation protocol](docs/evaluation.md#frozen-2025-evaluation-protocol).
+
 `--tune` samples boosting configurations without replacement using seed 42 and
 selects the highest 2024 validation average precision (first trial wins ties).
 The default space is 50/100/200/300 estimators, learning rates
 0.01/0.03/0.1/0.2, and depths 1/2/3; `--n-trials` is capped at the space size.
 Every candidate fits on 2017-2023 only. The saved pipeline is the winning fitted
 candidate, with all trial scores in `hyperparameter_trials.csv` and search settings
-in `config.json`. Validation scores are model-selection estimates; 2025 stays
-sealed. Fixed parameter flags cannot be combined with `--tune`.
+in `config.json`. Validation scores are model-selection estimates; tuning never
+reads 2025 outcomes. Fixed parameter flags cannot be combined with `--tune`.
 `--smoke-test --tune --n-trials 2` exercises a small synthetic search.
 In notebooks, `tune_model(train, validation, n_trials=12)` returns the same
 `ModelResult` as `fit_model` without saving; import it from `outage_prediction.train`.

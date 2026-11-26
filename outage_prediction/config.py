@@ -45,7 +45,7 @@ WANDB_PROJECT = "CAPSTONE MODEL"
 
 
 def sha256(path):
-    """Hash a local file in bounded memory; callers must exclude sealed labels."""
+    """Hash in bounded memory; only explicit final scoring may hash holdout labels."""
     digest = hashlib.sha256()
     with Path(path).open("rb") as stream:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):

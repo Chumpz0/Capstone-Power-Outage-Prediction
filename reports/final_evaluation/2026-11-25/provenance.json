@@ -1,0 +1,62 @@
+{
+  "scored_at_utc": "2026-11-26T03:34:28.491186+00:00",
+  "labels_accessed_at_utc": "2026-11-26T03:34:18.604070+00:00",
+  "frozen_at_utc": "2026-11-26T03:33:40.613326+00:00",
+  "frozen_manifest_sha256": "af8aaf6bafcff6756d95189072f1cba895b2af12961a6224e64b00bffa6ae45a",
+  "labels_sha256": "2a6f168c1520775a283850aa0e1a51dcfb5b5e84e3036a408c07490b679cd382",
+  "rows": 32098,
+  "bootstrap": {
+    "n_boot": 1000,
+    "seed": 42,
+    "cluster": "episode_id",
+    "interval": "95% percentile AP gain"
+  },
+  "independent_metrics": {
+    "pr_auc": 0.5256060457015025,
+    "brier": 0.09961780317412948,
+    "recall_top10": 0.38218101189276354,
+    "precision_top10": 0.5906542056074766
+  },
+  "calibration": {
+    "selected": "sigmoid",
+    "cutoff_utc": "2024-07-01T00:00:00+00:00",
+    "fit_rows": 19864,
+    "comparison_rows": 11174,
+    "purged_rows": 26,
+    "method": "sigmoid on FrozenEstimator; base model unchanged",
+    "rule": "strictly lower Brier; AP and top10 recall no lower within 1e-12",
+    "refit_after_comparison": false,
+    "comparison_metrics": {
+      "raw": {
+        "pr_auc": 0.6473904436615965,
+        "brier": 0.10484868916271212,
+        "recall_top10": 0.3886544772620722
+      },
+      "sigmoid": {
+        "pr_auc": 0.6473904436615965,
+        "brier": 0.10448217361018215,
+        "recall_top10": 0.3886544772620722
+      }
+    },
+    "reason": "Passed the fixed calibration selection rule."
+  },
+  "limitations": [
+    "Held-out retrospective performance, not demonstrated advance-warning forecasting.",
+    "Storm-family counts summarize whole episodes and can include reports after t0.",
+    "Training histories use later training years and full-training smoothing priors.",
+    "Missing outage readings may become zero under a daily coverage heuristic.",
+    "Labels use 24 hourly bins from floor_hour(t0), including part of the preceding hour.",
+    "2024 has been used in prior development; calibration comparison is a development estimate.",
+    "Bootstrap intervals condition on frozen predictions and exclude training/selection uncertainty."
+  ],
+  "artifacts": {
+    "by_family.csv": "90108232e87b1270859ec1dc59e0190f998a6fadcc95e91cdc38ac2509a2018b",
+    "by_fema_region.csv": "5b71216067479f7326920553346e50a435ddf20c0cb81f1fe15e59619e541514",
+    "by_year.csv": "c1e50f88e55c7da3aca24a6109dba1ddb2c45805704fba75af41e9a25f9537b1",
+    "calibration.png": "40509f3324e9574b57b7c95f03d2a943338ae7c928fe27c224adeeaa1d5fbb3b",
+    "calibration_deciles.csv": "70d3e77216d5593ced86769567159243af34ea36338d6539c279e53f6c4c8a82",
+    "precision_recall.png": "e4a7120ff371f97c5c5c8f9bb9dcd8609dd8a31656c53189755beb6d7d538baa",
+    "test_metrics.json": "7578ecb934cae551d7c7aa8bb575b23e8f85a9d5343688b90ddda085ed587076",
+    "test_predictions.parquet": "c03289436b48b1de433f3a1208c742043e8382bd6f215bca40e2607b89d4ec11"
+  }
+}

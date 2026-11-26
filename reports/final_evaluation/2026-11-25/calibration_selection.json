@@ -1,0 +1,23 @@
+{
+  "selected": "sigmoid",
+  "cutoff_utc": "2024-07-01T00:00:00+00:00",
+  "fit_rows": 19864,
+  "comparison_rows": 11174,
+  "purged_rows": 26,
+  "method": "sigmoid on FrozenEstimator; base model unchanged",
+  "rule": "strictly lower Brier; AP and top10 recall no lower within 1e-12",
+  "refit_after_comparison": false,
+  "comparison_metrics": {
+    "raw": {
+      "pr_auc": 0.6473904436615965,
+      "brier": 0.10484868916271212,
+      "recall_top10": 0.3886544772620722
+    },
+    "sigmoid": {
+      "pr_auc": 0.6473904436615965,
+      "brier": 0.10448217361018215,
+      "recall_top10": 0.3886544772620722
+    }
+  },
+  "reason": "Passed the fixed calibration selection rule."
+}
